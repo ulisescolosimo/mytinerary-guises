@@ -19,7 +19,7 @@ const EventsCarousel = () => {
 ]
 
   return (
-    <Carousel data={items} range={10}/>
+    <Carousel data={items} range={4}/>
   )
 }
 
