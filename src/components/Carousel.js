@@ -18,6 +18,7 @@ const Carousel = (props) => {
 return (
     <div>
         <div className="slider">
+            <h2 className="title-carousel">Popular MYtineraries</h2>
             {items.slice(start, end).map(itemView)}
         </div>
     </div>
