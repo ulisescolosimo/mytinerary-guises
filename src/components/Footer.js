@@ -6,7 +6,6 @@ import { BsFacebook } from 'react-icons/bs';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
 import { BsWhatsapp } from 'react-icons/bs';
-import around from '../assets/around.png'
 
 const Footer = () => {
   return (
@@ -14,7 +13,7 @@ const Footer = () => {
 <footer className="footer">
 
   <div class="container-img">
-    <img src={around} style={{height: "150px"}}/>
+    <img src="/assets/around.png" style={{height: "150px"}}/>
   </div>
 
   <div className="footer__addr">
