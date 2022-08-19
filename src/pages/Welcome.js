@@ -18,12 +18,12 @@ return (
                 <div className="pane">R</div>
                 <div className="pane">Y</div>
                 </div>
-                <button className="learn-more">
+                <a href="#" className="learn-more">
                 <span className="circle" aria-hidden="true">
                 <span className="icon arrow"></span>
                 </span>
                 <span className="button-text">Start trip!</span>
-            </button>
+            </a>
             </div>
         </div>
 )
