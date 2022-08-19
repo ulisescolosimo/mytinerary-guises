@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 .container-footer {
     min-height: 30vh;
     position: absolute;
     width: 100%;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .footer {
@@ -13,7 +17,9 @@
     display: flex;
     color: white !important;
     justify-content: space-evenly;
-    background-color: #4e4b4b;
+    background-color: #242222;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
 }
 
 .footer__addr {

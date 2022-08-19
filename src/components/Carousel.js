@@ -9,20 +9,22 @@ const Carousel = (props) => {
     const items = props.data
 
     const itemView = (item) => (
-        <div className="item">
-            <img src={item.url} style={{width: '500px', height: '355px'}} alt="imagen" />
-            <p>{item.title}</p>
+        <div className="item" style={{background: `url(${item.url})` 
+        , height: '300px', width: '600px', backgroundSize: 'cover', backgroundRepeat: "no-repeat", backgroundPosition: 'center'}}>
+            <div class="p-city">
+                <p>{item.title}</p>
+            </div>
         </div>
     )
 
 return (
-    <div>
         <div className="slider">
             <h2 className="title-carousel">Popular MYtineraries</h2>
+            <div className="container-slides">
             {items.slice(start, end).map(itemView)}
+            </div>
         </div>
-    </div>
-)
+)       
 }
 
 export default Carousel

@@ -1,4 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 .slider {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-slides{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.p-city{
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    background-color: rgba(0, 0, 0, 0.788);
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.p-city p{
+    margin: 10px;
+
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    text-align: center;
+}
+
+.title-carousel {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
 }

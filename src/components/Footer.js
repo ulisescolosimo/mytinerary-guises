@@ -13,7 +13,7 @@ const Footer = () => {
 <footer className="footer">
 
   <div class="container-img">
-    <img src="/assets/around.png" style={{height: "150px"}}/>
+    <img src="/assets/logo.jpg" style={{height: "150px", borderRadius: "20px"}}/>
   </div>
 
   <div className="footer__addr">
@@ -32,10 +32,10 @@ const Footer = () => {
       <h2 className="nav__title">Media</h2>
 
       <div className="nav__ul-icons">
-          <a href="#" class="a-item"><BsFacebook size={40} style={{color: "black"}}/> </a>
-          <a href="#"><AiFillTwitterCircle size={40} style={{color: "black"}}/> </a>
-          <a href="#"><AiFillInstagram size={40} style={{color: "black"}}/> </a>
-          <a href="#"><BsWhatsapp size={40} style={{color: "black"}} /> </a>
+          <a href="#" class="a-item"><BsFacebook size={40} style={{color: "white"}}/> </a>
+          <a href="#"><AiFillTwitterCircle size={40} style={{color: "white"}}/> </a>
+          <a href="#"><AiFillInstagram size={40} style={{color: "white"}}/> </a>
+          <a href="#"><BsWhatsapp size={40} style={{color: "white"}} /> </a>
       </div>
     </li>
   </div>

@@ -1,10 +1,9 @@
 import React from 'react'
-import Footer from '../components/Footer' 
 
-const WebsiteLayout = () => {
+const WebsiteLayout = (props) => {
   return (
     <div>
-        <Footer />
+        {props.children}
     </div>
   )
 }
