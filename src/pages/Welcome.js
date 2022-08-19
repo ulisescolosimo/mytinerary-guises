@@ -1,11 +1,10 @@
 import React from 'react'
 import '../styles/Welcome.css'
-import videoBg from '../assets/videoBack.mp4'
 
 const Welcome = () => {
 return (
     <div className="main-container">
-            <video src={videoBg} autoPlay loop playsInline muted />
+            <video src="./assets/videoBack.mp4" autoPlay loop playsInline muted />
             <div className="pane-container">
                 <div>
                 <div className="pane">M</div>
