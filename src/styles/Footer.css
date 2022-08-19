@@ -16,6 +16,18 @@
     background-color: #4e4b4b;
 }
 
+.footer__addr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__ul-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-img{
   display: flex;
   justify-content: center;
@@ -49,4 +61,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
 }

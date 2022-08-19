@@ -32,22 +32,12 @@ const Footer = () => {
     <li className="nav__item">
       <h2 className="nav__title">Media</h2>
 
-      <ul className="nav__ul-icons">
-        <li class="li">
+      <div className="nav__ul-icons">
           <a href="#" class="a-item"><BsFacebook size={40} style={{color: "black"}}/> </a>
-        </li>
-
-        <li class="li">
           <a href="#"><AiFillTwitterCircle size={40} style={{color: "black"}}/> </a>
-        </li>
-            
-        <li class="li">
           <a href="#"><AiFillInstagram size={40} style={{color: "black"}}/> </a>
-        </li>
-        <li class="li">
           <a href="#"><BsWhatsapp size={40} style={{color: "black"}} /> </a>
-        </li>
-      </ul>
+      </div>
     </li>
   </div>
 </footer>
