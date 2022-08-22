@@ -1,0 +1,8 @@
+.button-arrow {
+    padding: 20px;
+    border: none;
+    border-radius:50%;
+    background-color: #242222;
+    color: white;
+    cursor: pointer;
+}
