@@ -6,10 +6,10 @@ return (
     <div className="main-container">
             <video src="./assets/videoBack.mp4" autoPlay loop playsInline muted />
             <div className="pane-container">
-                <div>
+                <div className="panes">
                 <div className="pane">M</div>
-                <div className="pane">Y</div>
-                <div className="pane padding-title">T</div>
+                <div className="pane padding-title">Y</div>
+                <div className="pane">T</div>
                 <div className="pane">I</div>
                 <div className="pane">N</div>
                 <div className="pane">E</div>
