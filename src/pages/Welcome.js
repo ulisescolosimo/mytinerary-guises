@@ -1,4 +1,5 @@
 import React from 'react'
+import CallToAction from '../components/CallToAction'
 import '../styles/Welcome.css'
 
 const Welcome = () => {
@@ -18,12 +19,7 @@ return (
                 <div className="pane">R</div>
                 <div className="pane">Y</div>
                 </div>
-                <a href="#" className="learn-more">
-                <span className="circle" aria-hidden="true">
-                <span className="icon arrow"></span>
-                </span>
-                <span className="button-text">Start trip!</span>
-            </a>
+                <CallToAction title="Start trip!" />
             </div>
         </div>
 )
