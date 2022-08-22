@@ -14,6 +14,7 @@
     justify-content: center;
     align-items: center;
     margin: 20px 0 40px 0;
+    width: 100%;
 }
 
 .container-slides{
@@ -37,7 +38,6 @@
 
 .p-city p{
     margin: 10px;
-
 }
 
 .item {
@@ -56,6 +56,9 @@
     font-family: 'Roboto Mono', monospace;
     font-size: 30px;
     margin: 30px 0 0 0;
+    border-bottom: 3px solid black;
+    width: 50%;
+    text-align: center;
 }
 
 @media (max-width: 1568px) {
@@ -115,12 +118,17 @@
 @media (max-width: 625px) {
     .item {
         height: 250px;
-        width: 400px;
-        background-size: 400px 250px !important;
+        width: 80%;
+        background-position: center !important;
+        background-size: 100% 250px !important;
         background-repeat: no-repeat !important;
     }
     .p-city {
         font-size: 20px;
+    }
+    .button-arrow {
+        background-color: black !important;
+        color: white !important;
     }
 }
 
@@ -137,5 +145,9 @@
 
     .title-carousel{
         text-align: center;
+    }
+
+    .arrow-container {
+        justify-content: space-between;
     }
 }
