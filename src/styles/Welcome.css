@@ -20,7 +20,7 @@ video {
 }
 
 .padding-title {
-    margin-left: 50px !important;
+    margin-right: 20px !important;
 }
 
 .welcome-title-container{
@@ -157,3 +157,23 @@ a.learn-more .circle {
    a:hover .button-text {
     color: black;
    }
+
+   @media (max-width: 768px) {
+    .pane {
+        font-size: 50px;
+    }
+}
+
+   @media (max-width: 425px) {
+    .pane {
+        font-size: 35px;
+    }
+
+    .padding-title {
+        margin-right: 250px !important;
+    }
+
+    .panes {
+        margin: 20px;
+    }
+}
