@@ -36,7 +36,6 @@ const Carousel = (props) => {
         if(start >= range){
             setStart(start-range)
             setEnd(end-range)
-            console.log(start,end)
         }else{
             setStart(items.length-range)
             setEnd(items.length)
@@ -47,7 +46,6 @@ const Carousel = (props) => {
         if(start < range+end){
             setStart(start+range)
             setEnd(end+range)
-            console.log(start, end)
         }
         
         if(end >= 12){
