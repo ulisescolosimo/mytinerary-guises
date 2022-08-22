@@ -1,16 +1,13 @@
 import './App.css';
-import Welcome from './pages/Welcome'
-import Footer from './components/Footer'
 import EventsCarousel from './components/EventsCarousel'
-import UnderConstruction from './pages/UnderConstruction'
+import WebsiteLayout from './layouts/WebsiteLayout'
 
 function App() {
   return (
     <>
-      <Welcome />
-      <EventsCarousel />
-      <UnderConstruction />
-      <Footer />
+      <WebsiteLayout>
+        <EventsCarousel />
+      </WebsiteLayout>
     </>
   );
 }
