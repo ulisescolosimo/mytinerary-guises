@@ -5,7 +5,7 @@ import '../styles/Welcome.css'
 const Welcome = () => {
 return (
     <div className="main-container">
-            <video src="./assets/videoBack.mp4" autoPlay loop playsInline muted />
+            <video src="./assets/video.mp4" autoPlay loop playsInline muted />
             <div className="pane-container">
                 <div className="panes">
                 <div className="pane">M</div>
