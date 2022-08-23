@@ -1,11 +1,11 @@
 import React from 'react'
-import Welcome from '../pages/Welcome'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const WebsiteLayout = (props) => {
   return (
     <div>
-        <Welcome />
+        <Header />
         {props.children}
         <Footer />
     </div>
