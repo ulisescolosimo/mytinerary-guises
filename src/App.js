@@ -1,4 +1,5 @@
-import './App.css';
+import './App.css'
+import ScrollToTop from './components/ScrollToTop'
 import WebsiteLayout from './layouts/WebsiteLayout'
 import Cities from './pages/Cities'
 import HomePage from './pages/HomePage'
@@ -8,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <WebsiteLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />

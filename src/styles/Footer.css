@@ -17,7 +17,7 @@
     display: flex;
     color: white !important;
     justify-content: space-evenly;
-    background-color: #242222;
+    background-color: #000000;
     font-family: 'Roboto Mono', monospace;
     font-size: 18px;
 }
@@ -54,6 +54,7 @@
 
 .nav__title{
   text-align: center;
+  margin: 0 0 32px 0;
 
 }
 
@@ -69,8 +70,17 @@
   flex-direction: column;
 }
 
+.buttonScroll-Container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
   }
 }
+
