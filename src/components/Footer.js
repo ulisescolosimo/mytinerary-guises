@@ -6,6 +6,7 @@ import { BsFacebook } from 'react-icons/bs';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
 import { BsWhatsapp } from 'react-icons/bs';
+import { TbArrowBigTop } from 'react-icons/tb'
 
 const Footer = () => {
   return (
@@ -13,12 +14,11 @@ const Footer = () => {
 <footer className="footer">
 
   <div class="container-img">
-    <img src="/assets/logo.jpg" style={{height: "150px", borderRadius: "20px"}}/>
+    <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
   </div>
 
-  <div className="footer__addr">
-    <h1 className="footer__logo">MyTinerary</h1>
-        
+  <div className="footer__addr"> 
+         
     <h2>Contact</h2>
     
     <address>
@@ -39,6 +39,26 @@ const Footer = () => {
       </div>
     </li>
   </div>
+  <div className="buttonScroll-Container">
+    <button className="button-top"
+        onClick={() => {
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }}
+        style={{
+          padding: '.5rem 1rem',
+          fontSize: '20px',
+          bottom: '40px',
+          right: '40px',
+          backgroundColor: 'white',
+          borderRadius: '30%',
+          color: 'black',
+          textAlign: 'center',
+        }}
+      >
+        <TbArrowBigTop/>       
+      </button>
+      <p>Back to top</p>
+    </div>
 </footer>
 </>
   )
