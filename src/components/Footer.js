@@ -55,6 +55,9 @@ const Footer = () => {
         <LinkRouter className="items" to='/'>Home</LinkRouter>
         <LinkRouter className="items" to='/cities'>Cities</LinkRouter>
       </div>
+      <div className="copyright">
+        <p>&copy; Copyright 2022, Guises Inc.</p>
+      </div>
       <div className='container-date'>
         <p>Current date is {date}</p>
       </div>
