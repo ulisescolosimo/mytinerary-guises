@@ -17,6 +17,12 @@ video {
     /* position: fixed; */  
 }
 
+.slogan-container{
+    padding: 10px;
+    text-align: center;
+}
+
+
 .padding-title {
     margin-right: 20px !important;
 }
@@ -30,7 +36,8 @@ video {
 
 .pane-container{
     display: flex;
-    gap: 100px;
+    gap: 30px;
+    height: auto !important;
     position: absolute;
     flex-direction: column;
     height: fit-content;
