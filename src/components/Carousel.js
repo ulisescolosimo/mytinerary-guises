@@ -56,7 +56,7 @@ const Carousel = (props) => {
 
 return (
         <div className="slider">
-            <h2 className="title-carousel">Popular MyTineraries</h2>
+            <h2 className="title-carousel">Popular Cities</h2>
             <div className="arrow-container">
             <Arrow icon={<MdNavigateBefore size={25} />} click={previous} />
             <div className="container-slides">

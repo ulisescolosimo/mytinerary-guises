@@ -19,6 +19,9 @@ return (
                 <div className="pane">R</div>
                 <div className="pane">Y</div>
                 </div>
+                <div className="slogan-container">
+                    <p style={{color: 'white', fontSize: '25px', padding: '10px'}}>No matter where in the world you want to go, we can help get you there.</p>
+                </div>
                 <CallToAction title="Start trip!" to='/cities' />
             </div>
         </div>
