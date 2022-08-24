@@ -1,5 +1,4 @@
 import React from 'react'
-import WebsiteLayout from '../layouts/WebsiteLayout'
 import '../styles/Maintenance.css'
 
 const UnderConstruction = () => {
