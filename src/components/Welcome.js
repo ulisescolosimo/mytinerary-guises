@@ -1,5 +1,5 @@
 import React from 'react'
-import CallToAction from '../components/CallToAction'
+import CallToAction from './CallToAction'
 import '../styles/Welcome.css'
 
 const Welcome = () => {
