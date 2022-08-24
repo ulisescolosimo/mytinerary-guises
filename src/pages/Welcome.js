@@ -19,7 +19,7 @@ return (
                 <div className="pane">R</div>
                 <div className="pane">Y</div>
                 </div>
-                <CallToAction title="Start trip!" />
+                <CallToAction title="Start trip!" to='/cities' />
             </div>
         </div>
 )
