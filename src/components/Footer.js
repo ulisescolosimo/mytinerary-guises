@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/Footer.css'
-import { BsFillPinMapFill } from 'react-icons/bs';
-import { MdOutlineCall } from 'react-icons/md';
+import {Link as LinkRouter} from 'react-router-dom'
 import { BsFacebook } from 'react-icons/bs';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
@@ -9,28 +8,19 @@ import { BsWhatsapp } from 'react-icons/bs';
 import { TbArrowBigTop } from 'react-icons/tb'
 
 const Footer = () => {
-  return (
-<>
-<footer className="footer">
 
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+  return (
+<footer>
+  <div className="footer">
   <div class="container-img">
     <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
   </div>
 
-  <div className="footer__addr"> 
-         
-    <h2>Contact</h2>
-    
-    <address>
-    <BsFillPinMapFill /> Somewhere In The World  
-    <p><MdOutlineCall /> +54 [My-Tinerary]</p> 
-    </address>
-  </div>
-
     <div className="footer__addr">
     <li className="nav__item">
-      <h2 className="nav__title">Media</h2>
-
       <div className="nav__ul-icons">
           <a href="#" class="a-item"><BsFacebook size={40} style={{color: "white"}}/> </a>
           <a href="#"><AiFillTwitterCircle size={40} style={{color: "white"}}/> </a>
@@ -59,8 +49,18 @@ const Footer = () => {
       </button>
       <p>Back to top</p>
     </div>
+    </div>
+    <div className='nav-footer'>
+      <div className='container-footer-nav'>
+        <LinkRouter className="items" to='/'>Home</LinkRouter>
+        <LinkRouter className="items" to='/cities'>Cities</LinkRouter>
+      </div>
+      <div className='container-date'>
+        <p>Current date is {date}</p>
+      </div>
+    </div>
 </footer>
-</>
+
   )
 }
 
