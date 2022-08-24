@@ -85,3 +85,10 @@ nav {
         right: 50px;
     }
 }
+
+
+@media (max-width: 375px) {
+    .nav-bar-logo{
+        width: 80%;
+    }
+}
