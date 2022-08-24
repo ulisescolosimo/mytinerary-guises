@@ -14,7 +14,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 50px !important;
+    margin-right: 55px !important;
 }
 
 .items {
@@ -39,4 +39,49 @@ nav {
 .nav-bar-logo{
     height: 100% !important;
     margin-top: 5px !important;
+}
+
+.profile-Select{
+    right: 0;
+    top: 80px;
+    background: #DCD7C9;
+    position: absolute;
+    margin-right: 1rem;
+    border-radius: .5rem;
+}
+
+.profile-Select ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    margin-right: 2rem;
+    font-weight:700;
+    gap: .5rem;
+}
+
+.profile-Select ul li {
+    color: #3F4E4F;
+    cursor: pointer;
+
+}
+
+
+@media (max-width: 600px) {
+    .navbar-container{
+        flex-direction: column;
+    }
+    .list{
+        width: 100%;
+        background-color: black !;
+    }
+    nav {
+        height: auto;
+        padding-bottom: .5rem;
+    }
+    .profile-Select{
+        height: min-content;
+        top: 200px;
+        right: 50px;
+    }
 }
