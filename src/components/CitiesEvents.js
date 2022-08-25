@@ -1,9 +1,9 @@
 import React from 'react'
-import Carousel from './Carousel'
+import CitiesCards from './CitiesCards'
 
-const EventsCarousel = () => {
-
-    const items = [
+const CitiesEvents = (props) => {
+  
+  const items = [
     { url: "/assets/madrid.jpg", title: "Madrid" },
     { url: "/assets/amsterdam.jpg", title: "Amsterdam" },
     { url: "/assets/paris.jpg", title: "Paris" },
@@ -19,10 +19,8 @@ const EventsCarousel = () => {
 ]
 
   return (
-    <>
-      <Carousel data={items} range={4} interval={4} />
-    </>
+      <CitiesCards items={items} input={props.input} />
   )
 }
 
-export default EventsCarousel
+export default CitiesEvents
