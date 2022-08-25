@@ -18,15 +18,12 @@ nav {
 }
 
 .items {
-    margin-right: 20px;
     font-size: 20px;
     text-transform: uppercase;
     color: white;
     cursor: pointer;
-    border-right: 2px solid #CE996E;
     text-align: center;
     padding-right: 15px;
-    border-right-style: solid;
 }
 
 .navbar-container {
@@ -40,9 +37,27 @@ nav {
     height: 100% !important;
 }
 
+.container-log {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px !important;
+}
+
+.container-log ul {
+    display: flex;
+    color: white !important;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    margin-right: 2rem;
+    font-weight:700;
+    gap: .5rem;
+}
+
 .profile-Select{
     right: 0;
-    top: 80px;
+    top: 100px;
     background: #DCD7C9;
     position: absolute;
     margin-right: 1rem;
@@ -59,16 +74,46 @@ nav {
     gap: .5rem;
 }
 
+.icon.nav-icon-5{
+    display: none;
+}
+
 .profile-Select ul li {
     color: #3F4E4F;
     cursor: pointer;
-
 }
 
+.HamburguerMenu {
+    display: none;
+}
+
+.HamburguerMenu-nav{
+    display: none;
+}
+
+.Hamburguer-logs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px !important;
+}
+
+.Hamburguer-logs a{
+    border: none;
+} 
+
+.container-burger-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-burger-links a{
+    padding: 20px;
+    color: white !important;
+} 
+
 @media (max-width: 600px) {
-    .navbar-container{
-        flex-direction: column;
-    }
     .list{
         width: 100%;
         background-color: black !;
@@ -88,5 +133,54 @@ nav {
 @media (max-width: 375px) {
     .nav-bar-logo{
         width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 768px){
+
+    .icon.nav-icon-5{
+        display: flex;
+    }
+
+    .navigation-menu{
+        display: none;
+    }
+
+    .HamburguerMenu-nav{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .navbar-container-burger {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    .HamburguerMenu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100% !important;
+    }
+
+    .Hamburguer-logs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px !important;
+        width: 100%;
+    }
+
+    .nav-bar-logo{
+        width: 80%;
+        height: 90% !important;
     }
 }
