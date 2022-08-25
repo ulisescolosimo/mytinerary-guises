@@ -19,7 +19,9 @@ const EventsCarousel = () => {
 ]
 
   return (
-    <Carousel data={items} range={4} interval={3} />
+    <>
+      <Carousel data={items} range={4} interval={4} />
+    </>
   )
 }
 
