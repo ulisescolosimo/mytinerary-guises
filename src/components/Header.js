@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import '../styles/Header.css'
 import {Link as LinkRouter} from 'react-router-dom'
-import { BiUserCircle } from 'react-icons/bi';
+import BurgerNav from '../components/BurgerNav';
+import Navigation from './Navigation'
 
 const Header = () => {
 
@@ -13,29 +14,25 @@ const Header = () => {
 
     const link = (page) => <LinkRouter className="items" to={page.to}>{page.name}</LinkRouter>
 
-    const[open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
+
     const handleClick = () => {
         setOpen(!open)
+        console.log(open)
     }
+
+    const [clicked, setClicked] = useState(false)
+
+    const handleBurger = () => {
+        setClicked(!clicked)
+        console.log(clicked)
+    }
+
 return (
-    <nav>
-        <div className="navbar-container">
-            <img className="nav-bar-logo" src="http://localhost:3000/logo-header.jpg" style={{height: '100%'}}/>
-            <ul className="list">
-                {pages.map(link)}
-                <BiUserCircle onClick = {handleClick} size={35} style={{color: 'white'}}/>
-            </ul>
-        </div>
-        <div className='profile-Select'>
-            { open ?
-                <ul>
-                    <li>Log In</li>
-                    <li>Profile</li>
-                </ul>
-                :null
-            }
-        </div>
-    </nav>
+    <header>
+        <Navigation pages={pages} link={link} open={open} click={handleClick} />
+        <BurgerNav pages={pages} handleBurger={handleBurger} open={open} link={link} clicked={clicked} click={handleClick} />
+    </header>
 )
 }
 

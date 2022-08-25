@@ -17,6 +17,14 @@ const Footer = () => {
   <div className="footer">
   <div class="container-img">
     <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
+    <div className='container-footer-nav'>
+        <div>
+        <LinkRouter className="items-link" to='/'>Home</LinkRouter>
+        </div>
+        <div>
+        <LinkRouter className="items-link" to='/cities'>Cities</LinkRouter>
+        </div>
+      </div>
   </div>
 
     <div className="footer__addr">
@@ -26,6 +34,9 @@ const Footer = () => {
           <a href="#"><AiFillTwitterCircle size={40} style={{color: "white"}}/> </a>
           <a href="#"><AiFillInstagram size={40} style={{color: "white"}}/> </a>
           <a href="#"><BsWhatsapp size={40} style={{color: "white"}} /> </a>
+      </div>
+      <div className="copyright">
+        <p>&copy; Copyright 2022, Guises Inc.</p>
       </div>
     </li>
   </div>
@@ -48,19 +59,10 @@ const Footer = () => {
         <TbArrowBigTop/>       
       </button>
       <p>Back to top</p>
-    </div>
-    </div>
-    <div className='nav-footer'>
-      <div className='container-footer-nav'>
-        <LinkRouter className="items" to='/'>Home</LinkRouter>
-        <LinkRouter className="items" to='/cities'>Cities</LinkRouter>
-      </div>
-      <div className="copyright">
-        <p>&copy; Copyright 2022, Guises Inc.</p>
-      </div>
       <div className='container-date'>
         <p>Current date is {date}</p>
       </div>
+    </div>
     </div>
 </footer>
 

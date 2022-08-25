@@ -49,14 +49,13 @@ video {
 
 .pane {
     margin: 5px;
-    z-index: 1;
+    z-index: 0;
     width: 1em;
     height: 1em;
     display: inline-block;
     margin: 5 auto;
     border-radius: .05em;
     border: .01em solid #444;
-    position: relative;
     background: #222;
     text-align: center;
     line-height: 1;
