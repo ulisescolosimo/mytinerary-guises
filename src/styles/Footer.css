@@ -9,6 +9,10 @@
     font-family: 'Roboto Mono', monospace;
 }
 
+footer {
+  height: 15vh !important;
+}
+
 .footer {
     width: 100%;
     min-height: 15vh !important;
