@@ -97,6 +97,10 @@ nav {
     margin-top: 10px !important;
 }
 
+header {
+    height: 15vh !important;
+}
+
 .Hamburguer-logs a{
     border: none;
 } 
