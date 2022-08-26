@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+
+.container-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer {
+  height: 15vh !important;
+}
+
+.footer {
+    width: 100%;
+    min-height: 15vh !important;
+    display: flex;
+    color: white !important;
+    justify-content: space-around;
+    background-color: #000000;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+}
+
+.footer__addr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__ul-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-log-2 a{
+  color: white !important;
+}
+
+.container-img{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.li {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.nav__ul-icons {
+  display: flex;
+  gap: 10px;
+  color: black;
+}
+
+.nav__title{
+  text-align: center;
+  margin: 0 0 32px 0;
+}
+
+.footer__addr {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav__item{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.buttonScroll-Container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.buttonScroll-Container p{
+  font-size: 15px;
+}
+
+.container-footer-nav{
+  display: flex;
+  gap: 30px;
+}
+
+.items-link{
+  border: none !important;
+  text-align: center !important;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.container-footer-nav a{
+  text-align: center;
+}
+
+.nav-footer{
+  display: flex;
+  color: white !important;
+  justify-content: space-around;
+  background-color: #000000;
+  align-items: center;
+  text-align: center !important;
+}
+
+.container-date {
+  text-align: center !important;
+}
+
+.copyright {
+  text-align: center !important;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+  }
+  .nav-footer {
+    flex-direction: column;
+  }
+  .container-footer-nav {
+    justify-self: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 10px !important;
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
