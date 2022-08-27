@@ -10,7 +10,7 @@ const CitiesCards = (props) => {
     <div className="container-cards">
         {itemFilter.length > 0 ? itemFilter.map((item) => 
         <div class="card" style={{background: `url(${item.url})`}}>
-            <p>{item.title}</p>
+            <p className="card-title">{item.title}</p>
         </div>) : <div className="not-found"><MdSearchOff size={50} /><p>No results found. Please refine your search.</p></div>}
     </div>
   )
