@@ -1,0 +1,53 @@
+.container-newcities{
+    display: flex;
+    flex-direction: column;
+    min-height: 68.5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-cities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: black !important;
+    gap: 20px !important;
+    width: 70%;
+    margin: 20px;
+    max-width: 600px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.input-label{
+    display: flex;
+    color: white;
+    max-width: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-form {
+    margin: 5px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.button-form {
+    padding: 10px;
+    margin: 10px 0 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: brown;
+    border: none;
+    color: white;
+}
