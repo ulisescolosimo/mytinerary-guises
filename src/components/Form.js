@@ -1,7 +1,6 @@
 import {React, useRef, useState} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
-import NewCity from '../components/NewCity';
 
 
 const Form = () => {
@@ -29,7 +28,7 @@ const Form = () => {
     
 
   return (
-    <>
+    <div className="container-newcities">
     <form className="form-cities" onSubmit={handleForm}>
         <div className="input-label">
             <label htmlFor="country">Country</label>
@@ -53,7 +52,7 @@ const Form = () => {
         </div>
         <button type="submit" className="button-form">Add city</button>
     </form>
-    </>
+    </div>
   )
 }
 
