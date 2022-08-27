@@ -4,6 +4,7 @@ import WebsiteLayout from './layouts/WebsiteLayout'
 import HomePage from './pages/HomePage'
 import Cities from './pages/Cities'
 import UnderConstruction from './pages/UnderConstruction'
+import NewCities from './pages/NewCities'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Error from './pages/Error'
 
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path='/new_cities' element={<UnderConstruction />}/>
+          <Route path='/new_cities' element={<NewCities />}/>
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
