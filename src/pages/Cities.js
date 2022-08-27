@@ -15,7 +15,7 @@ const Cities = () => {
     <div className="container-cities">
       <div className="form-container">
       <div className="form">
-        <input className="input" onChange={handleInput} placeholder="Type your text" required="" type="text" />
+        <input className="input" onChange={handleInput} placeholder="Enter city..." required="" type="text" />
         <span className="input-border"></span>
       </div>
       </div>
