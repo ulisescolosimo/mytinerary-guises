@@ -1,7 +1,7 @@
 .container-newcities{
     display: flex;
     flex-direction: column;
-    min-height: 68.5vh;
+    min-height: 70vh;
     justify-content: center;
     align-items: center;
 }
@@ -17,14 +17,18 @@
     width: 70%;
     margin: 20px;
     max-width: 600px;
-    background-color: black;
+    background: url(/public/assets/bg-table.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 20px;
 }
 
 .input-label{
     display: flex;
-    color: white;
-    max-width: 50%;
+    color: black;
+    font-weight: bold;
+    max-width: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -38,7 +42,8 @@
     border-radius: 10px;
     border: none;
     padding: 10px;
-    width: 100%;
+    width: 200px;
+    min-width: 40%;
     font-size: 15px;
 }
 
@@ -47,7 +52,9 @@
     margin: 10px 0 30px;
     font-size: 20px;
     border-radius: 10px;
-    background-color: brown;
+    background-color: rgb(196, 168, 141);
     border: none;
-    color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
 }
