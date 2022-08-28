@@ -1,44 +1,41 @@
 .card {
-    transition: all 300ms;
+    transition: all 200ms ease-out;
     height: 380px;
-    width: 40%;
+    width: 500px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     margin: 30px;
     border-radius: 5%;
     filter: grayscale(80%);
-    transition: all 0.5s ease-out;
-    font-size: 5.5vw;
+    transition: all 0.5 ease-out;
+    font-size: 3.5rem;
     text-align: center;
     text-shadow: #4985e01f;
-   font-weight: bold;
-   color: white;
-   -webkit-text-stroke: 2px black;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     
 }
 
 .container-cities{
     min-height: 70vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
 }
 
 
 .card:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     filter: grayscale(0%);
-    font-size: 3.5vw;
-    align-items: flex-end;
-    margin: 50px;
-    
-    
+    margin: 20px;
 }
 
 .card p:hover{
@@ -56,20 +53,19 @@
 
 .container-cards {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px 20px 30px 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-image: url(https://images.unsplash.com/photo-1560233863-7b0ea060b62e?https://images.unsplash.com/photo-1518893647222-31f6b0dc2fb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtaW5vJTIwYmxhbmNvJTIweSUyMG5lZ3JvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3xhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdybhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%https://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=603D&auto=format&fit=crop&w=500&q=603xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60to=format&fit=crop&w=500&q=608cGxheWElMjBlbiUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+    margin: 20px;
+    padding: 20px;
+    /* background-image: url(https://images.unsplash.com/photo-1560233863-7b0ea060b62e?https://images.unsplash.com/photo-1518893647222-31f6b0dc2fb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtaW5vJTIwYmxhbmNvJTIweSUyMG5lZ3JvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3xhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdybhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%https://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=603D&auto=format&fit=crop&w=500&q=603xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60to=format&fit=crop&w=500&q=608cGxheWElMjBlbiUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+     */
+    background-image: url(/public/assets/cities-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 90%;
-    border-radius: .5%;
-    
-    
+    border-radius: 20px;
 }
 
 .container-input input{
@@ -112,7 +108,7 @@
    .input {
     text-align: center;
     color: black;
-    width: 20% !important;
+    min-width: 20% !important;
     font-size: 0.9rem;
     background-color: transparent;
     box-sizing: border-box;
@@ -132,11 +128,11 @@
     transition: 0.3s;
    }
    /* Hover on Input */
-   input:hover {
+   .input:hover {
     background: var(--input-hovered-color);
    }
    
-   input:focus {
+   .input:focus {
     outline: none;
    }
    /* here is code of animated border */
