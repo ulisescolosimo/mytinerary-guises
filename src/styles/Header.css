@@ -33,8 +33,8 @@ nav {
     height: 100%;
 }
 
-.nav-bar-logo{
-    height: 100% !important;
+.nav-bar-logo {
+    padding-top: 5px !important;
 }
 
 .container-log {
