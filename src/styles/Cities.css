@@ -58,14 +58,13 @@
     flex-wrap: wrap;
     margin: 20px;
     padding: 20px;
-    /* background-image: url(https://images.unsplash.com/photo-1560233863-7b0ea060b62e?https://images.unsplash.com/photo-1518893647222-31f6b0dc2fb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtaW5vJTIwYmxhbmNvJTIweSUyMG5lZ3JvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3xhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdybhttps://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%https://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNhbWlubyUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=603D&auto=format&fit=crop&w=500&q=603xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60to=format&fit=crop&w=500&q=608cGxheWElMjBlbiUyMGJsYW5jbyUyMHklMjBuZWdyb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
-     */
     background-image: url(/public/assets/cities-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 90%;
     border-radius: 20px;
+    color: white;
+    text-align: center;
 }
 
 .container-input input{
@@ -81,7 +80,9 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    font-size: 30px;
+    font-size: 25px;
+    width: 100%;
+    flex-direction: column;
 }
 
 .form-container{
@@ -134,28 +135,35 @@
    .input:focus {
     outline: none;
    }
-   /* here is code of animated border */
-
-   @media (max-width: 890px) {
-    
-    .card:hover {
-        width: 65%;
-        
-    }}
 
     @media (max-width: 680px) {
         .container-cards {
             flex-direction: column;
-            width: 100%;
-            
+            width: 80%;
+            flex-wrap: nowrap;
         }
-            .card{
-                width: 80%;
-                font-size: 3rem;
-            }} 
+
+        .card {
+            width: 90%;
+        }
+    }
 
     @media (max-width: 660px) {
             .card:hover {
                 font-size: 2rem;
-                
             }}
+
+    @media (max-width: 425px) {
+                .card {
+                    width: 90%;
+                }
+                .container-cards {
+                    flex-wrap: nowrap;
+                }
+
+                .card-title {
+                    font-size: 25px;
+                    font-weight: bold;
+                    -webkit-text-stroke: 0;
+                }
+    }
