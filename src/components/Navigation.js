@@ -10,7 +10,7 @@ const Navigation = (props) => {
   return (
     <nav class="navigation-menu">
         <div className="navbar-container">
-            <img className="nav-bar-logo" src="http://localhost:3000/logo-header.jpg" style={{height: '100%'}}/>
+            <img className="nav-bar-logo" src="http://localhost:3000/logo-header.jpg" style={{height: '90%'}}/>
             <ul className="list">
                 {pages.map(props.link)}
                 <BiUserCircle onClick = {props.click} size={35} style={{color: 'white'}}/>
