@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/Cities.css'
-import { MdSearchOff } from 'react-icons/md';
 
 const CitiesCards = (props) => {    
 
@@ -11,7 +10,7 @@ const CitiesCards = (props) => {
         {itemFilter.length > 0 ? itemFilter.map((item) => 
         <div class="card" style={{background: `url(${item.url})`}}>
             <p className="card-title">{item.title}</p>
-        </div>) : <div className="not-found"><MdSearchOff size={50} /><p>No results found. Please refine your search.</p></div>}
+        </div>) : <div className="not-found"><p>No results found. Please refine your search.</p></div>}
     </div>
   )
 }
