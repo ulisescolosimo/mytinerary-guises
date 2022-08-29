@@ -52,7 +52,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
 }
 
 .container-cards {
@@ -98,7 +97,7 @@
     padding-top: 20px;
 }
 
-.form {
+.form-container {
     --width-of-input: 200px;
     --border-height: 1px;
     --border-before-color: black;
