@@ -18,14 +18,12 @@ const Header = () => {
 
     const handleClick = () => {
         setOpen(!open)
-        console.log(open)
     }
 
     const [clicked, setClicked] = useState(false)
 
     const handleBurger = () => {
         setClicked(!clicked)
-        console.log(clicked)
     }
 
 return (
