@@ -36,21 +36,21 @@ const Form = () => {
     }
 
     const inputsArray = [
-                    {name: "photo", ref: imageRef},
-                    {name: "city", ref: cityRef},
-                    {name: "country", ref: countryRef},
-                    {name: "population", ref: populationRef},
-                    {name: "fundation", ref: foundationRef},
-                    {name: "description", minlength:"10", cols: "27", rows:"5", ref: descriptionRef}
+                    {name: "photo", ref: imageRef, typeText:'text'},
+                    {name: "city", ref: cityRef, typeText:'text'},
+                    {name: "country", ref: countryRef, typeText:'text'},
+                    {name: "population", ref: populationRef, typeText:'text'},
+                    {name: "foundation ", ref: foundationRef, typeText:'text'},
+                    {name: "description", typeText:'text-area', minlength:"10", cols: "27", rows:"5", ref: descriptionRef}
                     ]
 
   return (
-    <div className="container-newcities">
     <form className="form-cities" onSubmit={handleForm}>
-        {inputsArray.map((item => <Input myRef={item.ref} name={item.name} />))}
-        <button type="submit" className="button-form">Add city</button>
+        <div className="form-container">
+            {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
+            <button type="submit" className="button-form">Add city</button>
+        </div>
     </form>
-    </div>
   )
 }
 
