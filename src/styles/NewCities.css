@@ -1,7 +1,7 @@
 .container-newcities{
     display: flex;
     flex-direction: column;
-    min-height: 70vh;
+    height: 70vh;
     justify-content: center;
     align-items: center;
 }
@@ -9,12 +9,11 @@
 .form-cities {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 25px;
     color: black !important;
-    gap: 20px !important;
-    width: 70%;
+    width: 90%;
     margin: 20px;
     max-width: 600px;
     background: url(/public/assets/bg-table.jpg);
@@ -28,11 +27,11 @@
     display: flex;
     color: black;
     font-weight: bold;
-    max-width: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: auto;
 }
 
 .input-form {
@@ -42,8 +41,7 @@
     border-radius: 10px;
     border: none;
     padding: 10px;
-    width: 200px;
-    min-width: 40%;
+    width: auto;
     font-size: 15px;
 }
 

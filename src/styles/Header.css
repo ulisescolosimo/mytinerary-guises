@@ -62,6 +62,7 @@ nav {
     position: absolute;
     margin-right: 1rem;
     border-radius: .5rem;
+    border: 1px solid black;
 }
 
 .profile-Select ul {
