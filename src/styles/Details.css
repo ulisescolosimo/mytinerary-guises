@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+/* The card */
+
+.details-container{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+}
+
+.card-fond {
+    display: flex;
+    width: 80%;
+    height: 100% !important;
+    max-width: 90%;
+    height: 400px;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.data-container{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.data-container p {
+    margin: 20px;
+    font-size: 20px;
+}
+
+.containerCards{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.imgCard {
+    height: 70%;
+    width: 80%;
+}
+
+.country-name h2, h3 {
+    padding: 0;
+    margin: 0;
+    padding-left: 100px;
+}
+
+.country-name h2 {
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0.507);
+}
+
+.country-name {
+    display: flex;
+    font-size: 20px;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.imgCard img{
+    width: 100%;
+    height: 100%;
+    transform:translateY(-40px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
