@@ -1,8 +1,14 @@
-.form-container{
+.container-form{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: 70vh;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background: url('../../public/assets/bg-form.jpeg')
 }
 
 .form-cities {
@@ -12,13 +18,17 @@
     align-items: center;
     font-size: 25px;
     color: black !important;
-    border-radius: 20px;
     height: 100%;
+    min-width: 300px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 50px;
 }
 
 .input-label{
     display: flex;
-    color: black;
+    color: black !important;
     gap: 5px;
     font-weight: bold;
     text-align: center;
@@ -28,10 +38,9 @@
 }
 
 .input-form {
-    text-decoration: none;
-    outline: none;
+    outline:none!important;
+    border: 2px solid black;
     border-radius: 10px;
-    border: none;
     padding: 8px;
     margin: 5px;
     width: 100%;
