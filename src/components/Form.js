@@ -45,12 +45,12 @@ const Form = () => {
                     ]
 
   return (
+    <div className="container-form">
     <form className="form-cities" onSubmit={handleForm}>
-        <div className="form-container">
             {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
             <button type="submit" className="button-form">Add city</button>
-        </div>
     </form>
+    </div>
   )
 }
 
