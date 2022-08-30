@@ -11,3 +11,11 @@
 border: none;
 }
 
+.btn-navigation{
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    outline: 0px;
+    border-style: none;
+}
+
