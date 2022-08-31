@@ -13,9 +13,9 @@ const Carousel = (props) => {
     const interval = props.interval * 1000
 
     const itemView = (item) => (
-        <div className="item" style={{background: `url(${item.url})`}}>
-            <div class="p-city">
-                <p>{item.title}</p>
+        <div className="item" style={{background: `url(${item.photo})`}}>
+            <div className="p-city">
+                <p>{item.city}</p>
             </div>
         </div>
     )
