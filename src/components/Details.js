@@ -17,7 +17,10 @@ const Details = () => {
           </div>
         </div>
         <div className="data-container">
+          
           <p>Paris, the capital of France, is a major European city and a world center for art, fashion, food and culture. Its 19th-century urban landscape is crisscrossed by wide boulevards and the Seine River. Aside from such landmarks as the Eiffel Tower and the 12th-century Gothic Notre Dame Cathedral, the city is famous for its café culture and the designer fashion shops along Rue du Faubourg Saint-Honoré.</p>
+          <p> <b>Population</b>: 250490222</p>
+          <p> <b>Foundation</b>: 19/05/1894</p>
         </div>
       </div>
     </div>
