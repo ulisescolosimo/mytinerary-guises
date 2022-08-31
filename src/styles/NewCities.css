@@ -1,14 +1,60 @@
-.container-form{
+.container-root{
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 70vh;
-    width: 100%;
+    padding: 10px 0 10px 0;
+    background-color: rgba(0, 0, 0, 0.932)
+  
+}
+
+.container-bg{
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background: url('../../public/assets/bg-form.jpeg')
+    background: url('../../public/assets/bg-form.jpg');
+    width: 95%;
+    display: flex;
+    
+}
+
+.container-form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 50%;
+    padding: 30px;
+    
+    
+}
+
+.container-intro{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 50%;
+    padding: 30px;
+
+}
+
+.container-add{ 
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 80%;
+    height: fit-content;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(32, 32, 32, 0.35) 20px 25px 35px;
+}
+
+.container-add h3{
+    font-size: 2rem;
+    -webkit-text-stroke: 1px rgb(156, 126, 61);
+
+}
+
+.container-add img{
+   width: 100%;
 }
 
 .form-cities {
@@ -17,45 +63,76 @@
     justify-content: space-evenly;
     align-items: center;
     font-size: 25px;
-    color: black !important;
+    color: rgb(255, 255, 255) !important;
     height: 100%;
-    min-width: 300px;
-    background: white;
-    border: 1px solid black;
+    min-width: 85%;
+    background: rgba(0, 0, 0, 0.877);
     border-radius: 20px;
     margin: 50px;
+    box-shadow: rgba(32, 32, 32, 0.35) 20px 25px 35px;
 }
 
 .input-label{
     display: flex;
-    color: black !important;
+    color: rgb(255, 255, 255) !important;
     gap: 5px;
     font-weight: bold;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    word-wrap:normal;
+    word-break: break-all;
 }
 
 .input-form {
     outline:none!important;
-    border: 1px solid black;
-    border-radius: 10px;
+    border-bottom: 2.2px solid rgb(255, 255, 255) !important;
+    border: none;
+    color: white;
     padding: 8px;
     margin: 5px;
     width: 100%;
     font-size: 15px;
     text-align: center;
+    background-color: transparent;
+    width: 70%;
+}
+#description{
+    height: 80px ;
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .button-form {
-    padding: 10px;
+    padding: 8px;
     margin: 10px 0 30px;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 10px;
     background-color: rgb(196, 168, 141);
-    border: none;
+    border: 1px solid white;
     color: black;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: bolder;
+    -webkit-text-stroke: .5px rgb(255, 255, 255);
+}
+
+@media (max-width: 768px) { 
+    .container-bg{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-form{
+        width: 80%;
+    }
+
+    .input-form{
+        width: 70%;
+    }
+
+    .container-add{
+        width: 100%;
+        text-align: center;
+    }
 }
