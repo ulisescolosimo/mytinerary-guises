@@ -45,11 +45,21 @@ const Form = () => {
                     ]
 
   return (
-    <div className="container-form">
-    <form className="form-cities" onSubmit={handleForm}>
-            {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
-            <button type="submit" className="button-form">Add city</button>
-    </form>
+    <div className='container-root'>
+      <div className='container-bg'>
+          <div className='container-intro'>
+            <div className='container-add'>
+                <h3> Add your city !</h3>
+                <img src='./assets/travel.png' />
+            </div>          
+          </div>
+          <div className="container-form">
+          <form className="form-cities" onSubmit={handleForm}>
+                  {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
+                  <button type="submit" className="button-form">Add city</button>
+          </form>
+          </div>   
+      </div>  
     </div>
   )
 }
