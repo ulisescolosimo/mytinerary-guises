@@ -29,6 +29,29 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.come-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !;
+}
+
+.btn-comeback {
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-comeback:hover{
+    background-color: rgb(156, 126, 61);
+    color: black;
+}
+
 .data-container p {
     margin: 20px;
     font-size: 1.5rem;
