@@ -41,7 +41,7 @@ const Form = () => {
                     {name: "country", ref: countryRef, typeText:'text'},
                     {name: "population", ref: populationRef, typeText:'text'},
                     {name: "foundation ", ref: foundationRef, typeText:'text'},
-                    {name: "description", typeText:'text-area', minlength:"10", cols: "27", rows:"5", ref: descriptionRef}
+                    {name: "description", typeText:'textarea', minlength:"10", cols: "27", rows:"5", ref: descriptionRef}
                     ]
 
   return (
