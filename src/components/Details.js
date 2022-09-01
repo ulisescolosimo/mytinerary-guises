@@ -10,12 +10,17 @@ const Details = () => {
   const { id } = useParams();
 
   const [city, setCity] = useState({}) 
-    
-    useEffect(() => {
-        axios.get(`http://localhost:4000/cities/${id}`)
-        .then(response => setCity(response.data.response))
-        }, [])
-        
+
+  useEffect(() => {
+    async function fetchData() {
+      const cities = await axios.get(`http://localhost:4000/cities/${id}`)
+      setCity(cities.data.response)
+    }
+    fetchData();
+    }, []);
+
+    let date = new Date(city.foundation)
+
   return (
     <div className="details-container">
       <div className="card-fond">
@@ -34,10 +39,10 @@ const Details = () => {
           
           <p>{city.description}</p>
           <p> <b>Population</b>: {city.population}</p>
-          <p> <b>Foundation</b>: {city.foundation} </p>
+          <p> <b>Foundation</b>: {date.getFullYear()} </p>
           <div className="come-back">
           <LinkRouter to={`/cities/`}>
-            <button className="btn-comeback">Come back</button>
+            <button className="btn-comeback">Come back to cities</button>
           </LinkRouter>
           </div>
         </div>

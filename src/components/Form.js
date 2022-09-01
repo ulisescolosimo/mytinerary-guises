@@ -1,4 +1,4 @@
-import {React, useCallback, useRef, useState} from 'react';
+import {React, useCallback, useEffect, useRef, useState} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
 
@@ -28,13 +28,14 @@ const Form = () => {
             description: descriptionRef.current.value,
             imgurl: imageRef.current.value
         };
-        console.log(countries);
         setCountry([...countries, object]);
         formCity.reset();
+      }
 
-        console.log(countries);
-    }
-
+      useEffect(() => {
+        console.log(countries)
+      },[countries])
+      
     const inputsArray = [
                     {name: "photo", ref: imageRef, typeText:'text'},
                     {name: "city", ref: cityRef, typeText:'text'},

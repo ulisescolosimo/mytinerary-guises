@@ -19,6 +19,9 @@ const Footer = () => {
         <div>
         <LinkRouter className="items-link" to='/cities'>Cities</LinkRouter>
         </div>
+        <div>
+        <LinkRouter className="items-link" to='/new_cities'>New Cities</LinkRouter>
+        </div>
       </div>
   </div>
 
