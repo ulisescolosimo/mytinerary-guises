@@ -1,23 +1,32 @@
 import React from 'react'
-import CitiesEvents from '../components/CitiesEvents'
+import CitiesCards from '../components/CitiesCards'
+import InputSearch from '../components/InputSearch'
 import '../styles/Cities.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 
 const Cities = () => {
 
-  const [input, setInput] = useState('')
+  const [items, setCities] = useState([]);
+  const [find, setFind] = useState("");
+  const URL = "http://localhost:4000/cities/?city=";
 
-  const handleInput = (e) => {
-    setInput(e.target.value)
+  useEffect(() => {
+    axios
+      .get(URL + find)
+      .then((response) => setCities(response.data.response))
+      .catch((error) => console.log(error));
+  }, [find]);
+
+  function searchItem(name) {
+    setFind(name);
   }
   
   return (
     <div className="container-cities">
-      <div className="form-container">
-        <input className="input" onChange={handleInput} placeholder="Enter city..." required="" type="text" />
-        <span className="input-border"></span>
-      </div>
-      <CitiesEvents input={input} />
+      <InputSearch searchItem={searchItem} />
+      <CitiesCards items={items} />
     </div>
   )
 }

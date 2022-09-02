@@ -3,13 +3,11 @@ import '../styles/Cities.css'
 import {Link as LinkRouter} from 'react-router-dom'
 
 
-const CitiesCards = (props) => {   
-
-  const itemFilter = props.items.filter((item) => item.city.toLowerCase().includes(props.input.toLowerCase()))
+const CitiesCards = (props) => { 
 
   return (
     <div className="container-cards">
-        {itemFilter.length > 0 ? itemFilter.map((item) => 
+        {props.items.length != 0 ? props.items.map((item) => 
         <LinkRouter to={`/details/${item._id}`}  className="card" id={item._id} style={{background: `url(${item.photo}`}}>
             <p className="card-title">{item.city}</p>
         </LinkRouter>)

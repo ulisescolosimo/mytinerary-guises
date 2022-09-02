@@ -19,8 +19,8 @@ const Details = () => {
     fetchData();
     }, []);
 
-    let date = new Date(city.foundation)
 
+    if(!city.foundation) return null
   return (
     <div className="details-container">
       <div className="card-fond">
@@ -39,7 +39,7 @@ const Details = () => {
           
           <p>{city.description}</p>
           <p> <b>Population</b>: {city.population}</p>
-          <p> <b>Foundation</b>: {date.getFullYear()} </p>
+          <p> <b>Foundation</b>: {(city.foundation).slice(0,4)} </p>
           <div className="come-back">
           <LinkRouter to={`/cities/`}>
             <button className="btn-comeback">Come back to cities</button>

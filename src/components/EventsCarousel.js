@@ -9,7 +9,9 @@ const EventsCarousel = () => {
 
   useEffect(() => {
       axios.get(`http://localhost:4000/cities/all`)
-          .then(response => setItems(response.data.response))
+          .then(response => {
+            setItems(response.data.response)
+          })
   }, [])
 
   return (
