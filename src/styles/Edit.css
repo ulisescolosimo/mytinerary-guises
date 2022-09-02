@@ -1,0 +1,49 @@
+.edit-container{
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-edit-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-form-cities {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 25px;
+    color: rgb(255, 255, 255) !important;
+    height: 100%;
+    padding: 20px;
+    min-width: 85%;
+    background: rgba(0, 0, 0, 0.877);
+    border-radius: 20px;
+    box-shadow: rgba(32, 32, 32, 0.35) 20px 25px 35px;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.btn-edit{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.877);
+    color: white;
+    border: 2px solid white;
+}
+
+@media (max-width: 768px) {
+    .edit-container {
+        flex-direction: column;
+    }
+
+    .form-edit-container{
+        margin-bottom: 30px;
+    }
+}
+

@@ -1,8 +1,11 @@
 import React from 'react'
+import Form from '../components/Form'
 
 const NewCities = () => {
   return (
-    <div>NewCities</div>
+    <>
+      <Form />
+    </>
   )
 }
 

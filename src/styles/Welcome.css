@@ -181,3 +181,13 @@ a.learn-more .circle {
         margin: 20px;
     }
 }
+
+@media (max-width: 375px) {
+    .pane-container{
+        gap: 0px;
+    }
+
+    .panes {
+        margin: 0px;
+    }
+}

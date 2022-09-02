@@ -1,18 +1,17 @@
 import React from 'react'
 import '../styles/Cities.css'
-import { MdSearchOff } from 'react-icons/md';
+import {Link as LinkRouter} from 'react-router-dom'
 
-const CitiesCards = (props) => {    
 
-  const itemFilter = props.items.filter((item => item.title.toLowerCase().includes(props.input.toLowerCase())))
+const CitiesCards = (props) => { 
 
   return (
     <div className="container-cards">
-        {itemFilter.length > 0 ? itemFilter.map((item) => 
-        <div class="card">
-            <p>{item.title}</p>
-            <img src={item.url} alt={item.title} />
-        </div>) : <div className="not-found"><MdSearchOff size={50} /><p>No results found. Please refine your search.</p></div>}
+        {props.items.length != 0 ? props.items.map((item) => 
+        <LinkRouter to={`/details/${item._id}`}  className="card" id={item._id} style={{background: `url(${item.photo}`}}>
+            <p className="card-title">{item.city}</p>
+        </LinkRouter>)
+        : <div className="not-found"><p>No results found. Please refine your search.</p></div>}
     </div>
   )
 }

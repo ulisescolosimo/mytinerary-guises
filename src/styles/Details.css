@@ -1,0 +1,146 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+/* The card */
+
+.details-container{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 70vh;
+  
+}
+
+.card-fond {
+    display: flex;
+    width: 90%;
+    min-height: 100% !important;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 40px 0 20px 0;
+    
+}
+
+.data-container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.come-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !;
+}
+
+.btn-comeback {
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-comeback:hover{
+    background-color: rgb(156, 126, 61);
+    color: black;
+}
+
+.data-container p {
+    margin: 20px;
+    font-size: 1.5rem;
+}
+
+.containerCards{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.imgCard {
+    height: 70%;
+    width: 80%;
+}
+
+.country-name h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.country-name h3 {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.288);
+    padding-left: 70px;
+}
+
+.country-name h2 {
+    font-size: 3.8rem;
+    color: rgba(0, 0, 0, 0.767);
+    padding: 0 0 0 60px !important;
+    height: 42%;
+}
+
+.country-name {
+    display: flex;
+    font-size: 20px;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.imgCard img{
+    width: 100%;
+    height: 100%;
+    transform:translateY(-18px);
+    box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 768px) {
+    .data-container p {
+        font-size: 1rem;
+    }
+    .country-name h2 {
+        height: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-fond {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .data-container{
+        width: 100%;
+        box-shadow: none;
+        border-top: 2px solid rgba(0, 0, 0, 0.164);
+
+    }
+    .containerCards{
+        width: 100%;
+    }
+
+    .country-name {
+        align-items: center;
+        justify-content: center;     
+    }
+
+    .country-name h3 {   
+        padding-left: 0;
+        padding-bottom: 20px;
+    }
+    
+    .country-name h2 {
+        padding: 0 !important;
+    }
+}

@@ -1,8 +1,6 @@
 import React from 'react'
 import '../styles/Carousel.css'
 import Arrow from '../components/Carousel/Arrow'
-import { MdNavigateNext } from 'react-icons/md';
-import { MdNavigateBefore } from 'react-icons/md';
 import { useState, useEffect } from 'react'
 
 const Carousel = (props) => {
@@ -15,9 +13,9 @@ const Carousel = (props) => {
     const interval = props.interval * 1000
 
     const itemView = (item) => (
-        <div className="item" style={{background: `url(${item.url})`}}>
-            <div class="p-city">
-                <p>{item.title}</p>
+        <div className="item" style={{background: `url(${item.photo})`}}>
+            <div className="p-city">
+                <p>{item.city}</p>
             </div>
         </div>
     )
@@ -58,11 +56,15 @@ return (
         <div className="slider">
             <h2 className="title-carousel">Popular Cities</h2>
             <div className="arrow-container">
-            <Arrow icon={<MdNavigateBefore size={25} />} click={previous} />
+            <Arrow click={previous} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>} />
             <div className="container-slides">
             {items.slice(start, end).map(itemView)}
             </div>
-            <Arrow icon={<MdNavigateNext size={25} />} click={next} />
+            <Arrow click={next} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>} />
             </div>
         </div>
 )       
