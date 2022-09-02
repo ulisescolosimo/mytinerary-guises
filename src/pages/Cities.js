@@ -4,11 +4,13 @@ import InputSearch from '../components/InputSearch'
 import '../styles/Cities.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { getData } from '../features/citiesSlides'
 
 
 const Cities = () => {
 
-  const [items, setCities] = useState([]);
+  /* const [items, setCities] = useState([]);
   const [find, setFind] = useState("");
   const URL = "http://localhost:4000/cities/?city=";
 
@@ -21,11 +23,18 @@ const Cities = () => {
 
   function searchItem(name) {
     setFind(name);
-  }
+  } */
+
+  let items = useSelector( state => state.cities.cities)
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  }, [])
   
   return (
     <div className="container-cities">
-      <InputSearch searchItem={searchItem} />
+      <InputSearch />
       <CitiesCards items={items} />
     </div>
   )
