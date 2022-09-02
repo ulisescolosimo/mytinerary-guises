@@ -1,6 +1,7 @@
-import {React, useCallback, useEffect, useRef, useState} from 'react';
+import {React, useRef} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
+import axios from 'axios';
 
 
 const Form = () => {
@@ -11,30 +12,32 @@ const Form = () => {
     const foundationRef = useRef()
     const imageRef = useRef()
     const descriptionRef = useRef()
-
-    const [countries, setCountry] = useState([])
+    const formRef = useRef()
  
     const handleForm = (e) => {
 
         e.preventDefault();
 
-        const formCity = document.querySelector('.form-cities')
+        axios.post(`http://localhost:4000/cities/`,  {
 
-        const object = {
-            country : countryRef.current.value,
-            city: cityRef.current.value,
-            population: populationRef.current.value,
-            foundation: foundationRef.current.value,
-            description: descriptionRef.current.value,
-            imgurl: imageRef.current.value
-        };
-        setCountry([...countries, object]);
-        formCity.reset();
+        country : countryRef.current.value,
+        city: cityRef.current.value,
+        population: populationRef.current.value,
+        foundation: foundationRef.current.value,
+        description: descriptionRef.current.value,
+        photo: imageRef.current.value
+      
+        })
+
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch((error) => console.log(error));
+
+      formRef.current.reset()
       }
 
-      useEffect(() => {
-        console.log(countries)
-      },[countries])
       
     const inputsArray = [
                     {name: "photo", ref: imageRef, typeText:'text'},
@@ -55,7 +58,7 @@ const Form = () => {
             </div>          
           </div>
           <div className="container-form">
-          <form className="form-cities" onSubmit={handleForm}>
+          <form className="form-cities" onSubmit={handleForm} ref={formRef}>
                   {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
                   <button type="submit" className="button-form">Add city</button>
           </form>
