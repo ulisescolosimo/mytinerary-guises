@@ -3,15 +3,14 @@ import CitiesCards from '../components/CitiesCards'
 import InputSearch from '../components/InputSearch'
 import '../styles/Cities.css'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
-import { getData } from '../features/citiesSlides'
+import { useGetAllCitiesQuery } from '../features/citiesApi'
 
 
-const Cities = () => {
+
+/* 
 
   const [items, setCities] = useState([]);
-  const [find, setFind] = useState("");
+  
   const URL = "http://localhost:4000/cities/?city=";
 
   useEffect(() => {
@@ -21,21 +20,34 @@ const Cities = () => {
       .catch((error) => console.log(error));
   }, [find]);
 
-  function searchItem(search) {
-    setFind(search);
-  }
-
+  
   /* let items = useSelector( state => state.cities.cities)
   let dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getData())
-  }, []) */
+  }, []) */ 
   
+  const Cities = () => {
+    const {
+      data: cities,
+      error, 
+      isLoading,
+      isSuccess,
+      isFailed,
+    } = useGetAllCitiesQuery()
+  
+  
+  const [find, setFind] = useState("");
+
+  function searchItem(search) {
+    setFind(search);
+  }
+
   return (
     <div className="container-cities">
       <InputSearch searchItem={searchItem}/>
-      <CitiesCards items={items} />
+      <CitiesCards items={cities} />
     </div>
   )
 }
