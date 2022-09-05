@@ -10,7 +10,7 @@ import { getData } from '../features/citiesSlides'
 
 const Cities = () => {
 
-  /* const [items, setCities] = useState([]);
+  const [items, setCities] = useState([]);
   const [find, setFind] = useState("");
   const URL = "http://localhost:4000/cities/?city=";
 
@@ -21,20 +21,20 @@ const Cities = () => {
       .catch((error) => console.log(error));
   }, [find]);
 
-  function searchItem(name) {
-    setFind(name);
-  } */
+  function searchItem(search) {
+    setFind(search);
+  }
 
-  let items = useSelector( state => state.cities.cities)
+  /* let items = useSelector( state => state.cities.cities)
   let dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getData())
-  }, [])
+  }, []) */
   
   return (
     <div className="container-cities">
-      <InputSearch />
+      <InputSearch searchItem={searchItem}/>
       <CitiesCards items={items} />
     </div>
   )
