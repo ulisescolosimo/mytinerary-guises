@@ -6,7 +6,7 @@ const CitiesCards = ({cities}) => {
 
   return (
     <div className="container-cards">
-        {cities.response?.length !== 0 ? cities.response?.map((item) => 
+        {cities?.response.length !== 0 ? cities?.response.map((item) => 
         <LinkRouter to={`/details/${item._id}`}  className="card" id={item._id} style={{background: `url(${item.photo}`}}>
             <p className="card-title">{item.city}</p>
         </LinkRouter>)
