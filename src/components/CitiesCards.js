@@ -2,12 +2,11 @@ import React from 'react'
 import '../styles/Cities.css'
 import {Link as LinkRouter} from 'react-router-dom'
 
-
-const CitiesCards = (props) => { 
+const CitiesCards = ({cities}) => { 
 
   return (
     <div className="container-cards">
-        {props.items.length != 0 ? props.items.map((item) => 
+        {cities.response?.length !== 0 ? cities.response?.map((item) => 
         <LinkRouter to={`/details/${item._id}`}  className="card" id={item._id} style={{background: `url(${item.photo}`}}>
             <p className="card-title">{item.city}</p>
         </LinkRouter>)
