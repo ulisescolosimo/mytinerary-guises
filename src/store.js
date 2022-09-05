@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import citiesSlides from './features/citiesSlides'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { myTineraryApi } from './features/citiesApi'
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    cities: citiesSlides
-  }
+    [myTineraryApi.reducerPath]: myTineraryApi.reducer,
+  },
 })
+
+setupListeners(store.dispatch)
