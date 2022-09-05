@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { myTineraryApi } from './features/citiesApi'
+import citiesApi  from './features/citiesApi'
 
-export const store = configureStore({
+export default configureStore({
   reducer: {
-    [myTineraryApi.reducerPath]: myTineraryApi.reducer,
+    [citiesApi.reducerPath] : citiesApi.reducer
   },
+  middleware: (getAllCities) => getAllCities({
+      immutableCheck: false,
+      serializableCheck: false
+  })
 })
-
-setupListeners(store.dispatch)
