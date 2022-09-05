@@ -9,9 +9,7 @@ export const citiesSlice = createSlice({
 
       reducers : {
             fetchFromServer : (state) => {
-                  state.cities = [{
-                        /* DATOS DE LA CIUDAD */
-                  }]
+                  state.cities = []
             },
       },
 })
