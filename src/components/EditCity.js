@@ -1,21 +1,17 @@
 import React from 'react'
 import axios from 'axios'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Input from './Input'
 import '../styles/Edit.css'
+import { useGetAllCitiesQuery, useUpdateCityMutation } from '../features/citiesApi' 
 
 const EditCity = () => {
 
-    const [items, setItems] = useState([])
-    const [selected, setSelected] = useState({
-      value: '',
-      id: ''
-    })
-
-  useEffect(() => {
-      axios.get(`http://localhost:4000/cities/all`)
-          .then(response => setItems(response.data.response))
-  }, [])
+  const {data: items} = useGetAllCitiesQuery()
+  const [selected, setSelected] = useState({
+    value: '',
+    id: ''
+  })
 
 const countryRef = useRef()
 const cityRef = useRef()
@@ -41,24 +37,22 @@ const formRef = useRef()
     })
   }
 
-  const handleSubmit = (e) => {
+  const [editCity] = useUpdateCityMutation()
+
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    const url = 'http://localhost:4000/cities/'
-    let id = selected.id
-    axios.patch(url+id, {
+    let editedCity = {
       country : countryRef.current.value,
       city: cityRef.current.value,
       population: populationRef.current.value,
       foundation: foundationRef.current.value,
       description: descriptionRef.current.value,
-      photo: imageRef.current.value
-      })
-        .then(response => {
-            console.log("Update SUCCESS!")
-        })
-        .catch(error => {
-            console.log(error)
-        })
+      photo: imageRef.current.value,
+      id: selected.id
+    }
+
+    await editCity(editedCity)
+    formRef.current.reset()
     }
 
 
@@ -73,7 +67,8 @@ const formRef = useRef()
           <div className="form-edit-container">
           <form className="edit-form-cities" onSubmit={handleSubmit} ref={formRef}>
             <select onChange={handleSelected}>
-                {items.map(item => 
+                <option disabled>Select city</option>
+                {items?.response.map(item => 
                         <option value={item.city} id={item._id}>{item.city}</option>
                     )}
             </select>

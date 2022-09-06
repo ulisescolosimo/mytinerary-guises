@@ -1,4 +1,4 @@
-import {React, useRef, useState, useEffect} from 'react';
+import {React, useRef} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
 import { useGetNewCityMutation } from '../features/citiesApi'
