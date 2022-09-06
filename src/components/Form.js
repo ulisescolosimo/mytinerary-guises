@@ -1,8 +1,7 @@
-import {React, useRef} from 'react';
+import {React, useRef, useState, useEffect} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
-import axios from 'axios';
-
+import { useGetNewCityMutation } from '../features/citiesApi'
 
 const Form = () => {
 
@@ -13,29 +12,25 @@ const Form = () => {
     const imageRef = useRef()
     const descriptionRef = useRef()
     const formRef = useRef()
- 
-    const handleForm = (e) => {
 
-        e.preventDefault();
+    const [addNewPost, result] = useGetNewCityMutation()
 
-        axios.post(`http://localhost:4000/cities/`,  {
+    const handleForm = async(e) => {
 
+      e.preventDefault();
+
+      const object = {
         country : countryRef.current.value,
         city: cityRef.current.value,
         population: populationRef.current.value,
         foundation: foundationRef.current.value,
         description: descriptionRef.current.value,
         photo: imageRef.current.value
-      
-        })
-
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-        })
-        .catch((error) => console.log(error));
+      }
+      await addNewPost(object);
 
       formRef.current.reset()
+
       }
 
       
