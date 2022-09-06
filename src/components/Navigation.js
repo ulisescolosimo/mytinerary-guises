@@ -9,7 +9,7 @@ const Navigation = (props) => {
   return (
     <nav class="navigation-menu">
         <div className="navbar-container">
-            <img className="nav-bar-logo" src="http://localhost:3000/logo-header.jpg" style={{height: '90%'}}/>
+            <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '90%'}}/>
             <ul className="list">
                 {pages.map(props.link)}
                 <button className="btn-navigation" onClick = {props.click}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
