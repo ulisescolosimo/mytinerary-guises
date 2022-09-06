@@ -6,15 +6,34 @@ const citiesApi = createApi ({
       baseQuery : fetchBaseQuery({
             baseUrl : 'http://localhost:4000/'
       }),
+
       endpoints: (builder) => ({
             getAllCities : builder.query({
                   query: () => "cities/all/"
             }),
             getCityName: builder.query({
                   query: (city) => `cities?city=${city}`
-            })
+            }),
+            getNewCity: builder.mutation({
+                  query(cities){
+                        return{
+                              url: '/cities/',
+                              method: 'POST',
+                              body: cities,
+                        }
+                  },
+                  invalidatesTags: ['Post'],
+            }),
+            updateCity: builder.mutation({
+                  query: (city) => ({
+                  url: `/cities/${city.id}`,
+                  method: 'PATCH',
+                  body: city,
+                  })
       })
 })
 
+})
+
 export default citiesApi
-export const { useGetAllCitiesQuery, useGetCityNameQuery } = citiesApi;
+export const { useGetAllCitiesQuery, useGetNewCityMutation, useGetCityNameQuery, useUpdateCityMutation } = citiesApi;
