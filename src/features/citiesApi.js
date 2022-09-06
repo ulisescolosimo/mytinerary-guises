@@ -25,10 +25,10 @@ const citiesApi = createApi ({
                   invalidatesTags: ['Post'],
             }),
             updateCity: builder.mutation({
-                  query: (city) => ({
-                  url: `/cities/${city.id}`,
+                  query: ({id, ...rest}) => ({
+                  url: `/cities/${id}`,
                   method: 'PATCH',
-                  body: city,
+                  body: rest,
                   })
       })
 })
