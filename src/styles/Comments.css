@@ -2,19 +2,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh;
     flex-direction: column;
+    
+    width: 100%;
 }
 
 .see-more{
     padding: 5px;
-    margin: 0 0 30px 0;
+    margin: 10px 0 30px 0;
+    height: 10%;
+    width: 95%;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: .1px solid white;
 }
 
 .chat-container{
     width: 1000px;
     height: 500px;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
+    color: white;
     margin: 30px;
 }
 
