@@ -21,7 +21,7 @@ const Itinerary = () => {
             <div className='container-detail'>                             
                   <div className='container-card'>
                         
-                        <div className='container-itinerary' style={{background: 'linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)'}}>
+                        <div className='container-itinerary' style={{background: 'linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.5)),url(https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)'}}>
                               <div className='container-name'>
                                     <h2>{itinerary.name}Cancha de futbol</h2>                      
                               </div>
