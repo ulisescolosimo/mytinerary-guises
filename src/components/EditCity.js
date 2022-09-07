@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { useState, useRef } from 'react'
 import Input from './Input'
 import '../styles/Edit.css'

@@ -15,6 +15,7 @@ const Details = () => {
     async function fetchData() {
       const cities = await axios.get(`http://localhost:4000/cities/${id}`)
       setCity(cities.data.response)
+      console.log(cities)
     }
     fetchData();
     }, []);
