@@ -1,7 +1,6 @@
 import React from 'react'
 import Details from '../components/Details'
 import Itinerary from '../components/Itinerary'
-import Activities from '../components/Activities'
 import Comments from '../components/Comments'
 
 const CityDetails = () => {
@@ -9,7 +8,7 @@ const CityDetails = () => {
     <>
         <Details />
         <Itinerary/>
-        <Activities/>
+        
     </>
   )
 }
