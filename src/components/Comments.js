@@ -18,8 +18,6 @@ const Comments = () => {
         getResults()
     },[])
 
-    console.log(itineraries)
-
     const [open, setOpen] = useState(false)
 
     const handleClick = () => {
@@ -27,15 +25,15 @@ const Comments = () => {
     }
 
   return (
-    <div className="container-comments">
-        {open ? <div className="chat-container">
+    <div className="container-comments" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }}>
+        {open ? <div className="chat-container" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }}>
             {itineraries.map(( item => 
-                <div className="bg-black">
+                <div className="bg-black" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms" }}>
                     <h2>City: {item.city.city}</h2>
                 </div>
                 ))}
         </div> : null}
-        <button className="see-more" onClick={handleClick}>{open ? "See less" : "See more!" }</button>
+        <button className="see-more" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }} onClick={handleClick}>{open ? "See less" : "See more!" }</button>
     </div>
   )
 }
