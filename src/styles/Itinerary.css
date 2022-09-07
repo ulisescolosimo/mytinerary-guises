@@ -12,7 +12,16 @@ background: linear-gradient(6deg, rgba(4,4,4,0.9724264705882353) 4%, rgba(33,33,
       object-fit: cover;
       width: 100%;
       /* position: fixed; */  
-  }
+}
+
+.tags {
+      font-size: 20px;
+      margin: 10px;
+}
+
+.container-id h3{
+      font-size: 15px !important;
+}
 
 .container-card{
       width: 85%;
