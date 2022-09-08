@@ -5,6 +5,7 @@ import axios from 'axios'
 import Details from '../components/Details'
 import Itinerary from '../components/Itinerary'
 import Comments from '../components/Comments'
+import { useGetItinerariesCityQuery } from '../features/itineraryAPI'
 
 const CityDetails = () => {
 
@@ -19,10 +20,15 @@ const CityDetails = () => {
             fetchData();
         }, []);
 
+        let idCity = id
+        let { data: cities } = useGetItinerariesCityQuery(idCity)
+        let city = cities?.response
+        console.log(city)
+
   return (
     <>
         <Details />
-        <Itinerary itinerary={itinerary} />
+        <Itinerary city={city} />
     </>
   )
 }
