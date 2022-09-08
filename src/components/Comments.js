@@ -21,11 +21,11 @@ const Comments = () => {
   return (
     <div className="container-comments">
         {open ? <div className="chat-container" >
-            {itis?.map(( item => 
                 <div className="chat-msg">
-                    <p className="chat-p">City: {item.city.city}</p>
+                    <p className="chat-p">Ulises: Great city!</p>
+                    <p className="chat-p">Guido: I like the city but too warm!</p>
+                    <p className="chat-p">Roberto: i love the weather, i dont need the beach lol</p>
                 </div>
-                ))}
         </div> : null}
         <button className="see-more" onClick={handleClick}>{open ? "See less" : "See more!" }</button>
     </div>
