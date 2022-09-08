@@ -1,16 +1,16 @@
 import React from 'react'
-import axios from 'axios'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
+import Input from './Input'
 import '../styles/Edit.css'
+import { useGetAllCitiesQuery, useUpdateCityMutation } from '../features/citiesApi' 
 
 const EditCity = () => {
 
-    const [items, setItems] = useState([])
-
-  useEffect(() => {
-      axios.get(`http://localhost:4000/cities/all`)
-          .then(response => setItems(response.data.response))
-  }, [])
+  const {data: items} = useGetAllCitiesQuery()
+  const [selected, setSelected] = useState({
+    value: '',
+    id: ''
+  })
 
 const countryRef = useRef()
 const cityRef = useRef()
@@ -18,15 +18,41 @@ const populationRef = useRef()
 const foundationRef = useRef()
 const imageRef = useRef()
 const descriptionRef = useRef()
+const formRef = useRef()
 
   const inputsArray = [
     {name: "photo", ref: imageRef, typeText:'text'},
     {name: "city", ref: cityRef, typeText:'text'},
     {name: "country", ref: countryRef, typeText:'text'},
     {name: "population", ref: populationRef, typeText:'text'},
-    {name: "foundation ", ref: foundationRef, typeText:'text'},
+    {name: "foundation", ref: foundationRef, typeText:'text'},
     {name: "description", typeText:'textarea', minlength:"10", cols: "27", rows:"5", ref: descriptionRef}
     ]
+
+  const handleSelected = (e) => {
+    setSelected({
+      value: e.target.value,
+      id: e.target[e.target.selectedIndex].id
+    })
+  }
+
+  const [editCity] = useUpdateCityMutation()
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    let editedCity = {
+      country : countryRef.current.value,
+      city: cityRef.current.value,
+      population: populationRef.current.value,
+      foundation: foundationRef.current.value,
+      description: descriptionRef.current.value,
+      photo: imageRef.current.value,
+      id: selected.id
+    }
+
+    await editCity(editedCity)
+    formRef.current.reset()
+    }
 
 
   return (
@@ -38,17 +64,16 @@ const descriptionRef = useRef()
             </div>          
           </div>
           <div className="form-edit-container">
-          <form className="edit-form-cities">
-            <select>
-                {items.map(item => 
-                        <option value={item.city}>{item.city}</option>
+          <form className="edit-form-cities" onSubmit={handleSubmit} ref={formRef}>
+            <select onChange={handleSelected}>
+                <option disabled>Select city</option>
+                {items?.response.map(item => 
+                        <option value={item.city} id={item._id}>{item.city}</option>
                     )}
             </select>
             <div className="container-forms">
                     {inputsArray.map((item => 
-                        <label className="input-label">{item.name}
-                            <input value={item.country} />
-                        </label>
+                            <Input myRef={item.ref} name={item.name} typeText={item.typeText} />
                         ))}
             </div>
             <button className="btn-edit">Editar!</button>

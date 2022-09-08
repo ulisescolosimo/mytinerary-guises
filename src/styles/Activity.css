@@ -1,0 +1,77 @@
+.root{
+      justify-content: center;
+}
+
+.container-activities{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+}
+
+.container-activities-cards{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 30px !important;
+}
+
+.p-tira {
+      display: flex;
+      justify-content: center;
+      align-self: flex-end;
+      background-color: rgba(0, 0, 0, 0.788);
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      font-family: 'Roboto Mono', monospace;
+}
+
+.container-activity{
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 40% !important;
+      height: 300px;
+      border: 2px solid black ;
+      margin: 10px 20px 20px 20px;
+      color: white;
+      text-align: center;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 300px !important;
+      background-repeat: no-repeat !important;
+}
+
+.no-activities{
+      font-size: 15px;
+      border: 1px solid black;
+      background-color: black;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+}
+
+.container-activity h3{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.384);
+      color: white;
+      width: 100%;
+      height: 15%;
+      text-align: center;
+}
+
+@media screen and (max-width: 500px){
+      .container-activity{
+            width: 90% !important;
+      }
+      .container-activities{
+            width: 100%;
+      }
+}

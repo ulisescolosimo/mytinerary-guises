@@ -2,31 +2,24 @@ import React from 'react'
 import CitiesCards from '../components/CitiesCards'
 import InputSearch from '../components/InputSearch'
 import '../styles/Cities.css'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-
-
-const Cities = () => {
-
-  const [items, setCities] = useState([]);
-  const [find, setFind] = useState("");
-  const URL = "http://localhost:4000/cities/?city=";
-
-  useEffect(() => {
-    axios
-      .get(URL + find)
-      .then((response) => setCities(response.data.response))
-      .catch((error) => console.log(error));
-  }, [find]);
-
-  function searchItem(name) {
-    setFind(name);
-  }
+import { useState } from 'react'
+import { useGetAllCitiesQuery, useGetCityNameQuery } from '../features/citiesApi' 
   
+  const Cities = () => {
+
+  const [find, setFind] = useState("");
+
+  const {data: cities} = useGetAllCitiesQuery()
+  const {data: cityFind} = useGetCityNameQuery(find)
+
+  function searchItem(search) {
+    setFind(search);
+  }
+
   return (
     <div className="container-cities">
-      <InputSearch searchItem={searchItem} />
-      <CitiesCards items={items} />
+      <InputSearch searchItem={searchItem}/>
+      <CitiesCards cities={cityFind ? cityFind : cities} />
     </div>
   )
 }

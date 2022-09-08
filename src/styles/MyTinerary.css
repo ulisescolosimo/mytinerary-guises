@@ -1,0 +1,52 @@
+.container-mytiGeneral{
+      min-height: 65vh;
+}
+
+.container-mytinerary{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+
+    
+}
+
+.container-mytiTitle{
+      background-color: black;
+      color:white;
+      font-size: x-large;
+}
+
+.container-myti{
+      border: 1px solid black;
+      margin-bottom: 10px;
+      width: 50%;
+      background-color: rgba(4, 4, 7, 0.829);
+      color: white;
+      font-size: 2vw;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
+}
+
+.container-mytiText{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
+}
+
+.container-mytiTitle h2{
+      text-align: center;
+}
+
+.container-user-iti{
+      font-size: 20px;
+      text-align: center;
+}
+
+@media screen and (max-width: 500px){
+      .container-myti{
+            font-size: 1.1rem;
+      }
+}

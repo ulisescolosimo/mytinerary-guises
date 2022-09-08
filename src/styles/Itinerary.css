@@ -1,0 +1,129 @@
+.container-detail{
+      width: 100%;
+      display: flex;
+      align-items: center;      
+      flex-direction: column;
+      background: rgb(4,4,4);
+      background: linear-gradient(6deg, rgba(4,4,4,0.9724264705882353) 4%, rgba(33,33,33,1) 7%, rgba(62,62,61,1) 12%, rgba(72,72,71,1) 22%, rgba(103,103,101,1) 33%, rgba(181,181,178,1) 50%, rgba(221,221,217,1) 63%);
+}
+
+.container-detail video {
+      height: 100%; 
+      object-fit: cover;
+      width: 100%;
+}
+
+.tags {
+      font-size: 20px;
+      margin: 10px;
+}
+
+.container-id h3{
+      font-size: 15px !important;
+}
+
+.container-card{
+      width: 85%;
+      display: flex;
+      justify-content: center ;
+      align-items: center;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
+      margin: 20px 0 50px 0;
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.445);
+      border-radius: 20px; 
+      color: white;
+}
+
+
+.container-tags{
+      display: flex;
+      align-items: flex-end;
+      height: 20%;
+}
+
+
+.container-profile{
+      min-height: 95%;
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(4, 4, 7, 0.829);
+      margin: 0 15px 0 15px;
+      border-radius: 0 20px 20px 0;
+}
+
+.container-itinerary{
+      height: 95%;
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius:  20px 0 0 20px ;
+      margin-left: 10px;
+      background-color: rgba(4, 4, 7, 0.74);
+     font-size: 25px;
+}
+
+.imgProfile{
+      display: flex;
+      justify-content: center;
+      width: 60%;
+      margin-bottom: 20px;
+}
+
+.container-profile img{
+      width: 70%;
+      border-radius: 50%;
+      padding-top: 15px;
+      margin-bottom: 10px;
+}
+
+.name-user{
+      font-size: 30px;
+}
+
+@media screen and (max-width: 768px){
+      .container-card {
+            flex-direction: column;
+            height: 100%;
+            margin: 50px;
+            padding: 0;
+            border-radius: 0px;
+      }
+
+
+      .container-itinerary {
+            width: 100%;
+            margin: 0px;
+            border-radius: 0px;
+            height: 400px;
+            font-size: 20px;
+      }
+
+      .container-tags {
+            display: flex;
+            justify-content: center;
+            height: auto;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-bottom: 10px;
+            align-items: center;
+      }
+
+      .container-profile {
+            width: 100%;
+            border-radius: 0px;
+      }
+
+      .container-profile img{
+            width: 50% !important;
+      }
+}
+
+@media screen and (max-width: 500px){
+
+}
