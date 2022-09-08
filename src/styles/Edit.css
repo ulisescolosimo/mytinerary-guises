@@ -3,6 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.container-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
 }
 
 .form-edit-container{
@@ -31,6 +39,11 @@
     font-size: 30px;
 }
 
+.select-form{
+    margin: 20px;
+    padding: 5px;
+}
+
 .btn-edit{
     padding: 10px;
     border-radius: 20px;
@@ -44,7 +57,12 @@
         flex-direction: column;
     }
 
+    .edit-form-cities {
+        width: 100% !important;
+    }
+
     .form-edit-container{
         margin-bottom: 30px;
+        max-width: 70%;
     }
 }

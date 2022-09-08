@@ -65,7 +65,7 @@ const formRef = useRef()
           </div>
           <div className="form-edit-container">
           <form className="edit-form-cities" onSubmit={handleSubmit} ref={formRef}>
-            <select onChange={handleSelected}>
+            <select className="select-form" onChange={handleSelected}>
                 <option disabled>Select city</option>
                 {items?.response.map(item => 
                         <option value={item.city} id={item._id}>{item.city}</option>

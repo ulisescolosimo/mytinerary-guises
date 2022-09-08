@@ -10,7 +10,8 @@ const Header = () => {
         {name: 'Home', to: '/'},
         {name: 'Cities', to: '/cities'},
         {name: 'New Cities', to: '/new_cities'},
-        {name: 'Edit Cities', to: '/edit'}
+        {name: 'Edit Cities', to: '/edit'},
+        {name: 'My Tineraries', to: '/mytineraries'}
     ]
 
     const link = (page) => <LinkRouter className="items" to={page.to}>{page.name}</LinkRouter>

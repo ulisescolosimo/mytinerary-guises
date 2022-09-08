@@ -30,6 +30,10 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.data-container p {
+    font-size: 40px !important;
+}
+
 .come-back {
     display: flex;
     justify-content: center;
@@ -108,14 +112,14 @@
 
 @media (max-width: 768px) {
     .data-container p {
-        font-size: 1rem;
+        font-size: 1.5rem !important;
     }
     .country-name h2 {
         height: 55%;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .card-fond {
         justify-content: center;
         align-items: center;
