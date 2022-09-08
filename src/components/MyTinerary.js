@@ -25,7 +25,11 @@ const MyTinerary = () => {
             <div className='container-mytinerary' >
                 { myitinerariesDetail ?
                     myitinerariesDetail?.map((item)=>{
-                        return (
+                        return (<>
+                            <div className="container-user-iti">
+                                <p>User: {item.user.name}</p>
+                                <img src={item.user.photo} />
+                            </div>
                             <div className="container-myti">
                                 <div className='container-mytiText' >
                                     <div className='itinerary-div-p myItineraries-text' >
@@ -38,23 +42,19 @@ const MyTinerary = () => {
                                     </svg> </p>
                                         <p className="Itinerary-p"> {item.tags} </p>
                                         </div>
-
                                     </div>
-
-
                                 </div>
-
                             </div>
-                            
+                            </>
                         )
                     })
-                    : <p> You dont have Itineraries yet</p>
+                    : <p> No itineraries for this user</p>
                 } 
             </div>
         </div>    
     </>
     
-  )
+)
 }
 
 export default MyTinerary
