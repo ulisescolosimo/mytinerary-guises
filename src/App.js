@@ -7,7 +7,9 @@ import NewCities from './pages/NewCities'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Error from './pages/Error'
 import CityDetails from './pages/CityDetails'
+import MyTineraries from './pages/MyTineraries'
 import Edit from './pages/Edit'
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path='/new_cities' element={<NewCities />}/>
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={<Edit />} />
+          <Route path='/mytineraries' element={<MyTineraries />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
