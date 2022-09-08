@@ -71,6 +71,7 @@
 .imgProfile{
       display: flex;
       justify-content: center;
+      width: 60%;
       margin-bottom: 20px;
 }
 
@@ -94,10 +95,6 @@
             border-radius: 0px;
       }
 
-      .container-tags{
-            width: 100%;
-            align-items: flex-start;
-      }
 
       .container-itinerary {
             width: 100%;
@@ -109,13 +106,24 @@
 
       .container-tags {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             height: auto;
             flex-wrap: wrap;
+            width: 100%;
+            padding-bottom: 10px;
+            align-items: center;
       }
 
       .container-profile {
             width: 100%;
             border-radius: 0px;
       }
+
+      .container-profile img{
+            width: 50% !important;
+      }
+}
+
+@media screen and (max-width: 500px){
+
 }
