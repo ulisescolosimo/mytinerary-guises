@@ -40,6 +40,11 @@
       text-align: center;
 }
 
+.container-user-iti{
+      font-size: 20px;
+      text-align: center;
+}
+
 @media screen and (max-width: 500px){
       .container-myti{
             font-size: 1.1rem;
