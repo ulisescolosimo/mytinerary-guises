@@ -14,7 +14,6 @@ export const activityAPI = createApi({
         getActivities: builder.query({
             query: (itineraryID) => `/activities/?itinerary=${itineraryID}`
         })
-
     })
 })
 
