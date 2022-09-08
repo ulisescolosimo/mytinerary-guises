@@ -11,6 +11,9 @@ const citiesApi = createApi ({
             getAllCities : builder.query({
                   query: () => "cities/all/"
             }),
+            getCityId: builder.query({
+                  query: (id) => `/cities/${id}`
+            }),
             getCityName: builder.query({
                   query: (city) => `cities?city=${city}`
             }),
@@ -29,11 +32,10 @@ const citiesApi = createApi ({
                   url: `/cities/${id}`,
                   method: 'PATCH',
                   body: rest,
-                  })
+                  }),
       })
 })
-
 })
 
 export default citiesApi
-export const { useGetAllCitiesQuery, useGetNewCityMutation, useGetCityNameQuery, useUpdateCityMutation } = citiesApi;
+export const { useGetAllCitiesQuery, useGetCityIdQuery ,useGetNewCityMutation, useGetCityNameQuery, useUpdateCityMutation } = citiesApi;
