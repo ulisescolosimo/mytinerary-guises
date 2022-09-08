@@ -20,21 +20,22 @@
 .p-tira {
       display: flex;
       justify-content: center;
-      align-self: flex-end;
+      align-items: center;
       background-color: rgba(0, 0, 0, 0.788);
       width: 100%;
       color: white;
       font-weight: bold;
       font-size: 20px;
       font-family: 'Roboto Mono', monospace;
+      height: 15%;
 }
 
 .container-activity{
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      width: 40% !important;
-      height: 300px;
+      width: 30% !important;
+      height: 350px;
       border: 2px solid black ;
       margin: 10px 20px 20px 20px;
       color: white;
@@ -42,7 +43,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-size: 100% 300px !important;
+      background-size: 100% 350px !important;
       background-repeat: no-repeat !important;
 }
 
