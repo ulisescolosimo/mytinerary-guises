@@ -1,22 +1,16 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import '../styles/Comments.css'
-import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { useGetItinerariesCityQuery } from '../features/itineraryAPI'
 
 const Comments = () => {
 
     const { id } = useParams()
 
-    const [itineraries, setItineraries] = useState()
-
-    useEffect(() => {
-        async function getResults() {
-        const results = await axios(`http://localhost:4000/itineraries/?city=${id}`);
-        setItineraries(results.data.response)
-        }
-        getResults()
-    },[])
+    const { data: itineraries } = useGetItinerariesCityQuery(id)
+    
+    let itis = itineraries?.response
 
     const [open, setOpen] = useState(false)
 
@@ -25,15 +19,15 @@ const Comments = () => {
     }
 
   return (
-    <div className="container-comments" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }}>
-        {open ? <div className="chat-container" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }}>
-            {itineraries.map(( item => 
-                <div className="bg-black" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms" }}>
-                    <h2>City: {item.city.city}</h2>
+    <div className="container-comments">
+        {open ? <div className="chat-container" >
+            {itis?.map(( item => 
+                <div className="chat-msg">
+                    <p className="chat-p">City: {item.city.city}</p>
                 </div>
                 ))}
         </div> : null}
-        <button className="see-more" style={{ transition: "all 0.5s ease-out", transitionDuration: "500ms"  }} onClick={handleClick}>{open ? "See less" : "See more!" }</button>
+        <button className="see-more" onClick={handleClick}>{open ? "See less" : "See more!" }</button>
     </div>
   )
 }
