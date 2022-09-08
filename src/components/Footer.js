@@ -10,20 +10,6 @@ const Footer = () => {
   return (
 <footer>
   <div className="footer">
-  <div class="container-img">
-    <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
-    <div className='container-footer-nav'>
-        <div>
-        <LinkRouter className="items-link" to='/'>Home</LinkRouter>
-        </div>
-        <div>
-        <LinkRouter className="items-link" to='/cities'>Cities</LinkRouter>
-        </div>
-        <div>
-        <LinkRouter className="items-link" to='/new_cities'>New Cities</LinkRouter>
-        </div>
-      </div>
-  </div>
 
     <div className="footer__addr">
     <li className="nav__item">
@@ -51,6 +37,28 @@ const Footer = () => {
       </div>
     </li>
   </div>
+
+  <div class="container-img">
+    <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
+    <div className='container-footer-nav'>
+        <div className="footer-nav">
+        <LinkRouter className="items-link" to='/'>Home</LinkRouter>
+        </div>
+        <div className="footer-nav">
+        <LinkRouter className="items-link" to='/cities'>Cities</LinkRouter>
+        </div>
+        <div className="footer-nav">
+        <LinkRouter className="items-link" to='/new_cities'>New Cities</LinkRouter>
+        </div>
+        <div className="footer-nav">
+        <LinkRouter className="items-link" to='/new_cities'>Edit city</LinkRouter>
+        </div>
+        <div className="footer-nav">
+        <LinkRouter className="items-link" to='/new_cities'>My Tineraries</LinkRouter>
+        </div>
+      </div>
+  </div>
+
   <div className="buttonScroll-Container">
     <button className="button-top"
         onClick={() => {
