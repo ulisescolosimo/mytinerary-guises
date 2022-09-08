@@ -8,17 +8,43 @@
       width: 100%;
 }
 
+.container-activities-cards{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 30px !important;
+}
+
+.p-tira {
+      display: flex;
+      justify-content: center;
+      align-self: flex-end;
+      background-color: rgba(0, 0, 0, 0.788);
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      font-family: 'Roboto Mono', monospace;
+}
+
 .container-activity{
       display: flex;
       justify-content: center;
       align-items: flex-end;
       max-width: 40% !important;
-      min-width: 300px;
-      height: 250px;
+      min-width: 500px;
+      height: 300px;
       border: 2px solid black ;
-      margin: 10px 0 20px 0;
+      margin: 10px 20px 20px 20px;
       color: white;
       text-align: center;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 300px !important;
+      background-repeat: no-repeat !important;
 }
 
 .no-activities{
