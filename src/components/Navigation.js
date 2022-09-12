@@ -22,8 +22,8 @@ const Navigation = (props) => {
         <div className='profile-Select'>
             { open ?
                 <ul>
-                    <Link to='/auth/signup'>Log In</Link>
-                    <li>Profile</li>
+                    <Link to='/auth/signup'>Sign Up</Link>
+                    <li>Log In</li>
                 </ul>
                 : null
             }

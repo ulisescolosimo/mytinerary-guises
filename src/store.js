@@ -3,6 +3,7 @@ import citiesApi  from './features/citiesApi'
 import activityAPI  from './features/activitiesAPI'
 import itineraryAPI from './features/itineraryAPI'
 import myTineraryAPI from './features/myTineraryAPI'
+import usersAPI from './features/usersAPI'
 
 export default configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export default configureStore({
     [activityAPI.reducerPath]: activityAPI.reducer,
     [itineraryAPI.reducerPath]: itineraryAPI.reducer,
     [myTineraryAPI.reducerPath]: myTineraryAPI.reducer,
+    [usersAPI.reducerPath]: usersAPI.reducer,
   },
   middleware: (getAllCities) => getAllCities({
       immutableCheck: false,

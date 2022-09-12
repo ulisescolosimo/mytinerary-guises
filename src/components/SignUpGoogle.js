@@ -4,14 +4,11 @@ import * as jose from 'jose'
 const SignUpGoogle = () => {
 
     const buttonDiv = useRef(null)
-    console.log(buttonDiv.current);
 
     /* let [newUser] = useSignupMutator */
 
     async function handleCredentialResponse (response) {
         let userObject = jose.decodeJwt(response.credential)
-        console.log(userObject);
-
 
         /* mandar la info al back con algun mutation de redux o algun metodo asi let [newUser] = useSignupMutator*/
 
@@ -39,7 +36,7 @@ const SignUpGoogle = () => {
         });
         google.accounts.id.renderButton(
             buttonDiv.current,
-            { theme: "outline", size: "medium" }  // customization attributes
+            { theme: "filled_black", size: "medium", text: "signup_with", locale: 'en', type: "standar"}  // customization attributes
         );
     }, [])
 
