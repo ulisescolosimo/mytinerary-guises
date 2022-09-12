@@ -1,5 +1,6 @@
 import React from 'react'
 import BurgerButton from './BurgerButton'
+import { Link } from 'react-router-dom'
 
 const Navigation = (props) => {
 
@@ -21,7 +22,7 @@ const Navigation = (props) => {
         <div className='profile-Select'>
             { open ?
                 <ul>
-                    <li>Log In</li>
+                    <Link to='/auth/signup'>Log In</Link>
                     <li>Profile</li>
                 </ul>
                 : null
