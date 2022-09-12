@@ -1,0 +1,74 @@
+.container-user{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.container-user input{
+      padding: 10px;
+}
+
+.container-signup{
+      display: flex;
+      height: 70vh;
+      background-color: blue;
+      width: 70%;
+      margin-bottom: 20px;
+}
+
+.container-registerForm{
+      width: 55%;
+      background-color: red;
+     
+}
+
+.container-infoForm{
+      width: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
+      
+}
+
+.container-infoForm img{
+      height: 80%;
+      padding-bottom: 15px;
+}
+
+
+
+.form-signup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+}
+
+.name-container{
+      display: flex;
+      margin: 10px;
+      gap: 20px;
+      
+}
+
+.name-container input{
+      width: 30%;     
+}
+
+.container-input{
+      height: fit-content;
+      background-color: white;
+      border-radius: 55px;
+}
+
+.container-input svg{
+      width: 10%;
+      margin-left: 10px;
+}
+
+.container-input input{
+      width: 90%;
+}
+
