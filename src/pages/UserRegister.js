@@ -3,10 +3,9 @@ import SignUp from '../components/SignUp'
 
 const UserRegister = () => {
   return (
-      <>
-    <div>UserRegister</div>
-      <SignUp/>
-      </>
+      <div className="">
+        <SignUp/>
+      </div>
   )
 }
 
