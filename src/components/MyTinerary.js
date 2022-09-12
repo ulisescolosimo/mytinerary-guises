@@ -23,7 +23,7 @@ const MyTinerary = () => {
                 <h2>My Tineraries</h2>
             </div>
             <div className="container-user-iti">
-                <p>{myitinerariesDetail?.[0].user.name}</p>
+                <p>{myitinerariesDetail?.[0].user?.name}</p>
                 <img src={myitinerariesDetail?.[0].user?.photo} />
             </div>
             <div className='container-mytinerary' >
