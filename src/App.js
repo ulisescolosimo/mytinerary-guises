@@ -10,6 +10,7 @@ import CityDetails from './pages/CityDetails'
 import MyTineraries from './pages/MyTineraries'
 import Edit from './pages/Edit'
 import UserRegister from './pages/UserRegister'
+import SignUp from './pages/SignUp'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
+          <Route path="/auth/signup" element={<SignUp />} />
           <Route path='/new_cities' element={<NewCities />}/>
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={<Edit />} />
