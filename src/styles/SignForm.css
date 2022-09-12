@@ -19,6 +19,12 @@
 .container-registerForm{
       width: 55%;
       background-color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap:30px;
+      
      
 }
 
@@ -53,14 +59,12 @@
       
 }
 
-.name-container input{
-      width: 30%;     
-}
 
 .container-input{
       height: fit-content;
       background-color: white;
       border-radius: 55px;
+      width: 150%;
 }
 
 .container-input svg{
@@ -72,3 +76,6 @@
       width: 90%;
 }
 
+.button-google p{
+      font-weight: 500;
+}
