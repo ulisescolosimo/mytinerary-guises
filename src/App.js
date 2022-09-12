@@ -9,6 +9,7 @@ import Error from './pages/Error'
 import CityDetails from './pages/CityDetails'
 import MyTineraries from './pages/MyTineraries'
 import Edit from './pages/Edit'
+import UserRegister from './pages/UserRegister'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={<Edit />} />
           <Route path='/mytineraries' element={<MyTineraries />} />
+          <Route path='/user_register' element={<UserRegister />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
