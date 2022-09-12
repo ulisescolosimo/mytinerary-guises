@@ -21,12 +21,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/auth/signup" element={<SignUp />} />
+          <Route path="/auth/signup" element={<UserRegister />} />
           <Route path='/new_cities' element={<NewCities />}/>
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={<Edit />} />
           <Route path='/mytineraries' element={<MyTineraries />} />
-          <Route path='/user_register' element={<UserRegister />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
