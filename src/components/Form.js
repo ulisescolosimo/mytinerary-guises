@@ -27,6 +27,7 @@ const Form = () => {
         description: descriptionRef.current.value,
         photo: imageRef.current.value
       }
+
       await addNewPost(object);
 
       formRef.current.reset()
