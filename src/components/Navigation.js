@@ -1,11 +1,33 @@
 import React from 'react'
 import BurgerButton from './BurgerButton'
 import { Link } from 'react-router-dom'
+import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
 
 const Navigation = (props) => {
 
   const pages = props.pages
   const open = props.open
+
+  const [signOut] = useGetSignOutMutation()
+
+  let user = JSON.parse(localStorage.getItem('userLogged'))
+
+  const handleLogOut = async(e) => {
+    e.preventDefault();
+    let object = {
+        logged: false,
+        id: user[0]._id,
+    }
+    await signOut(object)
+    localStorage.removeItem('userLogged')
+  }
+
+  const { data : users } = useGetAllUsersQuery()
+    let usersResponse = users?.response
+    let userLogged = usersResponse?.filter(user => user.logged)
+    if(userLogged?.length > 0) {
+      localStorage.setItem('userLogged', JSON.stringify(userLogged))
+    }
 
   return (
     <nav class="navigation-menu">
@@ -21,10 +43,21 @@ const Navigation = (props) => {
         </div>
         <div className='profile-Select'>
             { open ?
-                <ul>
-                    <Link to='/auth/signup'>Sign Up</Link>
-                    <li>Log In</li>
-                </ul>
+                <div style={{height: '100%', width: '120px'}}>
+                    {user ? 
+                    <> 
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <p>{user[0].name}</p><img style={{height: '50px', width: '50px'}} src={user[0].photo} />
+                    </div>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <button type="button" onClick={handleLogOut} style={{backgroundColor: 'black', borderRadius: '10px', margin: '10px' ,padding: '5px', color: 'white', cursor: 'pointer'}}>Log out</button>
+                    </div>
+                    </> : 
+                    <div style={{height: '70px', width: '120px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <div><Link to='/auth/signin'>Sign in</Link></div>
+                        <div><Link to='/auth/signup'>Sign Up</Link></div>
+                    </div>}
+                </div>
                 : null
             }
         </div>
@@ -33,4 +66,3 @@ const Navigation = (props) => {
 }
 
 export default Navigation
-//
