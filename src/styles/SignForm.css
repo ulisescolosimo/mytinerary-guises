@@ -25,7 +25,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap:30px;
+     
          
 }
 
@@ -49,12 +49,13 @@
 .container-infoForm h3{
       font-size: 1.5rem;
       padding-bottom: 10px;
+      margin-top: 10px;
       color: white;
 }
 
 
 .container-infoForm img{
-      height: 72%;
+      height: 60%;
       padding-bottom: 15px;
 }
 
@@ -72,7 +73,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 17px;
 }
 
 .name-container{
@@ -97,7 +98,7 @@
       background-color: white;
       border-radius: 55px;
       width: 155%;
-      height: fit-content;
+      height: min-content;
 }
 
 .container-input svg{
@@ -113,4 +114,52 @@
       font-weight: 500;
       margin:0 0 10px 0 !important;
       color: white;
+}
+
+@media screen and (max-width: 875px){
+      .container-input{
+            width: 100%;
+      }
+      .container-infoForm h3{
+            font-size: 1.2rem;
+      }
+
+      .container-textInfo p{
+            font-size: .9rem;
+            margin-left:10px;
+      }
+}
+
+@media screen and (max-width: 680px){
+      .container-user{
+            min-height: 125vh;
+            align-items: flex-start;
+      }
+      .container-signup{
+            width: 80%;
+            height: 50vh;
+            flex-direction: column;
+            gap: 130px;
+            border: none;
+           
+      }
+      .container-infoForm {
+            width: 100%;
+            height: 30vh;
+            justify-content: flex-start;
+      }
+      .container-infoForm img{
+            height:80%;
+      }
+      .container-registerForm{
+            width: 100%;
+            
+      }
+      .container-textInfo button{
+            margin-bottom: 20px;
+      }
+
+      .button-google{
+            margin-bottom: 10px;
+      }
 }
