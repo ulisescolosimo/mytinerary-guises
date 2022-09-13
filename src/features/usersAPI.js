@@ -3,24 +3,25 @@ import apiurl from '../api'
 
 export const usersAPI = createApi({
 
-    reducerPath: "tineraryAPI",
-
+    reducerPath: "usersAPI",
 
     baseQuery: fetchBaseQuery({
         baseUrl: apiurl
     }),
 
-
     endpoints: (builder) => ({
-        createUser: builder.mutation({
-            query: ({...rest}) => ({
-            url: `/signup/`,
-            method: 'POST',
-            body: rest,
-        }),
+        getNewUser: builder.mutation({
+            query(user){
+                return{
+                    url: '/auth/signup',
+                    method: 'POST',
+                    body: user,
+                }
+        },
     })
     })
 })
 
 export default usersAPI
-export const { useCreateUserMutator } = usersAPI
+export const { useGetNewUserMutation } = usersAPI
+//

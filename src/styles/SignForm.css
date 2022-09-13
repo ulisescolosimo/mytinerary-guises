@@ -2,6 +2,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      
 }
 
 .container-user input{
@@ -11,38 +12,60 @@
 .container-signup{
       display: flex;
       height: 70vh;
-      background-color: blue;
+      background-color: rgb(0, 0, 0);
       width: 70%;
-      margin-bottom: 20px;
+      margin: 20px 0 20px 0;
+      border: 2px solid black;
 }
 
 .container-registerForm{
       width: 55%;
-      background-color: red;
+      background-color: rgb(63, 3, 3);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap:30px;
-      
-     
+         
+}
+
+.title-signup{
+      font-size:  3rem;
+      color: white;
+      -webkit-text-stroke: 3px black;
+      margin: 0px 0 15px 0;
 }
 
 .container-infoForm{
       width: 45%;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-
-      
+      align-items: center;
+      flex-direction: column;
+      color: white;
+   
 }
 
+.container-infoForm h3{
+      font-size: 1.5rem;
+      padding-bottom: 10px;
+      color: white;
+}
+
+
 .container-infoForm img{
-      height: 80%;
+      height: 72%;
       padding-bottom: 15px;
 }
 
-
+.container-user button{
+      background-color:rgb(63, 3, 3);
+      border: 2px solid white;
+      border-radius: 55px;
+      color: white;
+      padding: 5px;
+      width: 100px;
+}
 
 .form-signup{
       display: flex;
@@ -59,12 +82,22 @@
       
 }
 
+.container-textInfo{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+.container-textInfo button{
+      margin-bottom: 35px;
+}
 
 .container-input{
       height: fit-content;
       background-color: white;
       border-radius: 55px;
-      width: 150%;
+      width: 155%;
+      height: fit-content;
 }
 
 .container-input svg{
@@ -78,4 +111,5 @@
 
 .button-google p{
       font-weight: 500;
+      margin:0 0 10px 0 !important;
 }
