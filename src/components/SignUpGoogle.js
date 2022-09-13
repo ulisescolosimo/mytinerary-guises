@@ -1,30 +1,27 @@
 import React, { useEffect, useRef } from 'react'
 import * as jose from 'jose'
+import { useGetNewUserMutation } from '../features/usersAPI'
 
 const SignUpGoogle = () => {
 
     const buttonDiv = useRef(null)
 
-    /* let [newUser] = useSignupMutator */
+    const [newUser] = useGetNewUserMutation()
 
     async function handleCredentialResponse (response) {
+
         let userObject = jose.decodeJwt(response.credential)
 
-        /* mandar la info al back con algun mutation de redux o algun metodo asi let [newUser] = useSignupMutator*/
-
         let data = {
-            name: userObject.name,
+            name: userObject.given_name,
             photo: userObject.picture,
             email: userObject.email,
             pass: userObject.sub,
+            country: 'Argentina',
             role: 'user',
             from: 'google'
-    }
-
-    /* mandar la info al back con algun mutation de redux o algun metodo asi let [newUser] = useSignupMutator*/
-
-    /* newUser(data) */
-
+        }
+        await newUser(data)
 }
 
     useEffect(()=> {
