@@ -24,8 +24,8 @@ const BurgerNav = (props) => {
                           <div className='container-log-2'>
             { open ?
                 <ul>
-                    <li><LinkRouter to="/">Log In</LinkRouter></li>
-                    <li><LinkRouter to="/">Profile</LinkRouter></li>
+                    <li><LinkRouter to="/auth/signin">Log In</LinkRouter></li>
+                    <li><LinkRouter to="/auth/signup">Sign Up</LinkRouter></li>
                 </ul>
                 : null
             }

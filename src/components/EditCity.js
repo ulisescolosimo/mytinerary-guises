@@ -34,6 +34,7 @@ const formRef = useRef()
       value: e.target.value,
       id: e.target[e.target.selectedIndex].id
     })
+    console.log(selected);
   }
 
   const [editCity] = useUpdateCityMutation()
@@ -76,7 +77,7 @@ const formRef = useRef()
                             <Input myRef={item.ref} name={item.name} typeText={item.typeText} />
                         ))}
             </div>
-            <button className="btn-edit">Editar!</button>
+            <button className="btn-edit" style={{cursor: 'pointer', padding: '15px'}}>Edit!</button>
           </form>
           </div>   
     </div>
