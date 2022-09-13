@@ -6,7 +6,7 @@ import { useGetNewUserMutation } from '../features/usersAPI'
 import { Link } from 'react-router-dom'
 
 const SignInLogin = () => {
-  const nameRef = useRef()
+    const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const imageRef = useRef()
@@ -43,8 +43,10 @@ const SignInLogin = () => {
             <h3>Dont have an account?</h3>
             <p>If you need to register click here!</p>
             <Link to='/auth/signup'><button style={{cursor: 'pointer'}}>SIGN UP</button></Link>
+            <div className="img-signin">
+              <img src='../assets/travelers.png' />
+            </div>
           </div>
-          <img src='../assets/travelers.png' />
         </div>
         <div className='container-registerForm'>
               <h2 className='title-signup'>Sign In</h2>
@@ -61,11 +63,13 @@ const SignInLogin = () => {
                       </svg>
                       <input type='password' required placeholder="Password" name='pass' ref={passwordRef} id='pass' />
                     </label>
-                    <button type="submit">Sign In</button>                                       
+                    <button type="submit" style={{cursor: 'pointer'}}>Sign In</button>                                       
               </form>
+              <div>
+                <p style={{textAlign: 'center', color: 'white'}}>Or</p>
+              </div>
               <div className='button-google'>
-                <p style={{textAlign: 'center'}}>Or</p>
-              <SignInGoogle /> 
+                <SignInGoogle /> 
               </div>
             </div>
       </div>
