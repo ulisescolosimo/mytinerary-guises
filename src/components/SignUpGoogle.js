@@ -43,7 +43,7 @@ const SignUpGoogle = () => {
 return (
     <div>
         <div ref={buttonDiv}>
-            
+
         </div>
     </div>
 )
