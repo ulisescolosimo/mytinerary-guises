@@ -1,11 +1,10 @@
 import React from 'react'
-import SignUpGoogle from '../components/SignUpGoogle'
-
+import SignUpLogin from '../components/SignUpLogin'
 
 const SignUp = () => {
   return (
     <div>
-        <SignUpGoogle />
+        <SignUpLogin />
     </div>
   )
 }
