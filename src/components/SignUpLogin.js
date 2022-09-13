@@ -1,13 +1,11 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignUpGoogle from './SignUpGoogle'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useGetNewUserMutation } from '../features/usersAPI'
-import Modal from '../components/Modal'
+import { Link } from 'react-router-dom'
 
 export default function SignUp() {
-
-  const [modal, setModal] = useState(false)
 
     const nameRef = useRef()
     const emailRef = useRef()
@@ -34,8 +32,6 @@ export default function SignUp() {
 
       await newUser(data)
       
-      setModal(true)
-
       formRef.current.reset()
 
       }
@@ -46,8 +42,8 @@ export default function SignUp() {
         <div className='container-infoForm'>
           <div className='container-textInfo'>
             <h3>Do you belong?</h3>
-            <p>If you already have an account sign in here !</p>
-            <button type="submit">SIGN IN</button>
+            <p>If you already have an account sign in here!</p>
+            <Link to='/auth/signin'><button style={{cursor: 'pointer'}}>SIGN IN</button></Link>
           </div>
           <img src='../assets/travelers.png' />
         </div>
@@ -90,14 +86,12 @@ export default function SignUp() {
                     </label>
                     <button type="submit">SIGN UP</button>                                       
               </form>
-              {modal ? <Modal modal={modal} setModal={setModal} /> : null}
               <div className='button-google'>
-                <p>Or Sign Up With Google </p>
+                <p style={{textAlign: 'center'}}>Or</p>
               <SignUpGoogle/> 
               </div>
-            </div> 
+            </div>
       </div>
     </div>
   )
 }
-//.
