@@ -42,10 +42,12 @@ export default function SignUp() {
         <div className='container-infoForm'>
           <div className='container-textInfo'>
             <h3>Do you belong?</h3>
-            <p>If you already have an account sign in here!</p>
+            <p style={{textAlign: 'center'}}>If you already have an account sign in here!</p>
             <Link to='/auth/signin'><button style={{cursor: 'pointer'}}>SIGN IN</button></Link>
           </div>
-          <img src='../assets/travelers.png' />
+          <div className="img-signin">
+            <img src='../assets/travelers.png' />
+          </div>
         </div>
         <div className='container-registerForm'>
               <h2 className='title-signup'>Sign Up</h2>
@@ -84,10 +86,12 @@ export default function SignUp() {
                       </svg>
                       <input type='text' required placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
-                    <button type="submit">SIGN UP</button>                                       
+                    <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                       
               </form>
+              <div>
+                <p style={{textAlign: 'center', color: 'white'}}>Or</p>
+              </div>
               <div className='button-google'>
-                <p style={{textAlign: 'center'}}>Or</p>
               <SignUpGoogle/> 
               </div>
             </div>
