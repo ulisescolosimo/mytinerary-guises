@@ -51,10 +51,10 @@ const Footer = () => {
         <LinkRouter className="items-link" to='/new_cities'>New Cities</LinkRouter>
         </div>
         <div className="footer-nav">
-        <LinkRouter className="items-link" to='/new_cities'>Edit city</LinkRouter>
+        <LinkRouter className="items-link" to='/edit'>Edit city</LinkRouter>
         </div>
         <div className="footer-nav">
-        <LinkRouter className="items-link" to='/new_cities'>My Tineraries</LinkRouter>
+        <LinkRouter className="items-link" to='/mytineraries'>My Tineraries</LinkRouter>
         </div>
       </div>
   </div>
