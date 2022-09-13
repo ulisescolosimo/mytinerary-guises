@@ -2,37 +2,35 @@ import React from 'react'
 import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
 import { useRef } from 'react'
-import { useGetNewUserMutation } from '../features/usersAPI'
+import { useGetLoginMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { Link } from 'react-router-dom'
 
 const SignInLogin = () => {
-    const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-    const imageRef = useRef()
-    const countryRef = useRef()
     const formRef = useRef()
 
-    const [newUser] = useGetNewUserMutation()
+    const [newLogin] = useGetLoginMutation()
 
     const handleForm = async(e) => {
 
       e.preventDefault();
 
       let data = {
-        country: countryRef.current.value,
-        photo: imageRef.current.value,
-        name: nameRef.current.value,
-        pass: passwordRef.current.value,
         email: emailRef.current.value,
-        from: 'form',
-        role: 'user'
+        pass: passwordRef.current.value,
+        from: 'form'
       }
 
-      await newUser(data)
-      
+      await newLogin(data)
       formRef.current.reset()
+      }
 
+      const { data : users } = useGetAllUsersQuery()
+      let usersResponse = users?.response
+      let userLogged = usersResponse?.filter(user => user.logged)
+      if(userLogged?.length > 0) {
+        localStorage.setItem('userLogged', JSON.stringify(userLogged))
       }
 
   return (
