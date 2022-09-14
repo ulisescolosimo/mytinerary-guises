@@ -44,8 +44,10 @@ export default function SignUp() {
 
       await newUser(data)
       formRef.current.reset()
-      handleNavigate()
       window.location.reload()
+    setTimeout(() => {
+      handleNavigate()
+    }, 1000)
       }
 
   return (

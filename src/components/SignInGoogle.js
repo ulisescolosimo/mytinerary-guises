@@ -25,8 +25,10 @@ const SignInGoogle = () => {
           from: 'google'
         }
         await newLogin(data)
-        handleNavigate()
         window.location.reload()
+    setTimeout(() => {
+      handleNavigate()
+    }, 1000)
     }
 
   useEffect(()=> {
