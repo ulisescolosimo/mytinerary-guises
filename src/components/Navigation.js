@@ -1,4 +1,4 @@
-import React from 'react'
+import { React } from 'react'
 import BurgerButton from './BurgerButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
@@ -19,13 +19,20 @@ const Navigation = (props) => {
   let user = JSON.parse(localStorage.getItem('userLogged'))
 
   const handleLogOut = async() => {
-    let object = {
+    try{
+      let object = {
         logged: false,
         id: user[0]._id,
-    }
+      }
     await signOut(object)
     localStorage.removeItem('userLogged')
     window.location.reload()
+    setTimeout(() => {
+      handleNavigate()
+    }, 1000)
+    }catch(error){
+      console.log(error);
+    }
   }
 
   const { data : users } = useGetAllUsersQuery()
