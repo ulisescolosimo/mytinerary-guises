@@ -3,7 +3,7 @@ import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
 import { useRef } from 'react'
 import { useGetLoginMutation, useGetAllUsersQuery } from '../features/usersAPI'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignInLogin = () => {
     const emailRef = useRef()
@@ -11,6 +11,12 @@ const SignInLogin = () => {
     const formRef = useRef()
 
     const [newLogin] = useGetLoginMutation()
+
+    const navigate = useNavigate()
+
+    const handleNavigate = () => {
+      navigate('/')
+    }
 
     const handleForm = async(e) => {
 
@@ -24,6 +30,7 @@ const SignInLogin = () => {
 
       await newLogin(data)
       formRef.current.reset()
+      handleNavigate()
       window.location.reload()
       }
 

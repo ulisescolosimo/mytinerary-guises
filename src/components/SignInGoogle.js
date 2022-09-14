@@ -1,10 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignInGoogle = () => {
 
   const buttonDiv = useRef(null)
+
+  const navigate = useNavigate()
+
+  const handleNavigate = () => {
+    navigate('/')
+  }
 
   const [newLogin] = useGetLoginMutation()
 
@@ -12,15 +19,13 @@ const SignInGoogle = () => {
 
         let userObject = jose.decodeJwt(response.credential)
 
-        console.log(userObject);
-
         let data = {
           email: userObject.email,
           pass: userObject.sub,
           from: 'google'
         }
-        console.log(data);
         await newLogin(data)
+        handleNavigate()
         window.location.reload()
     }
 
