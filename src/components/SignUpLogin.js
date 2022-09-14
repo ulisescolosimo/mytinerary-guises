@@ -3,9 +3,15 @@ import '../styles/SignForm.css'
 import SignUpGoogle from './SignUpGoogle'
 import { useRef, useState } from 'react'
 import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
+
+  const navigate = useNavigate()
+
+  const handleNavigate = () => {
+    navigate('/signin')
+  }
 
     const [role, setRole] = useState()
 
@@ -37,8 +43,8 @@ export default function SignUp() {
       }
 
       await newUser(data)
-      
       formRef.current.reset()
+      handleNavigate()
       window.location.reload()
       }
 
@@ -92,7 +98,7 @@ export default function SignUp() {
                       </svg>
                       <input type='text' required placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
-                    { userLogged?.length > 0 ?
+                    { userLogged?.length > 0 && userLogged?.[0].role == 'admin' ?
                     <div className="roles-container">
                         Select user role:
                         <div className="topping">
