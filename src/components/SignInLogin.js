@@ -30,8 +30,10 @@ const SignInLogin = () => {
 
       await newLogin(data)
       formRef.current.reset()
-      handleNavigate()
       window.location.reload()
+    setTimeout(() => {
+      handleNavigate()
+    }, 1000)
       }
 
       const { data : users } = useGetAllUsersQuery()
