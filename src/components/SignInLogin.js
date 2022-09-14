@@ -43,13 +43,6 @@ const SignInLogin = () => {
       }, 1000)
       }
 
-      const { data : users } = useGetAllUsersQuery()
-      let usersResponse = users?.response
-      let userLogged = usersResponse?.filter(user => user.logged)
-      if(userLogged?.length > 0) {
-        localStorage.setItem('userLogged', JSON.stringify(userLogged))
-      }
-
   return (
     <div className='container-user'>
       <div className='container-signup'>
