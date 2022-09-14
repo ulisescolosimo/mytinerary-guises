@@ -9,8 +9,8 @@ const Header = () => {
     const pages = [
         {name: 'Home', to: '/'},
         {name: 'Cities', to: '/cities'},
-        {name: 'New Cities', to: '/new_cities'},
-        {name: 'Edit Cities', to: '/edit'},
+        {name: 'New Cities', to: '/new_cities', role: 'admin'},
+        {name: 'Edit Cities', to: '/edit', role: 'admin'},
         {name: 'My Tineraries', to: '/mytineraries'}
     ]
 
