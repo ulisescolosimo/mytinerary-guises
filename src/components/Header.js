@@ -9,8 +9,19 @@ const Header = () => {
     const pages = [
         {name: 'Home', to: '/'},
         {name: 'Cities', to: '/cities'},
-        {name: 'New Cities', to: '/new_cities', role: 'admin'},
-        {name: 'Edit Cities', to: '/edit', role: 'admin'},
+    ]
+
+    const pagesUser = [
+        {name: 'Home', to: '/'},
+        {name: 'Cities', to: '/cities'},
+        {name: 'My Tineraries', to: '/mytineraries'}
+    ]
+
+    const pagesAdmin = [
+        {name: 'Home', to: '/'},
+        {name: 'Cities', to: '/cities'},
+        {name: 'New Cities', to: '/new_cities'},
+        {name: 'Edit Cities', to: '/edit'},
         {name: 'My Tineraries', to: '/mytineraries'}
     ]
 
@@ -30,7 +41,7 @@ const Header = () => {
 
 return (
     <header>
-        <Navigation pages={pages} link={link} open={open} click={handleClick} />
+        <Navigation pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} link={link} open={open} click={handleClick} />
         <BurgerNav pages={pages} handleBurger={handleBurger} open={open} link={link} clicked={clicked} click={handleClick} />
     </header>
 )
