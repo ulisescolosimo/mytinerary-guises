@@ -22,6 +22,7 @@ const SignUpGoogle = () => {
             from: 'google'
         }
         await newUser(data)
+        window.location.reload()
 }
 
     useEffect(()=> {
