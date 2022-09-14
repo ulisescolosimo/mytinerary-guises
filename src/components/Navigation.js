@@ -20,11 +20,12 @@ const Navigation = (props) => {
     }
     await signOut(object)
     localStorage.removeItem('userLogged')
+    window.location.reload()
   }
 
   const { data : users } = useGetAllUsersQuery()
-    let usersResponse = users?.response
-    let userLogged = usersResponse?.filter(user => user.logged)
+  let usersResponse = users?.response
+  let userLogged = usersResponse?.filter(user => user.logged)
     if(userLogged?.length > 0) {
       localStorage.setItem('userLogged', JSON.stringify(userLogged))
     }
@@ -44,7 +45,7 @@ const Navigation = (props) => {
         <div className='profile-Select'>
             { open ?
                 <div style={{height: '100%', width: '120px'}}>
-                    {user ? 
+                    {user?.length > 0 ? 
                     <> 
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         <p>{user[0].name}</p><img style={{height: '50px', width: '50px'}} src={user[0].photo} />
