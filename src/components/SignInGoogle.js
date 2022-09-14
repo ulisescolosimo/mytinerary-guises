@@ -1,19 +1,26 @@
 import React, { useEffect, useRef } from 'react'
 import * as jose from 'jose'
+import { useGetLoginMutation } from '../features/usersAPI'
 
 const SignInGoogle = () => {
 
   const buttonDiv = useRef(null)
 
-    /* let [newUser] = useSignupMutator */
+  const [newLogin] = useGetLoginMutation()
 
     async function handleCredentialResponse (response) {
+
         let userObject = jose.decodeJwt(response.credential)
+
+        console.log(userObject);
 
         let data = {
           email: userObject.email,
-          password: userObject.sub
+          pass: userObject.sub,
+          from: 'google'
         }
+        console.log(data);
+        await newLogin(data)
     }
 
   useEffect(()=> {
