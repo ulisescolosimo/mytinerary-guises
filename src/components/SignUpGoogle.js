@@ -1,12 +1,19 @@
 import React, { useEffect, useRef } from 'react'
 import * as jose from 'jose'
 import { useGetNewUserMutation } from '../features/usersAPI'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpGoogle = () => {
 
     const buttonDiv = useRef(null)
 
     const [newUser] = useGetNewUserMutation()
+
+    const navigate = useNavigate()
+
+    const handleNavigate = () => {
+      navigate('/sigin')
+    }
 
     async function handleCredentialResponse (response) {
 
@@ -22,6 +29,7 @@ const SignUpGoogle = () => {
             from: 'google'
         }
         await newUser(data)
+        handleNavigate()
         window.location.reload()
 }
 
