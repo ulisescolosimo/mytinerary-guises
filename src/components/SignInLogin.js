@@ -24,6 +24,7 @@ const SignInLogin = () => {
 
       await newLogin(data)
       formRef.current.reset()
+      window.location.reload()
       }
 
       const { data : users } = useGetAllUsersQuery()
