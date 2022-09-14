@@ -21,6 +21,7 @@ const SignInGoogle = () => {
         }
         console.log(data);
         await newLogin(data)
+        window.location.reload()
     }
 
   useEffect(()=> {
