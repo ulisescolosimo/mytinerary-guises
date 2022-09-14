@@ -1,11 +1,13 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignUpGoogle from './SignUpGoogle'
-import { useRef } from 'react'
-import { useGetNewUserMutation } from '../features/usersAPI'
+import { useRef, useState } from 'react'
+import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { Link } from 'react-router-dom'
 
 export default function SignUp() {
+
+    const [role, setRole] = useState()
 
     const nameRef = useRef()
     const emailRef = useRef()
@@ -15,6 +17,10 @@ export default function SignUp() {
     const formRef = useRef()
 
     const [newUser] = useGetNewUserMutation()
+
+    const { data : users } = useGetAllUsersQuery()
+    let usersResponse = users?.response
+    let userLogged = usersResponse?.filter(user => user.logged)
 
     const handleForm = async(e) => {
 
@@ -27,13 +33,13 @@ export default function SignUp() {
         pass: passwordRef.current.value,
         email: emailRef.current.value,
         from: 'form',
-        role: 'user'
+        role: userLogged ? role : 'user',
       }
 
       await newUser(data)
       
       formRef.current.reset()
-
+      window.location.reload()
       }
 
   return (
@@ -86,7 +92,15 @@ export default function SignUp() {
                       </svg>
                       <input type='text' required placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
-                    <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                       
+                    { userLogged?.length > 0 ?
+                    <div className="roles-container">
+                        Select user role:
+                        <div className="topping">
+                          <input type="radio" onChange={e => setRole(e.target.value)} id="user" name="role" value="user" />User
+                          <input type="radio" onChange={e => setRole(e.target.value)} id="admin" name="role" value="admin" />Admin
+                        </div>
+                    </div> : null}
+                    <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                      
               </form>
               <div>
                 <p style={{textAlign: 'center', color: 'white'}}>Or</p>
