@@ -1,17 +1,15 @@
 import React from 'react'
 import '../styles/SignForm.css'
-import SignUpGoogle from './SignUpGoogle'
 import { useRef, useState } from 'react'
 import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-export default function SignUp() {
-
-  const navigate = useNavigate()
+const CreateUsers = () => {
+    const navigate = useNavigate()
 
   const handleNavigate = () => {
-    navigate('/signin')
+    navigate('/')
   }
 
     const [role, setRole] = useState()
@@ -40,11 +38,12 @@ export default function SignUp() {
         pass: passwordRef.current.value,
         email: emailRef.current.value,
         from: 'form',
-        role: 'user',
+        role: role,
       }
 
       
       await newUser(data)
+
       let timerInterval
       Swal.fire({
         title: 'Great, you are already registered!',
@@ -66,6 +65,8 @@ export default function SignUp() {
           console.log('I was closed by the timer')
         }
       })
+
+
       formRef.current.reset()
       handleNavigate()
       setTimeout(() => {
@@ -75,19 +76,8 @@ export default function SignUp() {
 
   return (
     <div className='container-user'>
-      <div className='container-signup'>
-        <div className='container-infoForm'>
-          <div className='container-textInfo'>
-            <h3>Do you belong?</h3>
-            <p style={{textAlign: 'center'}}>If you already have an account sign in here!</p>
-            <Link to='/auth/signin'><button style={{cursor: 'pointer'}}>Sign In</button></Link>
-          </div>
-          <div className="img-signin">
-            <img src='../assets/travelers.png' />
-          </div>
-        </div>
-        <div className='container-registerForm'>
-              <h2 className='title-signup'>Sign Up</h2>
+        <div className='container-registernewUser'>
+              <h2 className='title-signup' style={{textAlign:'center', fontSize: '30px', textDecoration: 'none'}}>Create new user or admin</h2>
               <form className='form-signup' ref={formRef} onSubmit={handleForm}>
                     <label className='container-input'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -123,16 +113,19 @@ export default function SignUp() {
                       </svg>
                       <input type='text' required placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
+                    { userLogged?.length > 0 && userLogged?.[0].role == 'admin' ?
+                    <div className="roles-container">
+                        <p>Select user role:</p>
+                        <div className="topping">
+                          <input type="radio" onChange={e => setRole(e.target.value)} id="user" name="role" value="user" />User
+                          <input type="radio" onChange={e => setRole(e.target.value)} id="admin" name="role" value="admin" />Admin
+                        </div>
+                    </div> : null}
                     <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                      
               </form>
-              <div>
-                <p style={{textAlign: 'center', color: 'white'}}>Or</p>
-              </div>
-              <div className='button-google'>
-              <SignUpGoogle/> 
-              </div>
             </div>
-      </div>
     </div>
   )
 }
+
+export default CreateUsers

@@ -1,6 +1,6 @@
 import { React } from 'react'
 import BurgerButton from './BurgerButton'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
 
 const Navigation = (props) => {
@@ -9,12 +9,6 @@ const Navigation = (props) => {
   const pagesUser = props.pagesUser
   const pages = props.pages
   const open = props.open
-
-  const navigate = useNavigate()
-
-  const handleNavigate = () => {
-    navigate('/')
-  }
 
   const [signOut] = useGetSignOutMutation()
 
@@ -29,9 +23,6 @@ const Navigation = (props) => {
     await signOut(object)
     localStorage.removeItem('userLogged')
     window.location.reload()
-    setTimeout(() => {
-      handleNavigate()
-    }, 1000)
     }catch(error){
       console.log(error);
     }

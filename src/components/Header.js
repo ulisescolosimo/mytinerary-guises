@@ -42,7 +42,7 @@ const Header = () => {
 return (
     <header>
         <Navigation pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} link={link} open={open} click={handleClick} />
-        <BurgerNav pages={pages} handleBurger={handleBurger} open={open} link={link} clicked={clicked} click={handleClick} />
+        <BurgerNav pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} handleBurger={handleBurger} open={open} link={link} clicked={clicked} click={handleClick} />
     </header>
 )
 }

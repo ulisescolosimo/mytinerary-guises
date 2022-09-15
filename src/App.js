@@ -12,6 +12,7 @@ import MyTineraries from './pages/MyTineraries'
 import Edit from './pages/Edit'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import CreateUsers from './pages/CreateUsers'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/auth/signup" element={logged ? <Error /> : <SignUp />} />
           <Route path="/auth/signin" element={logged ? <Error /> : <SignIn />} />
           <Route path='/new_cities' element={admin ? <NewCities /> : <HomePage />}/>
+          <Route path='/create' element={admin ? <CreateUsers /> : <HomePage />} />
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
           <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
