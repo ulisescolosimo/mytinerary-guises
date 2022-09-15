@@ -38,9 +38,12 @@ const SignInLogin = () => {
       await newLogin(data)
       formRef.current.reset()
       window.location.reload()
+
     setTimeout(() => {
       handleNavigate()
     }, 1000)
+
+
       }
 
   return (
