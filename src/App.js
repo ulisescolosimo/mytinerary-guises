@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect, useState } from 'react'
 import ScrollToTop from './components/ScrollToTop'
 import WebsiteLayout from './layouts/WebsiteLayout'
 import HomePage from './pages/HomePage'
@@ -13,6 +14,16 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 
 function App() {
+
+  const [logged, setLogged] = useState(false)
+  const [admin, setAdmin] = useState(false)
+
+  useEffect(() =>{
+    let user = JSON.parse(localStorage.getItem('userLogged'))
+    user?.length>0&&setLogged(true)
+    user?.[0].role=='admin' && setAdmin(true)
+  }, [])
+
   return (
     <BrowserRouter>
       <ScrollToTop/>
@@ -20,12 +31,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/auth/signup" element={<SignUp />} />
-          <Route path="/auth/signin" element={<SignIn />} />
-          <Route path='/new_cities' element={<NewCities />}/>
+          <Route path="/auth/signup" element={logged ? <Error /> : <SignUp />} />
+          <Route path="/auth/signin" element={logged ? <Error /> : <SignIn />} />
+          <Route path='/new_cities' element={admin ? <NewCities /> : <HomePage />}/>
           <Route path='/details/:id' element={<CityDetails />} />
-          <Route path='/edit' element={<Edit />} />
-          <Route path='/mytineraries' element={<MyTineraries />} />
+          <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
+          <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>

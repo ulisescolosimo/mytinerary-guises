@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
-import { useRef, useState } from 'react'
-import { useGetLoginMutation, useGetAllUsersQuery } from '../features/usersAPI'
+import { useRef, } from 'react'
+import { useGetLoginMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -19,13 +19,6 @@ const SignInLogin = () => {
       navigate('/')
     }
 
-    const { data : users } = useGetAllUsersQuery()
-      let usersResponse = users?.response
-      let userFind = usersResponse?.find((user) => user.logged == true);
-      if(userFind) {
-        localStorage.setItem('userLogged', JSON.stringify(userFind))
-      }
-
     const handleForm = async(e) => {
 
       e.preventDefault();
@@ -35,16 +28,14 @@ const SignInLogin = () => {
         pass: passwordRef.current.value,
         from: 'form'
       }
-
+  
       await newLogin(data)
       formRef.current.reset()
-      window.location.reload()
+      handleNavigate()
       setTimeout(() => {
-        handleNavigate()
-      }, 1000)
-      }
+        window.location.reload()
+      }, 500)
 
-     
   return (
     <div className='container-user'>
       <div className='container-signup'>
