@@ -18,6 +18,7 @@ const Navigation = (props) => {
 
   const signedOut = async(object) => {
     await signOut(object)
+    localStorage.removeItem('userLogged')
         .unwrap()
         .then((succes) => {
           setError("Sign out successfully")
@@ -27,16 +28,18 @@ const Navigation = (props) => {
     });
 }
 
-  const handleLogOut = async() => {
+  const handleLogOut = () => {
     try{
       let object = {
         logged: false,
         id: user[0]._id,
       }
 
-    await signedOut(object);
-    localStorage.removeItem('userLogged')
-    window.location.reload()
+    signedOut(object);
+    setError("Sign out successfully")
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000)
     }catch(error){
       console.log(error);
     }
@@ -49,12 +52,12 @@ const Navigation = (props) => {
       localStorage.setItem('userLogged', JSON.stringify(userLogged))
     }
 
-    pages.map(props.link)
 
   return (
     <nav class="navigation-menu">
         <div className="navbar-container">
             <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '90%'}}/>
+            <Alerts error={error} />
             <ul className="list">
                 {
                   userLogged?.length > 0 ? <>
