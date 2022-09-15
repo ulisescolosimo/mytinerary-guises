@@ -1,12 +1,12 @@
 .Container-message {
-      width: 350px;
+      width: 200px;
       display: flex;
       border: 2px solid black;
       border-radius: 10px;
       justify-content: center;
       align-items: center;
       text-align: center;
-      width: 100%;
+      width: 60%;
       text-align: center;
       height: auto;
       flex-direction: column;
@@ -30,7 +30,7 @@
       margin-bottom: 15px;
       clear: both;
       display: block;
-      width: 100%;
+      width: 60%;
 }
 
 #msjAnimation:hover{
