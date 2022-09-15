@@ -29,10 +29,10 @@ const SignUpGoogle = () => {
             from: 'google'
         }
         await newUser(data)
+        handleNavigate()
+      setTimeout(() => {
         window.location.reload()
-    setTimeout(() => {
-      handleNavigate()
-    }, 1000)
+      }, 500)
 }
 
     useEffect(()=> {
