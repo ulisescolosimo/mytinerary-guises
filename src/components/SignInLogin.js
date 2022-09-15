@@ -4,6 +4,7 @@ import SignInGoogle from './SignInGoogle'
 import { useRef, } from 'react'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const SignInLogin = () => {
     const emailRef = useRef()
@@ -34,7 +35,6 @@ const SignInLogin = () => {
       setTimeout(() => {
         window.location.reload()
       }, 500)
-  }
 
   return (
     <div className='container-user'>

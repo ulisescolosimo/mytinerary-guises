@@ -4,6 +4,7 @@ import SignUpGoogle from './SignUpGoogle'
 import { useRef, useState } from 'react'
 import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export default function SignUp() {
 
@@ -42,12 +43,34 @@ export default function SignUp() {
         role: userLogged ? role : 'user',
       }
 
+      
       await newUser(data)
+      let timerInterval
+      Swal.fire({
+        title: 'Great, you are already registered!',
+        timer: 4000,
+        icon: 'success',
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 300)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
       formRef.current.reset()
       window.location.reload()
     setTimeout(() => {
       handleNavigate()
-    }, 1000)
+    }, 4000)
       }
 
   return (
