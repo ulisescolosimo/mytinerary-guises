@@ -40,7 +40,7 @@ export default function SignUp() {
         pass: passwordRef.current.value,
         email: emailRef.current.value,
         from: 'form',
-        role: userLogged ? role : 'user',
+        role: 'user',
       }
 
       
@@ -67,10 +67,10 @@ export default function SignUp() {
         }
       })
       formRef.current.reset()
-      window.location.reload()
-    setTimeout(() => {
       handleNavigate()
-    }, 4000)
+      setTimeout(() => {
+        window.location.reload()
+      }, 500)
       }
 
   return (
@@ -80,7 +80,7 @@ export default function SignUp() {
           <div className='container-textInfo'>
             <h3>Do you belong?</h3>
             <p style={{textAlign: 'center'}}>If you already have an account sign in here!</p>
-            <Link to='/auth/signin'><button style={{cursor: 'pointer'}}>SIGN IN</button></Link>
+            <Link to='/auth/signin'><button style={{cursor: 'pointer'}}>Sign In</button></Link>
           </div>
           <div className="img-signin">
             <img src='../assets/travelers.png' />
@@ -123,14 +123,6 @@ export default function SignUp() {
                       </svg>
                       <input type='text' required placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
-                    { userLogged?.length > 0 && userLogged?.[0].role == 'admin' ?
-                    <div className="roles-container">
-                        <p>Select user role:</p>
-                        <div className="topping">
-                          <input type="radio" onChange={e => setRole(e.target.value)} id="user" name="role" value="user" />User
-                          <input type="radio" onChange={e => setRole(e.target.value)} id="admin" name="role" value="admin" />Admin
-                        </div>
-                    </div> : null}
                     <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                      
               </form>
               <div>
