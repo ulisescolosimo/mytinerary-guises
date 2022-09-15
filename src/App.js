@@ -12,7 +12,6 @@ import MyTineraries from './pages/MyTineraries'
 import Edit from './pages/Edit'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
-import UnderConstruction from './pages/SignIn'
 
 function App() {
 
@@ -20,9 +19,9 @@ function App() {
   const [admin, setAdmin] = useState(false)
 
   useEffect(() =>{
-   JSON.parse(localStorage.getItem('user'))&&setLogged(true)
-  JSON.parse(localStorage.getItem('user'))?.role==='admin' && setAdmin(true) 
-
+    let user = JSON.parse(localStorage.getItem('userLogged'))
+    user?.length>0&&setLogged(true)
+    user?.[0].role=='admin' && setAdmin(true)
   }, [])
 
   return (
@@ -32,11 +31,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/auth/signup" element={logged ? <HomePage /> : <SignUp />} />
-          <Route path="/auth/signin" element={logged ? <HomePage /> : <SignIn />} />
+          <Route path="/auth/signup" element={logged ? <Error /> : <SignUp />} />
+          <Route path="/auth/signin" element={logged ? <Error /> : <SignIn />} />
           <Route path='/new_cities' element={admin ? <NewCities /> : <HomePage />}/>
           <Route path='/details/:id' element={<CityDetails />} />
-          <Route path='/edit' element={admin ? <Edit /> : <HomePage />} />
+          <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
           <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
           <Route path='*' element={<Error />}/>
         </Routes>
