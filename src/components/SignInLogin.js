@@ -31,11 +31,13 @@ const SignInLogin = () => {
   
       await newLogin(data)
       formRef.current.reset()
+
       handleNavigate()
       setTimeout(() => {
         window.location.reload()
       }, 500)
-
+    }
+    
   return (
     <div className='container-user'>
       <div className='container-signup'>
@@ -43,7 +45,7 @@ const SignInLogin = () => {
           <div className='container-textInfo'>
             <h3>Dont have an account?</h3>
             <p>If you need to register click here!</p>
-            <Link to='/auth/signup'><button style={{cursor: 'pointer'}}>SIGN UP</button></Link>
+            <Link to='/auth/signup'><button style={{cursor: 'pointer'}}>Sign Up</button></Link>
             <div className="img-signin">
               <img src='../assets/travelers.png' />
             </div>
