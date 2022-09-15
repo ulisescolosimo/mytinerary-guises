@@ -115,6 +115,17 @@
       color: white;
 }
 
+.roles-container{
+      color: white;
+      display: flex;
+      justify-content: center;
+}
+
+.roles-container p{
+      margin: 0 15px 0 0;
+
+}
+
 @media screen and (max-width: 875px){
       .container-input{
             width: 100%;

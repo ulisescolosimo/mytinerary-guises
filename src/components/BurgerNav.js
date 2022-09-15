@@ -55,14 +55,19 @@ const BurgerNav = (props) => {
                 <div style={{height: '100%', width: '120px' }}>
                     {user?.length > 0 ? 
                     <> 
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    <div className='div-burguer' style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         <p>{user[0].name}</p><img style={{height: '50px', width: '50px'}} src={user[0].photo} />
                     </div>
+
+                    <div className='div-burguer' style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        <button className='div-burguer' type="button" onClick={handleLogOut} style={{backgroundColor: 'black', borderRadius: '10px', margin: '10px' ,padding: '5px', color: 'white', cursor: 'pointer'}}>Log out</button>
+
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', zIndex: '1'}}>
                         <button type="button" onClick={handleLogOut}>Log out</button>
+
                     </div>
                     </> : 
-                    <div style={{height: '70px', width: '120px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    <div className='div-burguer' style={{height: '70px', width: '120px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         <div><Link to='/auth/signin'>Sign in</Link></div>
                         <div><Link to='/auth/signup'>Sign Up</Link></div>
                     </div>}

@@ -19,3 +19,6 @@ border: none;
     border-style: none;
 }
 
+.div-burguer{
+    z-index: 1;
+}

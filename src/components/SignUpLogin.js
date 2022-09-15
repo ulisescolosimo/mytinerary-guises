@@ -102,7 +102,7 @@ export default function SignUp() {
                     </label>
                     { userLogged?.length > 0 && userLogged?.[0].role == 'admin' ?
                     <div className="roles-container">
-                        Select user role:
+                        <p>Select user role:</p>
                         <div className="topping">
                           <input type="radio" onChange={e => setRole(e.target.value)} id="user" name="role" value="user" />User
                           <input type="radio" onChange={e => setRole(e.target.value)} id="admin" name="role" value="admin" />Admin

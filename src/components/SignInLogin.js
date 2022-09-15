@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
-import { useRef, useState } from 'react'
+import { useRef, } from 'react'
 import { useGetLoginMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -38,9 +38,12 @@ const SignInLogin = () => {
       await newLogin(data)
       formRef.current.reset()
       window.location.reload()
-      setTimeout(() => {
-        handleNavigate()
-      }, 1000)
+
+    setTimeout(() => {
+      handleNavigate()
+    }, 1000)
+
+
       }
 
   return (
