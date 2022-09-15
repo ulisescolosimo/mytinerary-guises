@@ -3,6 +3,7 @@ import { useState, useRef } from 'react'
 import Input from './Input'
 import '../styles/Edit.css'
 import { useGetAllCitiesQuery, useUpdateCityMutation } from '../features/citiesApi' 
+import Alerts from './Alerts'
 
 const EditCity = () => {
 
@@ -34,13 +35,28 @@ const formRef = useRef()
       value: e.target.value,
       id: e.target[e.target.selectedIndex].id
     })
-    console.log(selected);
   }
+
+  const [error, setError] = useState("");
 
   const [editCity] = useUpdateCityMutation()
 
+  const edited = async(editedCity) => {
+    await editCity(editedCity)
+      .unwrap()
+      .then((succes) => {
+      setError("City edited successfully")
+      formRef.current.reset()
+    })
+    .catch((error) => {
+      setError(error.data.message);
+    });
+}
+
   const handleSubmit = async(e) => {
+
     e.preventDefault()
+
     let editedCity = {
       country : countryRef.current.value,
       city: cityRef.current.value,
@@ -51,10 +67,12 @@ const formRef = useRef()
       id: selected.id
     }
 
-    await editCity(editedCity)
-    formRef.current.reset()
+    if(cityRef.current.value == "" || countryRef.current.value == "" || populationRef.current.value == "" || foundationRef.current.value == "" || descriptionRef.current.value == "" || imageRef.current.value == ""){
+      setError('Please fill all inputs')
+    }else{
+      edited(editedCity);
     }
-
+    }
 
   return (
     <div className='edit-container'>
@@ -79,6 +97,7 @@ const formRef = useRef()
             </div>
             <button className="btn-edit" style={{cursor: 'pointer', padding: '15px'}}>Edit!</button>
           </form>
+          <Alerts error={error} />
           </div>   
     </div>
   )

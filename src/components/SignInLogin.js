@@ -1,10 +1,10 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
-import { useRef, } from 'react'
+import { useRef, useState } from 'react'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import Alerts from './Alerts'
 
 const SignInLogin = () => {
     const emailRef = useRef()
@@ -12,12 +12,25 @@ const SignInLogin = () => {
     const formRef = useRef()
 
     const [newLogin] = useGetLoginMutation()
+    const [error, setError] = useState("");
 
     const navigate = useNavigate()
 
     const handleNavigate = () => {
       navigate('/')
     }
+
+    const signIn = async(data) => {
+      await newLogin(data)
+        .unwrap()
+        .then((succes) => {
+          setError("Sign in successfully")
+          formRef.current.reset()
+    })
+    .catch((error) => {
+      setError(error.data.message);
+    });
+}
 
     const handleForm = async(e) => {
 
@@ -28,14 +41,17 @@ const SignInLogin = () => {
         pass: passwordRef.current.value,
         from: 'form'
       }
-  
-      await newLogin(data)
-      formRef.current.reset()
 
-      handleNavigate()
-      setTimeout(() => {
+      if(emailRef.current.value == "" || passwordRef.current.value == ""){
+        setError('Please fill all credentials')
+      }else{
+        signIn(data);
+        setTimeout(() => {
+        handleNavigate()
         window.location.reload()
-      }, 500)
+      }, 3000)
+      }
+
     }
     
   return (
@@ -68,6 +84,7 @@ const SignInLogin = () => {
                     </label>
                     <button type="submit" style={{cursor: 'pointer'}}>Sign In</button>                                       
               </form>
+              <Alerts error={error} />
               <div>
                 <p style={{textAlign: 'center', color: 'white'}}>Or</p>
               </div>

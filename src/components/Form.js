@@ -1,7 +1,8 @@
-import {React, useRef} from 'react';
+import {React, useRef, useState} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
 import { useGetNewCityMutation } from '../features/citiesApi'
+import Alerts from './Alerts'
 
 const Form = () => {
 
@@ -13,13 +14,26 @@ const Form = () => {
     const descriptionRef = useRef()
     const formRef = useRef()
 
-    const [addNewPost, result] = useGetNewCityMutation()
+    const [addNewPost] = useGetNewCityMutation()
+    const [error, setError] = useState("");
+
+    const newCity = async(object) => {
+      await addNewPost(object)
+        .unwrap()
+        .then((succes) => {
+        setError("City created successfully")
+        formRef.current.reset()
+      })
+      .catch((error) => {
+        setError(error.data.message);
+      });
+  }
 
     const handleForm = async(e) => {
 
       e.preventDefault();
 
-      const object = {
+      let object = {
         country : countryRef.current.value,
         city: cityRef.current.value,
         population: populationRef.current.value,
@@ -28,10 +42,12 @@ const Form = () => {
         photo: imageRef.current.value
       }
 
-      await addNewPost(object);
-
-      formRef.current.reset()
-
+      if(cityRef.current.value == "" || countryRef.current.value == "" || populationRef.current.value == "" || foundationRef.current.value == "" || descriptionRef.current.value == "" || imageRef.current.value == ""){
+        setError('Please fill all inputs')
+        console.log(error);
+      }else{
+        newCity(object);
+      }
       }
 
       
@@ -50,13 +66,14 @@ const Form = () => {
           <div className='container-intro'>
             <div className='container-add'>
                 <h3> Add your city !</h3>
-                <img src='./assets/travel.png' />
+                <img src='./assets/travel.png' alt="travel" />
             </div>          
           </div>
           <div className="container-form">
           <form className="form-cities" onSubmit={handleForm} ref={formRef}>
                   {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
                   <button type="submit" className="button-form">Add city</button>
+                  <Alerts error={error} />
           </form>
           </div>   
       </div>  
