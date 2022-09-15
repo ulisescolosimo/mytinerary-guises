@@ -28,7 +28,7 @@ const BurgerNav = (props) => {
         id: user[0]._id,
       }
     await signOut(object)
-    localStorage.removeItem('userLogged')
+    await localStorage.removeItem('userLogged')
     handleNavigate()
     setTimeout(() => {
       window.location.reload()
