@@ -11,10 +11,6 @@ const Footer = () => {
   const { data : users } = useGetAllUsersQuery()
   let usersResponse = users?.response
   let userLogged = usersResponse?.filter(user => user.logged)
-  console.log(userLogged);
-  if(userLogged?.length > 0) {
-    localStorage.setItem('userLogged', JSON.stringify(userLogged))
-  }
 
   const pages = [
     {name: 'Home', to: '/'},
