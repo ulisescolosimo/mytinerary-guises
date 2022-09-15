@@ -4,6 +4,7 @@ import SignInGoogle from './SignInGoogle'
 import { useRef, useState } from 'react'
 import { useGetLoginMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const SignInLogin = () => {
     const emailRef = useRef()
@@ -43,13 +44,7 @@ const SignInLogin = () => {
       }, 1000)
       }
 
-      const { data : users } = useGetAllUsersQuery()
-      let usersResponse = users?.response
-      let userLogged = usersResponse?.filter(user => user.logged)
-      if(userLogged?.length > 0) {
-        localStorage.setItem('userLogged', JSON.stringify(userLogged))
-      }
-
+     
   return (
     <div className='container-user'>
       <div className='container-signup'>
