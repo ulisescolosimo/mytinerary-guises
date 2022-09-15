@@ -1,16 +1,45 @@
 import React from 'react'
 import '../styles/Footer.css'
 import {Link as LinkRouter} from 'react-router-dom'
+import { useGetAllUsersQuery } from '../features/usersAPI'
 
 const Footer = () => {
 
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
+  const { data : users } = useGetAllUsersQuery()
+  let usersResponse = users?.response
+  let userLogged = usersResponse?.filter(user => user.logged)
+  console.log(userLogged);
+  if(userLogged?.length > 0) {
+    localStorage.setItem('userLogged', JSON.stringify(userLogged))
+  }
+
+  const pages = [
+    {name: 'Home', to: '/'},
+    {name: 'Cities', to: '/cities'},
+  ]
+
+  const pagesUser = [
+    {name: 'Home', to: '/'},
+    {name: 'Cities', to: '/cities'},
+    {name: 'My Tineraries', to: '/mytineraries'}
+  ]
+
+  const pagesAdmin = [
+    {name: 'Home', to: '/'},
+    {name: 'Cities', to: '/cities'},
+    {name: 'New Cities', to: '/new_cities'},
+    {name: 'Edit Cities', to: '/edit'},
+    {name: 'My Tineraries', to: '/mytineraries'}
+  ]
+
+  const link = (page) => <div className="footer-nav"><LinkRouter className="items-link" to={page.to}>{page.name}</LinkRouter></div>
+
   return (
 <footer>
   <div className="footer">
-
     <div className="footer__addr">
     <li className="nav__item">
       <div className="nav__ul-icons">
@@ -41,21 +70,14 @@ const Footer = () => {
   <div class="container-img">
     <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
     <div className='container-footer-nav'>
-        <div className="footer-nav">
-        <LinkRouter className="items-link" to='/'>Home</LinkRouter>
-        </div>
-        <div className="footer-nav">
-        <LinkRouter className="items-link" to='/cities'>Cities</LinkRouter>
-        </div>
-        <div className="footer-nav">
-        <LinkRouter className="items-link" to='/new_cities'>New Cities</LinkRouter>
-        </div>
-        <div className="footer-nav">
-        <LinkRouter className="items-link" to='/edit'>Edit city</LinkRouter>
-        </div>
-        <div className="footer-nav">
-        <LinkRouter className="items-link" to='/mytineraries'>My Tineraries</LinkRouter>
-        </div>
+    {
+                  userLogged?.length > 0 ? <>
+                  { userLogged?.[0].role == 'admin' ?
+                  pagesAdmin.map(link) :
+                  pagesUser.map(link) } </> :
+                  pages.map(link)
+                
+                }
       </div>
   </div>
 
