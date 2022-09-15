@@ -92,11 +92,17 @@
       margin-bottom: 35px;
 }
 
+.container-registernewUser{
+      background-color:rgb(63, 3, 3);
+      margin: 20px;
+      padding: 30px;
+}
+
 .container-input{
       height: fit-content;
       background-color: white;
       border-radius: 55px;
-      width: 155%;
+      width: auto;
       height: min-content;
 }
 
@@ -123,7 +129,6 @@
 
 .roles-container p{
       margin: 0 15px 0 0;
-
 }
 
 @media screen and (max-width: 875px){
@@ -143,9 +148,6 @@
 }
 
 @media screen and (max-width: 680px){
-      .container-user{
-            align-items: flex-start;
-      }
       .container-signup{
             width: 100%;
             margin: 20px;
