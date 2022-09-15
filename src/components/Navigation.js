@@ -1,7 +1,8 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import BurgerButton from './BurgerButton'
 import { Link } from 'react-router-dom'
 import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
+import Alerts from './Alerts'
 
 const Navigation = (props) => {
 
@@ -11,8 +12,20 @@ const Navigation = (props) => {
   const open = props.open
 
   const [signOut] = useGetSignOutMutation()
+  const [error, setError] = useState("");
 
   let user = JSON.parse(localStorage.getItem('userLogged'))
+
+  const signedOut = async(object) => {
+    await signOut(object)
+        .unwrap()
+        .then((succes) => {
+          setError("Sign out successfully")
+    })
+    .catch((error) => {
+      setError(error.data.message);
+    });
+}
 
   const handleLogOut = async() => {
     try{
@@ -20,7 +33,8 @@ const Navigation = (props) => {
         logged: false,
         id: user[0]._id,
       }
-    await signOut(object)
+
+    await signedOut(object);
     localStorage.removeItem('userLogged')
     window.location.reload()
     }catch(error){
