@@ -13,6 +13,8 @@ import Edit from './pages/Edit'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import CreateUsers from './pages/CreateUsers'
+import NewItinerary from './pages/NewItinerary'
+import UnderConstruction from './pages/UnderConstruction'
 
 function App() {
 
@@ -39,6 +41,7 @@ function App() {
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
           <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
+          <Route path='/new_itinerary' element={<UnderConstruction />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
