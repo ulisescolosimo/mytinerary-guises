@@ -11,7 +11,7 @@ export default function SignUp() {
   const navigate = useNavigate()
 
   const handleNavigate = () => {
-    navigate('/signin')
+    navigate('/')
   }
 
     const [role, setRole] = useState()
@@ -43,29 +43,7 @@ export default function SignUp() {
         role: 'user',
       }
 
-      
       await newUser(data)
-      let timerInterval
-      Swal.fire({
-        title: 'Great, you are already registered!',
-        timer: 4000,
-        icon: 'success',
-        didOpen: () => {
-          Swal.showLoading()
-          const b = Swal.getHtmlContainer().querySelector('b')
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 300)
-        },
-        willClose: () => {
-          clearInterval(timerInterval)
-        }
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log('I was closed by the timer')
-        }
-      })
       formRef.current.reset()
       handleNavigate()
       setTimeout(() => {
