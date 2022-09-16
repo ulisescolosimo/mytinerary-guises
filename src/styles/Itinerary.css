@@ -76,7 +76,8 @@
 }
 
 .container-profile img{
-      width: 70%;
+      height: 150px !important;
+      max-width: 150px;
       border-radius: 50%;
       padding-top: 15px;
       margin-bottom: 10px;
