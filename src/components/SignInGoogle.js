@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Alerts from './Alerts'
 
 const SignInGoogle = () => {
@@ -16,17 +16,6 @@ const SignInGoogle = () => {
 
   const [error, setError] = useState("");
 
-  const signInGoogle = async(data) => {
-    await newLogin(data)
-      .unwrap()
-      .then((succes) => {
-        setError("Sign in successfully")
-  })
-  .catch((error) => {
-    setError(error.data.message);
-  });
-  }
-
   const [newLogin] = useGetLoginMutation()
 
     async function handleCredentialResponse (response) {
@@ -40,13 +29,14 @@ const SignInGoogle = () => {
         }
 
         if(!error){
-          signInGoogle(data);
-          setTimeout(() => {
-          handleNavigate()
-          window.location.reload()
-        }, 3000)
-        }
+          newLogin(data)
+          .then((succes) => {
+            let user = (succes?.data?.response?.user)
+            localStorage.setItem("userLogged", JSON.stringify(user))
+            handleNavigate()
+        })
     }
+  }
 
   useEffect(()=> {
     /* global google */

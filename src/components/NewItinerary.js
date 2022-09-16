@@ -6,17 +6,13 @@ import '../styles/newItinerary.css'
 
 function NewItinerary() {
 
-  let userLoggin
+  let user
 
   if(localStorage.length > 0) {
-      userLoggin =  JSON.parse(localStorage.getItem('userLogged'))
+    user =  JSON.parse(localStorage.getItem('userLogged'))
   } 
 
   const [createNewItinerary] = useCreateItineraryMutation()
-
-  const { data: users } = useGetAllUsersQuery();
-
-  let usersAll = users?.response;
 
   const { data: cities } = useGetAllCitiesQuery()
 
@@ -100,7 +96,7 @@ const formView = (e) => {
 
     let newitinerary = {
         name: nameItineraryRef.current.value,
-        user: userLoggin?.[0]._id,
+        user: user.id,
         city: cityId.id,
         price: priceItineraryRef.current.value,
         duration: durationItineraryRef.current.value,
@@ -118,16 +114,16 @@ const formView = (e) => {
     <div className="container-newitineraries">
       <div className="profile-card">
         <div className="prof-img">
-          <img src={userLoggin?.[0].photo} style={{borderRadius: '20px'}} alt="profile-img" />
+          <img src={user?.photo} style={{borderRadius: '20px'}} alt="profile-img" />
         </div>
         <div className="profile-data">
-          <h2>{userLoggin?.[0].name}</h2>
+          <h2>{user?.name}</h2>
           <p>
-            <strong>Email: </strong> {userLoggin?.[0].email}
+            <strong>Email: </strong> {user?.email}
           </p>
           <p>
             <strong>User id: </strong>
-            {userLoggin?.[0]._id}
+            {user?.id}
           </p>
         </div>
       </div>

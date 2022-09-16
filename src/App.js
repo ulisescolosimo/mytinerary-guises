@@ -21,10 +21,12 @@ function App() {
   const [logged, setLogged] = useState(false)
   const [admin, setAdmin] = useState(false)
 
+  let user
+
   useEffect(() =>{
-    let user = JSON.parse(localStorage.getItem('userLogged'))
-    user?.length>0&&setLogged(true)
-    user?.[0].role=='admin' && setAdmin(true)
+    user = JSON.parse(localStorage.getItem('userLogged'))
+    localStorage?.length>0&&setLogged(true)
+    user?.role=='admin' && setAdmin(true)
   }, [])
 
   return (
@@ -34,14 +36,14 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/auth/signup" element={logged ? <Error /> : <SignUp />} />
-          <Route path="/auth/signin" element={logged ? <Error /> : <SignIn />} />
+          <Route path="/auth/signup" element={user?.logged ? <Error /> : <SignUp />} />
+          <Route path="/auth/signin" element={user?.logged ? <Error /> : <SignIn />} />
           <Route path='/new_cities' element={admin ? <NewCities /> : <HomePage />}/>
           <Route path='/create' element={admin ? <CreateUsers /> : <HomePage />} />
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
-          <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
-          <Route path='/new_itinerary' element={logged ? <NewItinerary /> : <HomePage />} />
+          <Route path='/mytineraries' element={!logged ? <HomePage /> : <MyTineraries />} />
+          <Route path='/new_itinerary' element={!logged ? <HomePage /> : <NewItinerary />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>

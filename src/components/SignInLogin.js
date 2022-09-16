@@ -22,14 +22,13 @@ const SignInLogin = () => {
 
     const signIn = async(data) => {
       await newLogin(data)
-        .unwrap()
         .then((succes) => {
           setError("Sign in successfully")
           formRef.current.reset()
+          let user = (succes?.data?.response?.user)
+          localStorage.setItem("userLogged", JSON.stringify(user))
+          handleNavigate()
     })
-    .catch((error) => {
-      setError(error.data.message);
-    });
 }
 
     const handleForm = async(e) => {
@@ -44,17 +43,10 @@ const SignInLogin = () => {
 
       if(emailRef.current.value == "" || passwordRef.current.value == ""){
         setError('Please fill all credentials')
-      }else{
-        if(!error){
-          signIn(data);
-          setTimeout(() => {
-          handleNavigate()
-          window.location.reload()
-        }, 3000)
-        }
-      }
+      } else {
+        signIn(data)
     }
-    
+  }
   return (
     <div className='container-user'>
       <div className='container-signup'>

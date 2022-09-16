@@ -1,10 +1,9 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignUpGoogle from './SignUpGoogle'
-import { useRef, useState } from 'react'
-import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
+import { useRef } from 'react'
+import { useGetNewUserMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
 
 export default function SignUp() {
 
@@ -14,8 +13,6 @@ export default function SignUp() {
     navigate('/')
   }
 
-    const [role, setRole] = useState()
-
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -24,10 +21,6 @@ export default function SignUp() {
     const formRef = useRef()
 
     const [newUser] = useGetNewUserMutation()
-
-    const { data : users } = useGetAllUsersQuery()
-    let usersResponse = users?.response
-    let userLogged = usersResponse?.filter(user => user.logged)
 
     const handleForm = async(e) => {
 

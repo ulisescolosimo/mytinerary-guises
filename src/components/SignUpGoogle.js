@@ -11,10 +11,6 @@ const SignUpGoogle = () => {
 
     const navigate = useNavigate()
 
-    const handleNavigate = () => {
-      navigate('/sigin')
-    }
-
     async function handleCredentialResponse (response) {
 
         let userObject = jose.decodeJwt(response.credential)
@@ -28,12 +24,13 @@ const SignUpGoogle = () => {
             role: 'user',
             from: 'google'
         }
+
         await newUser(data)
-        handleNavigate()
-      setTimeout(() => {
-        window.location.reload()
-      }, 500)
-}
+            .then((res) => {
+                console.log(res.data.message);
+            })
+    }
+
 
     useEffect(()=> {
         /* global google */
