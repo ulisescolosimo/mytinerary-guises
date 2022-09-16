@@ -4,6 +4,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background: url('../../public/assets/bg-form.jpg');
 }
 
 .container-forms {
