@@ -11,6 +11,7 @@ const CityDetails = () => {
     let idCity = id
     let { data: cities } = useGetItinerariesCityQuery(idCity)
     let city = cities?.response
+    console.log(city);
 
   return (
     <>
