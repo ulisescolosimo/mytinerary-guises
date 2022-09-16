@@ -14,7 +14,8 @@ const Header = () => {
     const pagesUser = [
         {name: 'Home', to: '/'},
         {name: 'Cities', to: '/cities'},
-        {name: 'My Tineraries', to: '/mytineraries'}
+        {name: 'My Tineraries', to: '/mytineraries'},
+        {name: 'Create itinerary', to:'/new_itinerary'}
     ]
 
     const pagesAdmin = [
@@ -22,7 +23,9 @@ const Header = () => {
         {name: 'Cities', to: '/cities'},
         {name: 'New Cities', to: '/new_cities'},
         {name: 'Edit Cities', to: '/edit'},
-        {name: 'My Tineraries', to: '/mytineraries'}
+        {name: 'My Tineraries', to: '/mytineraries'},
+        {name: 'Create User', to:'/create'},
+        {name: 'Create itinerary', to:'/new_itinerary'}
     ]
 
     const link = (page) => <LinkRouter className="items" to={page.to}>{page.name}</LinkRouter>

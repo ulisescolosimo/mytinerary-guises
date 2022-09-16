@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Details.css'
 import { useParams } from "react-router-dom";
-import {Link as LinkRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { useGetCityIdQuery } from '../features/citiesApi'
 
 const Details = () => {
@@ -11,6 +11,11 @@ const Details = () => {
   let idCity = id
   let { data: cities } = useGetCityIdQuery(idCity)
   let city = cities?.response
+
+  let userLogged
+  if(localStorage.length > 0) {
+    userLogged =  JSON.parse(localStorage.getItem('userLogged'))
+  } 
 
   if(!city?.foundation) return null
 
@@ -34,9 +39,12 @@ const Details = () => {
           <p> <b>Population</b>: {city?.population}</p>
           <p> <b>Foundation</b>: {(city?.foundation).slice(0,4)} </p>
           <div className="come-back">
-          <LinkRouter to={`/cities/`}>
-            <button className="btn-comeback">Come back to cities</button>
-          </LinkRouter>
+          <Link to={`/cities/`}>
+            <button className="btn-comeback" style={{margin: '5px'}}>Come back to cities</button>
+          </Link>
+          { userLogged ? <Link to={`/new_itinerary`}>
+            <button className="btn-comeback" style={{margin: '5px'}}>Add new itinerary</button>
+          </Link> : null}
           </div>
         </div>
       </div>

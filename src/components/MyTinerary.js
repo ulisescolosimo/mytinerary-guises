@@ -4,28 +4,28 @@ import { useGetItinerariesUserQuery } from '../features/myTineraryAPI'
 
 const MyTinerary = () => {
 
-  let Roberto = "6319367fa84e9d66368eed97"
+    
+    let userLogged
+    if(localStorage.length > 0) {
+        userLogged =  JSON.parse(localStorage.getItem('userLogged'))
+    } 
+    
+    const { data: myitineraries } = useGetItinerariesUserQuery(userLogged?.[0]._id)
 
-  let Ulises = "6319367fa84e9d66368eed95"
+    let myitinerariesDetail = myitineraries?.response
 
-  let Guido = "6319367fa84e9d66368eed96"
-
-  const { data: myitineraries } = useGetItinerariesUserQuery(Guido)
-
-  let myitinerariesDetail = myitineraries?.response
-
-  return (
+return (
     <>
         <div className='container-mytiGeneral'>
             <div className='container-mytiTitle'>
-                <h2>My Tineraries</h2>
+                <h1 style={{textAlign: 'center'}}>My Tineraries</h1>
             </div>
             <div className="container-user-iti">
-                <p>{myitinerariesDetail?.[0].user?.name}</p>
-                <img src={myitinerariesDetail?.[0].user?.photo} />
+                <h2>{userLogged?.[0].name}</h2>
+                <img style={{borderRadius: '20px'}} src={userLogged?.[0].photo} />
             </div>
             <div className='container-mytinerary' >
-                { myitinerariesDetail ?
+                { myitinerariesDetail?.length > 0 ?
                     myitinerariesDetail?.map((item)=>{
                         return (<>
                             <div className="container-myti">

@@ -1,0 +1,63 @@
+.container-newitineraries{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    flex-direction: column;
+}
+
+.container-new-user {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.profile-creation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MyTineraries-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.new-user-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container-selects select {
+    margin: 10px;
+}
+
+.container-selects{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-form{
+    width: auto !important;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+}
+

@@ -32,12 +32,8 @@ const Itinerary = ({city}) => {
                               </div>
                         </div>
                         <div className='container-profile'>    
-                              <div className='container-user'>
-                                    <p className="name-user">{item?.user?.name}</p>  
-                              </div>
-                              <div className='imgProfile'>
-                                    <img className="img-user" style={{height: '100%', width: '100%'}} src={item?.user?.photo} />
-                              </div>
+                              <p className="name-user">{item?.user?.name}</p>  
+                              <img className="img-user" style={{height: '100%', width: '100%'}} src={item?.user?.photo} />
                         </div>
                   </div>
                   <Activities id={item._id} />

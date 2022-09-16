@@ -140,7 +140,7 @@ nav {
 }
 
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1040px){
 
     .icon.nav-icon-5{
         display: flex;

@@ -45,11 +45,13 @@ const SignInLogin = () => {
       if(emailRef.current.value == "" || passwordRef.current.value == ""){
         setError('Please fill all credentials')
       }else{
-        signIn(data);
-        setTimeout(() => {
-        handleNavigate()
-        window.location.reload()
-      }, 3000)
+        if(!error){
+          signIn(data);
+          setTimeout(() => {
+          handleNavigate()
+          window.location.reload()
+        }, 3000)
+        }
       }
     }
     

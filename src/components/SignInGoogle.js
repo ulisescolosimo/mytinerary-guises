@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
+import Alerts from './Alerts'
 
 const SignInGoogle = () => {
 
@@ -11,6 +12,19 @@ const SignInGoogle = () => {
 
   const handleNavigate = () => {
     navigate('/')
+  }
+
+  const [error, setError] = useState("");
+
+  const signInGoogle = async(data) => {
+    await newLogin(data)
+      .unwrap()
+      .then((succes) => {
+        setError("Sign in successfully")
+  })
+  .catch((error) => {
+    setError(error.data.message);
+  });
   }
 
   const [newLogin] = useGetLoginMutation()
@@ -24,11 +38,14 @@ const SignInGoogle = () => {
           pass: userObject.sub,
           from: 'google'
         }
-        await newLogin(data)
-        handleNavigate()
-      setTimeout(() => {
-        window.location.reload()
-      }, 500)
+
+        if(!error){
+          signInGoogle(data);
+          setTimeout(() => {
+          handleNavigate()
+          window.location.reload()
+        }, 3000)
+        }
     }
 
   useEffect(()=> {
@@ -45,10 +62,11 @@ const SignInGoogle = () => {
 }, [])
 
 return (
-<div>
+<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
     <div ref={buttonDiv}>
-        
+    
     </div>
+    <Alerts error={error} style={{width: 'auto'}} />
 </div>
 )
 }
