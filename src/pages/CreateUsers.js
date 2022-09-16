@@ -3,7 +3,6 @@ import '../styles/SignForm.css'
 import { useRef, useState } from 'react'
 import { useGetNewUserMutation, useGetAllUsersQuery } from '../features/usersAPI'
 import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
 
 const CreateUsers = () => {
     const navigate = useNavigate()
@@ -41,31 +40,7 @@ const CreateUsers = () => {
         role: role,
       }
 
-      
       await newUser(data)
-
-      let timerInterval
-      Swal.fire({
-        title: 'Great, you are already registered!',
-        timer: 4000,
-        icon: 'success',
-        didOpen: () => {
-          Swal.showLoading()
-          const b = Swal.getHtmlContainer().querySelector('b')
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 300)
-        },
-        willClose: () => {
-          clearInterval(timerInterval)
-        }
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log('I was closed by the timer')
-        }
-      })
-
 
       formRef.current.reset()
       handleNavigate()
@@ -121,7 +96,7 @@ const CreateUsers = () => {
                           <input type="radio" onChange={e => setRole(e.target.value)} id="admin" name="role" value="admin" />Admin
                         </div>
                     </div> : null}
-                    <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                      
+                    <button type="submit" style={{cursor: 'pointer'}}>Create</button>                                      
               </form>
             </div>
     </div>
