@@ -41,7 +41,7 @@ function App() {
           <Route path='/details/:id' element={<CityDetails />} />
           <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
           <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
-          <Route path='/new_itinerary' element={<UnderConstruction />} />
+          <Route path='/new_itinerary' element={logged ? <NewItinerary /> : <HomePage />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>
