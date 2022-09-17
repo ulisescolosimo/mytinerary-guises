@@ -3,6 +3,8 @@ import BurgerButton from './BurgerButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGetSignOutMutation} from '../features/usersAPI'
 import Alerts from './Alerts'
+import { useSelector, useDispatch } from 'react-redux';
+import { entry } from '../features/loggedSlice'
 
 const Navigation = (props) => {
 
@@ -11,7 +13,11 @@ const Navigation = (props) => {
   const pages = props.pages
   const open = props.open
 
+  const logged = useSelector((state) => state.logged.loggedState)
+  const dispatch = useDispatch()
+
   const [signOut] = useGetSignOutMutation()
+  
   const [error, setError] = useState("");
 
   const navigate = useNavigate()
@@ -20,18 +26,22 @@ const Navigation = (props) => {
     navigate('/')
   }
 
-  let user = JSON.parse(localStorage.getItem('userLogged'))
+  let user
+  if(localStorage.length > 0) {
+    user = JSON.parse(localStorage.getItem('userLogged'))
+  }
 
   const handleLogOut = async() => {
     try{
       let object = {
         logged: false,
-        id: user.id,
+        id: user?.id,
       }
 
-    await signOut(object);
+    await signOut(object)
     localStorage.removeItem('userLogged');
     setError("Sign out successfully")
+    dispatch(entry())
     handleNavigate()
     }catch(error){
       console.log(error);
@@ -64,7 +74,8 @@ const Navigation = (props) => {
                     {user? 
                     <> 
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <p>{user?.name}</p><img style={{height: '50px', width: '50px'}} src={user?.photo} />
+                        <p>{user?.name}</p>
+                        <img style={{height: '50px', width: '50px'}} src={user?.photo} />
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         <button type="button" onClick={handleLogOut} style={{backgroundColor: 'black', borderRadius: '10px', margin: '10px' ,padding: '5px', color: 'white', cursor: 'pointer'}}>Log out</button>

@@ -3,6 +3,8 @@ import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { useNavigate } from 'react-router-dom'
 import Alerts from './Alerts'
+import { useDispatch } from 'react-redux';
+import { loggedTrue } from '../features/loggedSlice'
 
 const SignInGoogle = () => {
 
@@ -13,6 +15,8 @@ const SignInGoogle = () => {
   const handleNavigate = () => {
     navigate('/')
   }
+
+  const dispatch = useDispatch()
 
   const [error, setError] = useState("");
 
@@ -33,6 +37,7 @@ const SignInGoogle = () => {
           .then((succes) => {
             let user = (succes?.data?.response?.user)
             localStorage.setItem("userLogged", JSON.stringify(user))
+            dispatch(loggedTrue())
             handleNavigate()
         })
     }

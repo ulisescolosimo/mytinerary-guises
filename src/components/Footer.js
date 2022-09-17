@@ -68,8 +68,8 @@ const Footer = () => {
     <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
     <div className='container-footer-nav'>
     {
-                  userLogged?.length > 0 ? <>
-                  { userLogged?.[0].role == 'admin' ?
+                  userLogged? <>
+                  { userLogged?.role == 'admin' ?
                   pagesAdmin.map(link) :
                   pagesUser.map(link) } </> :
                   pages.map(link)
