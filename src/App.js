@@ -14,20 +14,18 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import CreateUsers from './pages/CreateUsers'
 import NewItinerary from './pages/NewItinerary'
-import UnderConstruction from './pages/UnderConstruction'
+/* import UnderConstruction from './pages/UnderConstruction' */
+import { useSelector, useDispatch } from 'react-redux';
+import { loggedTrue } from './features/loggedSlice'
 
 function App() {
 
-  const [logged, setLogged] = useState(false)
-  const [admin, setAdmin] = useState(false)
-
-  let user
-
-  useEffect(() =>{
-    user = JSON.parse(localStorage.getItem('userLogged'))
-    localStorage?.length>0&&setLogged(true)
-    user?.role=='admin' && setAdmin(true)
-  }, [])
+    const logged = useSelector((state) => state.logged.loggedState)
+    const dispatch = useDispatch()
+    if (localStorage.length > 0) {
+      dispatch(loggedTrue())
+    }
+    const role = JSON.parse(localStorage.getItem('userLogged'))?.role
 
   return (
     <BrowserRouter>
@@ -36,14 +34,14 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/auth/signup" element={user?.logged ? <Error /> : <SignUp />} />
-          <Route path="/auth/signin" element={user?.logged ? <Error /> : <SignIn />} />
-          <Route path='/new_cities' element={admin ? <NewCities /> : <HomePage />}/>
-          <Route path='/create' element={admin ? <CreateUsers /> : <HomePage />} />
+          <Route path="/auth/signup" element={logged ? <Error /> : <SignUp />} />
+          <Route path="/auth/signin" element={logged ? <Error /> : <SignIn />} />
+          <Route path='/new_cities' element={role === "admin" ? <NewCities /> : <HomePage />}/>
+          <Route path='/create' element={role === "admin" ? <CreateUsers /> : <HomePage />} />
           <Route path='/details/:id' element={<CityDetails />} />
-          <Route path='/edit' element={admin&&logged ? <Edit /> : <HomePage />} />
-          <Route path='/mytineraries' element={!logged ? <HomePage /> : <MyTineraries />} />
-          <Route path='/new_itinerary' element={!logged ? <HomePage /> : <NewItinerary />} />
+          <Route path='/edit' element={role === "admin" ? <Edit /> : <HomePage />} />
+          <Route path='/mytineraries' element={logged ? <MyTineraries /> : <HomePage />} />
+          <Route path='/new_itinerary' element={logged ? <NewItinerary /> : <HomePage />} />
           <Route path='*' element={<Error />}/>
         </Routes>
       </WebsiteLayout>

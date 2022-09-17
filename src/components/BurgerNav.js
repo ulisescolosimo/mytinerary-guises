@@ -4,6 +4,8 @@ import BurgerButton from './BurgerButton'
 import {Link , useNavigate} from 'react-router-dom'
 import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
 import Alerts from './Alerts'
+import { useDispatch } from 'react-redux';
+import { entry } from '../features/loggedSlice'
 
 const BurgerNav = (props) => {
 
@@ -12,6 +14,8 @@ const BurgerNav = (props) => {
   const pages = props.pages
   const pagesUser = props.pagesUser
   const pagesAdmin = props.pagesAdmin
+
+  const dispatch = useDispatch()
   
   const navigate = useNavigate()
   
@@ -33,6 +37,7 @@ const BurgerNav = (props) => {
     await signOut(object)
     localStorage.removeItem('userLogged');
     setError("Sign out successfully")
+    dispatch(entry())
     handleNavigate();
     }catch(error){
       console.log(error);

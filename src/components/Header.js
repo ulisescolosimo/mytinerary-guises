@@ -42,6 +42,8 @@ const Header = () => {
         setClicked(!clicked)
     }
 
+    
+
 return (
     <header>
         <Navigation pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} link={link} open={open} click={handleClick} />
