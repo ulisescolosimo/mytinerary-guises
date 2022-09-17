@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import '../styles/BurgerNav.css'
 import BurgerButton from './BurgerButton'
 import {Link , useNavigate} from 'react-router-dom'
@@ -7,54 +7,38 @@ import Alerts from './Alerts'
 
 const BurgerNav = (props) => {
 
+  
   const open = props.open
   const pages = props.pages
   const pagesUser = props.pagesUser
   const pagesAdmin = props.pagesAdmin
-
+  
   const navigate = useNavigate()
-
+  
   const [signOut] = useGetSignOutMutation()
   const [error, setError] = useState()
-
-  let user = JSON.parse(localStorage.getItem('userLogged'))
-
+  
   const handleNavigate = () => {
     navigate('/')
   }
-
-  const signedOut = async(object) => {
-    await signOut(object)
-    localStorage.removeItem('userLogged')
-        .unwrap()
-        .then((succes) => {
-          setError("Sign out successfully")
-    })
-    .catch((error) => {
-      setError(error.data.message);
-    });
-}
-
-  const handleLogOut = () => {
+  
+  let user = JSON.parse(localStorage.getItem('userLogged'))
+  
+  const handleLogOut = async() => {
     try{
       let object = {
         logged: false,
-        id: user[0]._id,
+        id: user.id,
       }
-
-    signedOut(object)
+    await signOut(object)
+    localStorage.removeItem('userLogged');
     setError("Sign out successfully")
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000)
+    handleNavigate();
     }catch(error){
       console.log(error);
     }
   }
 
-  const { data : users } = useGetAllUsersQuery()
-  let usersResponse = users?.response
-  let userLogged = usersResponse?.filter(user => user.logged)
 
   const link = (page) => <div className="footer-nav"><Link className="items-link" to={page.to}>{page.name}</Link></div>
 
@@ -69,8 +53,8 @@ const BurgerNav = (props) => {
       <Alerts error={error} />
             {props.clicked ? <div className='Hamburguer-logs'>
             {
-                  userLogged?.length > 0 ? <>
-                  { userLogged?.[0].role == 'admin' ?
+                  user? <>
+                  { user?.role == 'admin' ?
                   pagesAdmin.map(link) :
                   pagesUser.map(link) } </> :
                   pages.map(link)
@@ -83,11 +67,11 @@ const BurgerNav = (props) => {
 <div className='container-log-2'>
 { open ?
                 <div style={{height: '100%', width: '120px' }}>
-                    {userLogged?.length > 0 ? 
+                    {user?
                     <> 
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                        <label style={{color: 'white'}}>{userLogged?.[0].name}</label>
-                        <img style={{height: '50px', width: '50px', margin: '5px'}} src={userLogged?.[0].photo} />
+                        <label style={{color: 'white'}}>{user?.name}</label>
+                        <img style={{height: '50px', width: '50px', margin: '5px'}} src={user?.photo} />
                         <button type="button" style={{margin: '5px', backgroundColor: 'white', padding: '5px', borderRadius: '5px'}} onClick={handleLogOut}>Log out</button>
                     </div>
                     </> : 

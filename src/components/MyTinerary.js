@@ -5,12 +5,12 @@ import { useGetItinerariesUserQuery } from '../features/myTineraryAPI'
 const MyTinerary = () => {
 
     
-    let userLogged
+    let user
     if(localStorage.length > 0) {
-        userLogged =  JSON.parse(localStorage.getItem('userLogged'))
+        user =  JSON.parse(localStorage.getItem('userLogged'))
     } 
     
-    const { data: myitineraries } = useGetItinerariesUserQuery(userLogged?.[0]._id)
+    const { data: myitineraries } = useGetItinerariesUserQuery(user?._id)
 
     let myitinerariesDetail = myitineraries?.response
 
@@ -21,8 +21,8 @@ return (
                 <h1 style={{textAlign: 'center'}}>My Tineraries</h1>
             </div>
             <div className="container-user-iti">
-                <h2>{userLogged?.[0].name}</h2>
-                <img style={{borderRadius: '20px'}} src={userLogged?.[0].photo} />
+                <h2>{user?.name}</h2>
+                <img style={{borderRadius: '20px'}} src={user?.photo} />
             </div>
             <div className='container-mytinerary' >
                 { myitinerariesDetail?.length > 0 ?
