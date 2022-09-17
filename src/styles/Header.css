@@ -63,6 +63,7 @@ nav {
     margin-right: 1rem;
     border-radius: .5rem;
     border: 1px solid black;
+    z-index: 1;
 }
 
 .profile-Select ul {
@@ -119,6 +120,7 @@ nav {
         width: 100%;
         background-color: black !;
     }
+
     nav {
         height: auto;
         padding-bottom: .5rem;
@@ -138,10 +140,14 @@ nav {
 }
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1040px){
 
     .icon.nav-icon-5{
         display: flex;
+    }
+
+    .items {
+        padding-right: 0px;
     }
 
     .navigation-menu{

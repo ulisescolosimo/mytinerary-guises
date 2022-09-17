@@ -3,6 +3,7 @@ import { useState, useRef } from 'react'
 import Input from './Input'
 import '../styles/Edit.css'
 import { useGetAllCitiesQuery, useUpdateCityMutation } from '../features/citiesApi' 
+import Alerts from './Alerts'
 
 const EditCity = () => {
 
@@ -36,10 +37,26 @@ const formRef = useRef()
     })
   }
 
+  const [error, setError] = useState("");
+
   const [editCity] = useUpdateCityMutation()
 
+  const edited = async(editedCity) => {
+    await editCity(editedCity)
+      .unwrap()
+      .then((succes) => {
+      setError("City edited successfully")
+      formRef.current.reset()
+    })
+    .catch((error) => {
+      setError(error.data.message);
+    });
+}
+
   const handleSubmit = async(e) => {
+
     e.preventDefault()
+
     let editedCity = {
       country : countryRef.current.value,
       city: cityRef.current.value,
@@ -50,10 +67,12 @@ const formRef = useRef()
       id: selected.id
     }
 
-    await editCity(editedCity)
-    formRef.current.reset()
+    if(cityRef.current.value == "" || countryRef.current.value == "" || populationRef.current.value == "" || foundationRef.current.value == "" || descriptionRef.current.value == "" || imageRef.current.value == ""){
+      setError('Please fill all inputs')
+    }else{
+      edited(editedCity);
     }
-
+    }
 
   return (
     <div className='edit-container'>
@@ -65,7 +84,7 @@ const formRef = useRef()
           </div>
           <div className="form-edit-container">
           <form className="edit-form-cities" onSubmit={handleSubmit} ref={formRef}>
-            <select onChange={handleSelected}>
+            <select className="select-form" onChange={handleSelected}>
                 <option disabled>Select city</option>
                 {items?.response.map(item => 
                         <option value={item.city} id={item._id}>{item.city}</option>
@@ -76,8 +95,9 @@ const formRef = useRef()
                             <Input myRef={item.ref} name={item.name} typeText={item.typeText} />
                         ))}
             </div>
-            <button className="btn-edit">Editar!</button>
+            <button className="btn-edit" style={{cursor: 'pointer', padding: '15px'}}>Edit!</button>
           </form>
+          <Alerts error={error} />
           </div>   
     </div>
   )

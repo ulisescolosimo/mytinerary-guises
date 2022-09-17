@@ -1,0 +1,38 @@
+.Container-message {
+      width: 200px;
+      display: flex;
+      border: 2px solid black;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 60%;
+      text-align: center;
+      height: auto;
+      flex-direction: column;
+      margin-top: 5px;
+}
+
+.Container-message p {
+      color: white;
+      font-size: 1.5rem;
+}
+
+#msjAnimation{
+      color: white;
+      animation: tiendaNew 2.72s ease infinite;
+      transform-origin: 50% 50%;
+      -webkit-transition: 0.5s ease-out;
+      -moz-transition: 0.5s ease-out;
+      -o-transition: 0.5s ease-out;
+      transition: 0.5s ease-out;
+      text-align: center;
+      margin-bottom: 15px;
+      clear: both;
+      display: block;
+      width: 60%;
+}
+
+#msjAnimation:hover{
+      color: black;
+}
