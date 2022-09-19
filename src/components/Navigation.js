@@ -3,7 +3,7 @@ import BurgerButton from './BurgerButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGetSignOutMutation} from '../features/usersAPI'
 import Alerts from './Alerts'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { entry } from '../features/loggedSlice'
 
 const Navigation = (props) => {
@@ -13,7 +13,6 @@ const Navigation = (props) => {
   const pages = props.pages
   const open = props.open
 
-  const logged = useSelector((state) => state.logged.loggedState)
   const dispatch = useDispatch()
 
   const [signOut] = useGetSignOutMutation()
@@ -39,8 +38,8 @@ const Navigation = (props) => {
       }
 
     await signOut(object)
+    setError("Sign out successfully");
     localStorage.removeItem('userLogged');
-    setError("Sign out successfully")
     dispatch(entry())
     handleNavigate()
     }catch(error){
