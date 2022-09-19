@@ -10,9 +10,11 @@ const MyTinerary = () => {
         user =  JSON.parse(localStorage.getItem('userLogged'))
     } 
     
-    const { data: myitineraries } = useGetItinerariesUserQuery(user?._id)
+    const { data: myitineraries } = useGetItinerariesUserQuery(user?.id)
 
     let myitinerariesDetail = myitineraries?.response
+
+    console.log(user);
 
 return (
     <>
@@ -28,7 +30,7 @@ return (
                 { myitinerariesDetail?.length > 0 ?
                     myitinerariesDetail?.map((item)=>{
                         return (<>
-                            <div className="container-myti">
+                            <div className="container-myti" style={{width: '550px', height:'300px'}}>
                                     <div className='itinerary-div-p myItineraries-text' >
                                         <h3 className="Itinerary-p"> {item.name} </h3>
                                         <div className='text-itinerary'>
@@ -37,7 +39,7 @@ return (
                                         <p className="Itinerary-p">  {item.likes}  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                     </svg> </p>
-                                        <div className='container-tags'>
+                                        <div className='container-tags' style={{display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:"center"}}>
                                             {item?.tags?.map((item) => <span className="tags">{item}</span>)}
                                         </div>
                                     </div>
