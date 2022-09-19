@@ -4,8 +4,6 @@ import {Link as LinkRouter} from 'react-router-dom'
 
 const CitiesCards = ({cities}) => { 
 
-  console.log(cities);
-
   return (
     <div className="container-cards">
         {cities?.response.length !== 0 ? cities?.response.map((item) => 

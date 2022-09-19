@@ -8,9 +8,7 @@ const Footer = () => {
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-  const { data : users } = useGetAllUsersQuery()
-  let usersResponse = users?.response
-  let userLogged = usersResponse?.filter(user => user.logged)
+  let userLogged = JSON.parse(localStorage.getItem('userLogged'))
 
   const pages = [
     {name: 'Home', to: '/'},
@@ -70,8 +68,8 @@ const Footer = () => {
     <img src="/logo-header.jpg" style={{height: "100px", borderRadius: "20px"}}/>
     <div className='container-footer-nav'>
     {
-                  userLogged?.length > 0 ? <>
-                  { userLogged?.[0].role == 'admin' ?
+                  userLogged? <>
+                  { userLogged?.role == 'admin' ?
                   pagesAdmin.map(link) :
                   pagesUser.map(link) } </> :
                   pages.map(link)

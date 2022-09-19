@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Alerts from './Alerts'
+import { useDispatch } from 'react-redux';
+import { loggedTrue } from '../features/loggedSlice'
 
 const SignInGoogle = () => {
 
@@ -14,18 +16,9 @@ const SignInGoogle = () => {
     navigate('/')
   }
 
-  const [error, setError] = useState("");
+  const dispatch = useDispatch()
 
-  const signInGoogle = async(data) => {
-    await newLogin(data)
-      .unwrap()
-      .then((succes) => {
-        setError("Sign in successfully")
-  })
-  .catch((error) => {
-    setError(error.data.message);
-  });
-  }
+  const [error, setError] = useState("");
 
   const [newLogin] = useGetLoginMutation()
 
@@ -40,13 +33,15 @@ const SignInGoogle = () => {
         }
 
         if(!error){
-          signInGoogle(data);
-          setTimeout(() => {
-          handleNavigate()
-          window.location.reload()
-        }, 3000)
-        }
+          newLogin(data)
+          .then((succes) => {
+            let user = (succes?.data?.response?.user)
+            localStorage.setItem("userLogged", JSON.stringify(user))
+            dispatch(loggedTrue())
+            handleNavigate()
+        })
     }
+  }
 
   useEffect(()=> {
     /* global google */

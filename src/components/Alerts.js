@@ -10,7 +10,7 @@ function Alerts({ error }) {
 
     setTimeout( () => {
         setMsj("")
-    }, 4500)
+    }, 3000)
 
   return (
     <>
