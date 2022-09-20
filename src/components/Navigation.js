@@ -41,7 +41,9 @@ const Navigation = (props) => {
     setError("Sign out successfully");
     localStorage.removeItem('userLogged');
     dispatch(entry())
-    handleNavigate()
+    setTimeout(() =>{
+      handleNavigate()
+    }, 3000)
     }catch(error){
       console.log(error);
     }
@@ -52,7 +54,7 @@ const Navigation = (props) => {
     <nav class="navigation-menu">
         <div className="navbar-container">
             <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '90%'}}/>
-            <Alerts error={error} />
+            {error ? <Alerts error={error} /> : null}
             <ul className="list">
                 {
                   user? <>
