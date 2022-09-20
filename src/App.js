@@ -22,7 +22,7 @@ function App() {
 
     const logged = useSelector((state) => state.logged.loggedState)
     const dispatch = useDispatch()
-    if (localStorage.length > 0) {
+    if (localStorage.getItem('userLogged')) {
       dispatch(loggedTrue())
     }
     const role = JSON.parse(localStorage.getItem('userLogged'))?.role
