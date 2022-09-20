@@ -32,15 +32,14 @@ const SignInGoogle = () => {
           from: 'google'
         }
 
-        if(!error){
           newLogin(data)
           .then((succes) => {
             let user = (succes?.data?.response?.user)
+            setError("Logged in successfully")
             localStorage.setItem("userLogged", JSON.stringify(user))
             dispatch(loggedTrue())
             handleNavigate()
         })
-    }
   }
 
   useEffect(()=> {
@@ -61,7 +60,6 @@ return (
     <div ref={buttonDiv}>
     
     </div>
-    <Alerts error={error} style={{width: 'auto'}} />
 </div>
 )
 }

@@ -14,8 +14,6 @@ const MyTinerary = () => {
 
     let myitinerariesDetail = myitineraries?.response
 
-    console.log(user);
-
 return (
     <>
         <div className='container-mytiGeneral'>
