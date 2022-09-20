@@ -41,9 +41,7 @@ const Navigation = (props) => {
     setError("Sign out successfully");
     localStorage.removeItem('userLogged');
     dispatch(entry())
-    setTimeout(() =>{
-      handleNavigate()
-    }, 3000)
+    handleNavigate()
     }catch(error){
       console.log(error);
     }
