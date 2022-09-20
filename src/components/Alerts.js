@@ -6,11 +6,10 @@ function Alerts({ error }) {
 
     useEffect(() => {
         setMsj(error)
+        setTimeout( () => {
+          setMsj("")
+      }, 3000)
     }, [error])
-
-    setTimeout( () => {
-        setMsj("")
-    }, 3000)
 
   return (
     <>
