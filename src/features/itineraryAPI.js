@@ -37,8 +37,14 @@ export const itineraryAPI = createApi({
                 method: 'GET'
             })
         }),
+        getItis: builder.mutation({
+            query: (id) => ({
+                url: `itineraries/?city=${id}`,
+                method: 'GET'
+            })
+        }),
     })
 })
 
 export default itineraryAPI
-export const { useGetItinerariesCityQuery, useGetItinerariesUserQuery, useCreateItineraryMutation, useLikeOrDislikeMutation, useGetDetailsMutation } = itineraryAPI
+export const { useGetItinerariesCityQuery ,useGetItinerariesUserQuery, useCreateItineraryMutation, useLikeOrDislikeMutation, useGetDetailsMutation, useGetItisMutation } = itineraryAPI
