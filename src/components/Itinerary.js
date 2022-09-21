@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import '../styles/Itinerary.css'
 import Activities from '../components/Activities'
-import Comments from '../components/Comments'
+import DisplayComments from './DisplayComments'
 import { useLikeOrDislikeMutation, useGetItisMutation } from '../features/itineraryAPI'
 
 const Itinerary = () => {
@@ -27,7 +27,6 @@ const Itinerary = () => {
                   .then((res)=>{
                         if (res.data?.success) {
                               setData(res.data.response)
-                              setReload(!reload)
                         } else {
                         console.log(res.error)
                         }
@@ -36,8 +35,9 @@ const Itinerary = () => {
 
       async function like(event) {
             await likeOrDislike(event.target.id)
-            console.log("Click");
-            console.log(city);
+                  .then((res)=>{
+                        setReload(!reload)
+                  })
       }
 
 
@@ -89,7 +89,7 @@ const Itinerary = () => {
                         </div>
                   </div>
                   <Activities id={item?._id} />
-                  <Comments/>
+                  <DisplayComments idIti={item?._id} />
                   </>
                   ))}                          
             </div>
