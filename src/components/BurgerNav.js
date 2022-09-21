@@ -51,7 +51,7 @@ const BurgerNav = (props) => {
     <nav className="HamburguerMenu-nav">
       <div className="HamburguerMenu">
       <div className="navbar-container-burger">
-            <img className="nav-bar-logo" src="../../public/logo-header.jpg" style={{height: '100%'}}/>
+            <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '100%'}}/>
             <BurgerButton handleBurger = {props.handleBurger} />
       </div>
       </div>
