@@ -89,7 +89,7 @@ const Itinerary = () => {
                         </div>
                   </div>
                   <Activities id={item?._id} />
-                  <DisplayComments idIti={item?._id} />
+                  <DisplayComments id={item._id} />
                   </>
                   ))}                          
             </div>
