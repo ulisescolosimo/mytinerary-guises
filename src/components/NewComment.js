@@ -2,7 +2,6 @@ import {React, useRef, useState } from 'react'
 import { useDispatch } from "react-redux";
 import { useGetNewCommentMutation} from '../features/commentsAPI'
 import { refresh } from '../features/refreshSlice'
-import ReactMarkdown from 'react-markdown';
 import '../styles/NewComment.css'
 
 const NewComment = ({id}) => {
