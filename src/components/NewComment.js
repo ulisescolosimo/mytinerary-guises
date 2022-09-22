@@ -1,33 +1,22 @@
-import {React, useRef, useState, useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux";
-import { useGetCommentsQuery, useGetNewCommentMutation, useDeleteCommentMutation, useModifyCommentMutation} from '../features/commentsAPI'
+import {React, useRef, useState } from 'react'
+import { useDispatch } from "react-redux";
+import { useGetNewCommentMutation} from '../features/commentsAPI'
+import { refresh } from '../features/refreshSlice'
+import ReactMarkdown from 'react-markdown';
+import '../styles/NewComment.css'
 
-const NewComment = ({id, refresh}) => {
+const NewComment = ({id}) => {
 
     let itineraryId = id
+
     const dispatch = useDispatch()
 
     let user = JSON.parse(localStorage.getItem('userLogged'));
 
-    const inputRef = useRef()
-    const commentRef = useRef()
-
-    console.log(refresh);
-
     const [newCommentary] = useGetNewCommentMutation()
 
-    const newComment = async(commentary) => {
-        await newCommentary(commentary)
-        .then((success) => {
-            commentRef.current.reset()
-            console.log(success);
-            console.log(dispatch(refresh())); 
-            console.log(refresh);
-        })
-        .catch((error) => {
-            console.log(error?.data);
-        });
-    }
+    const inputRef = useRef()
+    const commentRef = useRef()
 
     const handleComment = async(e) => {
 
@@ -38,10 +27,19 @@ const NewComment = ({id, refresh}) => {
             itinerary: itineraryId,
             user: user.id
         }
-        await newComment(commentary);
+
+        console.log(commentary);
+        await newCommentary(commentary);
+        commentRef.current.reset()
+        dispatch(refresh())
     }
 
+
 return (
+    /* <form className="input-comments" onSubmit={handleComment} style={{display:'flex',alignItems:'center'}} ref={commentRef}>
+        <input ref={inputRef} />
+        <button type="submit">Enviar</button>
+    </form> */
     <form className="input-comments" onSubmit={handleComment} style={{display:'flex',alignItems:'center'}} ref={commentRef}>
         <input ref={inputRef} />
         <button type="submit">Enviar</button>
