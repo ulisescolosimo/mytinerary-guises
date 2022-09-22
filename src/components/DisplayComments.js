@@ -1,41 +1,55 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/Comments.css'
 import { useGetCommentsQuery, useGetNewCommentMutation, useDeleteCommentMutation, useModifyCommentMutation} from '../features/commentsAPI'
-import { useDispatch, useSelector } from "react-redux";
-import { loggedTrue } from "../features/loggedSlice";
+import { useSelector, useDispatch } from "react-redux";
+import NewComment from './NewComment';
 
 
 const DisplayComments = ({id}) => {
 
-  console.log(id);
+  let refresh = useSelector((state) => state.refresh.refreshState)
+  const dispatch = useDispatch()
 
-  const { data: comments, isSuccess } = useGetCommentsQuery(id);
+  const itineraryId = id /* id del itinerario */
 
-  let user = JSON.parse(localStorage.getItem('userLogged'));
-  console.log(user);
+  const { data: comments, refetch } = useGetCommentsQuery(id);
 
-  let commentsItinerary = comments?.response;
-    
   let info = comments?.response
 
-  console.log("Info", info);
-
-  console.log(commentsItinerary);
+  let user = JSON.parse(localStorage.getItem('userLogged'));
 
   const logged = useSelector((state) => state.logged.loggedState)
 
-    /* const [newComment] = useGetNewCommentMutation() */
+  const [open, setOpen] = useState(false)
+  const [edit, setEdit] = useState(false)
+  const [deleted, setDeleted] = useState(false)
 
-    /* const [modifyComment] = useModifyCommentMutation()
+  const [deleteComment] = useDeleteCommentMutation()
 
-    const [deleteComment] = useDeleteCommentMutation() */
+  const deletedComment = async(id) => {
+    await deleteComment(id)
+    .then((success) => {
+        setDeleted(!deleted)
+        console.log(success);
+    })
+    .catch((error) => {
+        console.log(error.data.message);
+    });
+}
 
-    const [open, setOpen] = useState(false)
+  const handleEdit = () =>{
+    setEdit(!edit)
+    console.log(edit);
+  }
 
-    const handleClick = () => {
-        setOpen(!open)
-    }
+  const handleClick = () => {
+    setOpen(!open)
+  }
+
+  useEffect(() => {
+    refetch()
+  }, [deleted, open, edit, refresh])
 
   return (
     <div className="container-comments">
@@ -44,16 +58,13 @@ const DisplayComments = ({id}) => {
                     {info.length > 0 ? (info?.map((info) => 
                     <div className="chat-p" style={{fontSize:'20px', width:'100%'}}>
                       <div style={{display:'flex',alignItems:'center', margin:'5px'}}>
-                        <img style={{width:'50px', height:'50px', borderRadius:'30px', margin:'5px'}} src={info?.user?.photo} />
-                        <span>{info?.user?.name}</span></div> <div style={{textAlign:'center'}}>{info?.comment}
-                        {(info?.user?._id == user?.id || user?.role == 'admin') ? <div><button>Eliminar</button>{info?.user?._id == user?.id ? <button>Editar</button> : null}</div> : null}
+                        <img style={{width:'50px', height:'50px', borderRadius:'30px', margin:'5px'}} src={info?.user?.photo} /><span>{info?.user?.name}</span></div> <div style={{textAlign:'center'}} id={info?._id}>{info?.comment}
+                        {(info?.user?._id == user?.id || user?.role == 'admin') ? <div><button onClick={()=>deletedComment(info?._id)}>Eliminar</button>{info?.user?._id == user?.id ? <button onClick={handleEdit}>Editar</button> : null}</div> : null}
                       </div>
                     </div>)) : <div className="nocomments" style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', textAlign:'center'}}>No comments yet</div>}
                 </div>
-                {logged ? <div className="input-comments" style={{display:'flex',alignItems:'center'}}>
-                  <input type="text" className="comments-input" />
-                  <button>Enviar</button>
-                </div> : <div style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', marginTop:''}}>If you want to comment, please login yourself</div>}
+                {logged ? 
+                  <NewComment id={itineraryId} refresh={refresh} /> : <div style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', marginTop:''}}>If you want to comment, please login yourself</div>}
         </div> : null}
         <button className="see-more" onClick={handleClick}>{open ? "See less" : "See more!" }</button>
     </div>

@@ -34,7 +34,7 @@ const SignInGoogle = () => {
             let user = succes?.data?.response?.user
             let token = succes?.data?.response?.token
             localStorage.setItem("userLogged", JSON.stringify(user))
-            localStorage.setItem("token", token)
+            localStorage.setItem("token", JSON.stringify(token))
             dispatch(loggedTrue())
             handleNavigate()
         })
@@ -63,3 +63,4 @@ return (
 }
 
 export default SignInGoogle
+

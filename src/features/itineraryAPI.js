@@ -28,7 +28,7 @@ export const itineraryAPI = createApi({
             query: (id) => ({
                 url: '/itineraries/like/'+id,
                 method: 'PATCH',
-                headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}
+                headers: {Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`}
             })
         }),
         getDetails: builder.mutation({
