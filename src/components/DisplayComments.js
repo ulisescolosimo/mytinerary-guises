@@ -15,9 +15,9 @@ const DisplayComments = ({id}) => {
 
   const { data: comments, refetch } = useGetCommentsQuery(id);
 
-  let user = JSON.parse(localStorage.getItem('userLogged'));
-  
   let info = comments?.response
+
+  let user = JSON.parse(localStorage.getItem('userLogged'));
 
   const logged = useSelector((state) => state.logged.loggedState)
 
