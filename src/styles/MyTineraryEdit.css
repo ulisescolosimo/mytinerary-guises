@@ -1,0 +1,30 @@
+.editItinerary-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+}
+.see-more{
+      width: 70%;
+      background-color: white;
+      border: 3px solid black;
+}
+
+.form-edit-container{
+      display: flex;
+      flex-direction: column;
+}
+
+.edit-form-itineraries{
+      background-color: black;
+      width: 100%;
+      border-radius: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+}
+
