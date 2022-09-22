@@ -10,8 +10,11 @@ export const commentsAPI =  createApi({
     }),
 
     endpoints: (builder) => ({
-        getComments: builder.query({
-            query: (id) => `/comments?itinerary=${id}`
+        getComments: builder.mutation({
+            query: (id) => ({
+                url:  `/comments?itinerary=${id}`,
+                method: 'GET',
+            }),
         }),
 
         getNewComment: builder.mutation({
@@ -26,10 +29,13 @@ export const commentsAPI =  createApi({
         }),
 
         modifyComment: builder.mutation({
-            query: ({id, ...rest}) => ({
+            query: ({id, ...comment}) => ({
                 url: `/comments/${id}`,
                 method: 'PATCH',
-                body: rest,
+                body: comment,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("token"))
+                }
             })
         }),
 
@@ -53,4 +59,4 @@ export const commentsAPI =  createApi({
 })
 
 export default commentsAPI
-export const { useGetCommentsQuery, useGetNewCommentMutation, useDeleteCommentMutation, useModifyCommentMutation} = commentsAPI
+export const { useGetCommentsMutation, useGetNewCommentMutation, useDeleteCommentMutation, useModifyCommentMutation} = commentsAPI
