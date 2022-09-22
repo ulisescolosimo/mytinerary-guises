@@ -31,7 +31,7 @@ const SignInLogin = () => {
           let token = succes?.data?.response?.token
           if(user != undefined){
             localStorage.setItem("userLogged", JSON.stringify(user))
-            localStorage.setItem("token", token)
+            localStorage.setItem("token", JSON.stringify(token))
             setError("Sign in successfully")
             dispatch(loggedTrue())
             formRef.current.reset()
