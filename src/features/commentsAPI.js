@@ -15,14 +15,14 @@ export const commentsAPI =  createApi({
         }),
 
         getNewComment: builder.mutation({
-            query(comment){
-                return{
-                        url: '/comments/',
-                        method: 'POST',
-                        body: comment,
+            query: (newComment) => ({
+                url: '/comments',
+                method: 'POST',
+                body: newComment,
+                headers: {
+                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("token"))
                 }
-            },
-            invalidatesTags: ['Post'],
+            })
         }),
 
         modifyComment: builder.mutation({
@@ -35,10 +35,20 @@ export const commentsAPI =  createApi({
 
         deleteComment: builder.mutation({
             query: (id) => ({
-            url: `/comments/${id}`,
-            method: 'DELETE'
+                url:  `/comments/${id}`,
+                method: 'DELETE',
+                headers: {Authorization: "Bearer " + JSON.parse(localStorage.getItem("token"))}
             })
-        })
+        }),
+        
+        editComment: builder.mutation({
+            query: (body) => ({
+                url:  `/comments/${body.id}`,
+                method: 'PATCH',
+                body: body,
+                headers: {Authorization: "Bearer " + JSON.parse(localStorage.getItem("token"))}
+            }),
+        }),
     })
 })
 
