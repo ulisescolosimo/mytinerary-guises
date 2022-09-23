@@ -4,6 +4,8 @@ import { useGetLoginMutation } from '../features/usersAPI'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { loggedTrue } from '../features/loggedSlice'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignInGoogle = () => {
 
@@ -14,6 +16,12 @@ const SignInGoogle = () => {
   const handleNavigate = () => {
     navigate('/')
   }
+
+  const showLoginMsg = (user) => {
+    toast.success(`Welcome ${user}!`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
 
   const dispatch = useDispatch()
 
@@ -36,6 +44,7 @@ const SignInGoogle = () => {
             localStorage.setItem("userLogged", JSON.stringify(user))
             localStorage.setItem("token", JSON.stringify(token))
             dispatch(loggedTrue())
+            showLoginMsg(user.name)
             handleNavigate()
         })
   }

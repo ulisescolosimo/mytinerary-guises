@@ -2,7 +2,8 @@ import {React, useRef, useState} from 'react';
 import Input from './Input'
 import '../styles/NewCities.css'
 import { useGetNewCityMutation } from '../features/citiesApi'
-import Alerts from './Alerts'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
 
@@ -15,16 +16,27 @@ const Form = () => {
     const formRef = useRef()
 
     const [addNewPost] = useGetNewCityMutation()
-    const [error, setError] = useState("");
+
+    const showAddNewCity = (msj) => {
+      toast.success(msj, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
+
+    const showErrorLogin = (msj) => {
+      toast.error(msj, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
 
     const newCity = async(object) => {
       await addNewPost(object)
         .then((succes) => {
-        setError("City created successfully")
-        formRef.current.reset()
+          showAddNewCity("City created successfully")
+          formRef.current.reset()
       })
       .catch((error) => {
-        setError(error.data.message);
+        showErrorLogin(error.data.message);
       });
   }
 
@@ -42,8 +54,7 @@ const Form = () => {
       }
 
       if(cityRef.current.value == "" || countryRef.current.value == "" || populationRef.current.value == "" || foundationRef.current.value == "" || descriptionRef.current.value == "" || imageRef.current.value == ""){
-        setError('Please fill all inputs')
-        console.log(error);
+        showErrorLogin('Please fill all inputs')
       }else{
         newCity(object);
       }
@@ -72,7 +83,6 @@ const Form = () => {
           <form className="form-cities" onSubmit={handleForm} ref={formRef}>
                   {inputsArray.map((item => <Input myRef={item.ref} name={item.name} typeText={item.typeText} />))}
                   <button type="submit" className="button-form">Add city</button>
-                  <Alerts error={error} />
           </form>
           </div>   
       </div>  

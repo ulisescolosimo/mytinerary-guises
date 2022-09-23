@@ -1,12 +1,13 @@
 import React from 'react'
 import '../styles/SignForm.css'
 import SignInGoogle from './SignInGoogle'
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { Link, useNavigate } from 'react-router-dom'
-import Alerts from './Alerts'
 import { useDispatch } from 'react-redux';
 import { loggedTrue } from '../features/loggedSlice'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignInLogin = () => {
     const emailRef = useRef()
@@ -14,13 +15,24 @@ const SignInLogin = () => {
     const formRef = useRef()
 
     const [newLogin] = useGetLoginMutation()
-    const [error, setError] = useState("");
 
     const navigate = useNavigate()
 
     const handleNavigate = () => {
       navigate('/')
     }
+
+    const showErrorLogin = (msj) => {
+      toast.error(msj, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
+
+    const showLoginMsg = (user) => {
+      toast.success(`Welcome ${user}!`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
 
     const dispatch = useDispatch()
   
@@ -32,12 +44,12 @@ const SignInLogin = () => {
           if(user != undefined){
             localStorage.setItem("userLogged", JSON.stringify(user))
             localStorage.setItem("token", JSON.stringify(token))
-            setError("Sign in successfully")
+            showLoginMsg(user?.name)
             dispatch(loggedTrue())
             formRef.current.reset()
             handleNavigate()
           }else{
-            setError("Email or password is invalid")
+            showErrorLogin('Email or password invalid')
           }
         })
         .catch((err) => {
@@ -56,7 +68,7 @@ const SignInLogin = () => {
       }
 
       if(emailRef.current.value == "" || passwordRef.current.value == ""){
-        setError('Please fill all credentials')
+        showErrorLogin('Please fill all credentials')
       } else {
         signIn(data)
     }
@@ -92,7 +104,6 @@ const SignInLogin = () => {
                     </label>
                     <button type="submit" style={{cursor: 'pointer'}}>Sign In</button>                                       
               </form>
-              {error.length>0 ? <Alerts error={error}/> : null }
               <div>
                 <p style={{textAlign: 'center', color: 'white'}}>Or</p>
               </div>

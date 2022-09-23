@@ -4,6 +4,8 @@ import '../styles/Itinerary.css'
 import Activities from '../components/Activities'
 import DisplayComments from './DisplayComments'
 import { useLikeOrDislikeMutation, useGetItisMutation } from '../features/itineraryAPI'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Itinerary = () => {
 
@@ -17,6 +19,19 @@ const Itinerary = () => {
 
       const [city,setData] = useState()
       const [reload,setReload] = useState(true)
+
+      const showLike = (like) => {
+            console.log(like);
+            if(like[0].includes('Itinerary-dislike')){
+            toast.success(`Item unliked :(`, {
+                  position: toast.POSITION.BOTTOM_RIGHT
+            });
+            } else {
+                  toast.success(`Item liked!`, {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                  });
+            }
+      };
 
       useEffect(()=>{
             getEvent()
@@ -34,9 +49,11 @@ const Itinerary = () => {
       }
 
       async function like(event) {
+            console.log(event.target.classList.value);
             await likeOrDislike(event.target.id)
                   .then((res)=>{
                         setReload(!reload)
+                        showLike(event.target.classList)
                   })
       }
 

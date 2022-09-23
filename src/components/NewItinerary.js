@@ -2,13 +2,12 @@ import { useCreateItineraryMutation } from '../features/itineraryAPI';
 import { useGetAllCitiesQuery } from '../features/citiesApi';
 import React, { useRef, useState } from 'react'
 import '../styles/newItinerary.css'
-import Alerts from './Alerts'
 import { refresh } from '../features/refreshSlice'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function NewItinerary() {
-
-  const [error, setError] = useState("");
 
   const dispatch = useDispatch()
 
@@ -17,6 +16,18 @@ function NewItinerary() {
   if(localStorage.length > 0) {
     user =  JSON.parse(localStorage.getItem('userLogged'))
   } 
+
+  const showAddItinerary = (msj) => {
+    toast.success(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
+
+  const showError = (msj) => {
+    toast.error(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
 
   const [createNewItinerary] = useCreateItineraryMutation()
 
@@ -99,12 +110,12 @@ const formView = (e) => {
         likes: []
     };
 
-    if(nameItineraryRef.current.value == "" || priceItineraryRef.current.value == "" || durationItineraryRef.current.value == "" || arrayTags.length == 0){
-      setError('Please fill all credentials')
+    if(nameItineraryRef.current.value == "" || priceItineraryRef.current.value == "" || durationItineraryRef.current.value == "" || arrayTags.length == 0 || cityId.id == 'default'){
+      showError('Please fill all credentials')
     } else {
       await createNewItinerary(newitinerary)
       .then((response) => {
-        setError('Itinerary created successfully')
+        showAddItinerary('Itinerary created successfully')
         formRef.current.reset()
       })
       dispatch(refresh())
@@ -135,7 +146,7 @@ const formView = (e) => {
 
               <div className="container-selects">
               <select onChange={handleSelectCity} className="btn-form">
-          <option>Select a city</option>
+          <option id='default'>Select a city</option>
 
           {allCities?.map((city) => {
             return (
@@ -150,7 +161,6 @@ const formView = (e) => {
               <input className="btn-formSumb" type="submit" value="Create!" />
           </div>
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%', marginBottom:'30px'}}>
-          <Alerts error={error} color={'black'} style={{margin:'20px'}} />
         </div>
         </form>
       </div>

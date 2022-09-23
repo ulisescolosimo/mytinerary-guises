@@ -1,15 +1,15 @@
-import {React, useState, useEffect} from 'react'
+import {React} from 'react'
 import '../styles/BurgerNav.css'
 import BurgerButton from './BurgerButton'
 import {Link , useNavigate} from 'react-router-dom'
-import { useGetSignOutMutation, useGetAllUsersQuery} from '../features/usersAPI'
-import Alerts from './Alerts'
+import { useGetSignOutMutation} from '../features/usersAPI'
 import { useDispatch } from 'react-redux';
 import { entry } from '../features/loggedSlice'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BurgerNav = (props) => {
 
-  
   const open = props.open
   const pages = props.pages
   const pagesUser = props.pagesUser
@@ -20,11 +20,16 @@ const BurgerNav = (props) => {
   const navigate = useNavigate()
   
   const [signOut] = useGetSignOutMutation()
-  const [error, setError] = useState()
   
   const handleNavigate = () => {
     navigate('/')
   }
+
+  const showSignOut = (msj) => {
+    toast.success(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
   
   let user = JSON.parse(localStorage.getItem('userLogged'))
   
@@ -35,8 +40,8 @@ const BurgerNav = (props) => {
         id: user.id,
       }
     await signOut(object)
+    showSignOut(`Goodbye ${user.name}`)
     localStorage.removeItem('userLogged');
-    setError("Sign out successfully")
     dispatch(entry())
     handleNavigate();
     }catch(error){
@@ -55,7 +60,6 @@ const BurgerNav = (props) => {
             <BurgerButton handleBurger = {props.handleBurger} />
       </div>
       </div>
-      <Alerts error={error} />
             {props.clicked ? <div className='Hamburguer-logs'>
             {
                   user? <>

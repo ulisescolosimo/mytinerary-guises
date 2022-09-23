@@ -3,28 +3,40 @@ import { useState, useRef } from 'react'
 import '../styles/MyTineraryEdit.css'
 import Input from './Input'
 import { useUpdateItineraryUserMutation, useGetItinerariesUserQuery } from '../features/myTineraryAPI' 
-import Alerts from './Alerts'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditItineraryUser = () => {
 
       let user 
       if(localStorage.length > 0) {
             user =  JSON.parse(localStorage.getItem('userLogged'))
-        } 
+      } 
 
-     
+      const showEditItinerary = (msj) => {
+            toast.success(msj, {
+            position: toast.POSITION.BOTTOM_RIGHT
+            });
+      };
+      
+      const showError = (msj) => {
+            toast.error(msj, {
+            position: toast.POSITION.BOTTOM_RIGHT
+            });
+      };
+
       const {data: items, refetch} = useGetItinerariesUserQuery(user?.id)
       const [open, setOpen] = useState(false)
       const [selected, setSelected] = useState({
             value: '',
             id: ''
-          })
+      })
 
       const nameRef = useRef()
       const priceRef = useRef()
       const durationRef = useRef()
       const formRef = useRef()
-     
+
       const inputsArray = [
             {name: "name", ref: nameRef, typeText:'text'},
             {name: "price", ref: priceRef, typeText:'text'},
@@ -33,7 +45,7 @@ const EditItineraryUser = () => {
 
       const handleClick = () => {
             setOpen(!open)
-          }
+      }
 
       const handleSelected = (e) => {
             setSelected({
@@ -42,20 +54,18 @@ const EditItineraryUser = () => {
             })
       }
 
-      const [error, setError] = useState("");
-
       const [editItineraryUser] = useUpdateItineraryUserMutation(user?.id)
-       
+      
       const edited = async(editedItineraryUser) => {
                   await editItineraryUser(editedItineraryUser)
                   .unwrap()
                   .then((succes) => {
-                  setError("Itinerary edited successfully")
+                        showEditItinerary("Itinerary edited successfully")
                   formRef.current.reset()
                   refetch()
             })
             .catch((error) => {
-                  setError(error.data.message);
+                  showError(error.data.message);
             });
       }
 
@@ -71,10 +81,10 @@ const EditItineraryUser = () => {
             }
 
             if(nameRef.current.value == "" || priceRef.current.value == "" || durationRef.current.value == ""){
-                  setError('Please fill all inputs')
-                }else{
+                  showError('Please fill all inputs')
+            }else{
                   edited(editedItineraryUser);
-                }
+            }
             }  
       return (
             <>
@@ -94,7 +104,6 @@ const EditItineraryUser = () => {
                                     ))}
                         </div>
                         <button className="btn-edit" style={{cursor: 'pointer', padding: '15px'}}>Edit !</button>
-                        <Alerts error={error} />
                   </form>                 
                   </div>   :null}      
                   <button className="see-more" onClick={handleClick}>{open ? "Go back" : "Edit your itinerary" }</button>      

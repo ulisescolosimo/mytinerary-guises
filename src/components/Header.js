@@ -3,6 +3,8 @@ import '../styles/Header.css'
 import {Link as LinkRouter} from 'react-router-dom'
 import BurgerNav from '../components/BurgerNav';
 import Navigation from './Navigation'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
 
@@ -46,6 +48,7 @@ const Header = () => {
 
 return (
     <header>
+        <ToastContainer />
         <Navigation pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} link={link} open={open} click={handleClick} />
         <BurgerNav pages={pages} pagesUser={pagesUser} pagesAdmin={pagesAdmin} handleBurger={handleBurger} open={open} link={link} clicked={clicked} click={handleClick} />
     </header>
