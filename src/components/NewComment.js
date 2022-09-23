@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useGetNewCommentMutation} from '../features/commentsAPI'
 import { refresh } from '../features/refreshSlice'
 import '../styles/NewComment.css'
-import Alerts from './Alerts'
 
 const NewComment = ({id}) => {
 
