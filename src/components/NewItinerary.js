@@ -112,23 +112,18 @@ const formView = (e) => {
 
   return (
     <div className="container-newitineraries">
-      <div className="profile-card">
-        <div className="prof-img">
-          <img src={user?.photo} style={{borderRadius: '20px'}} alt="profile-img" />
-        </div>
-        <div className="profile-data">
-          <h2>{user?.name}</h2>
-          <p>
-            <strong>Email: </strong> {user?.email}
-          </p>
-          <p>
-            <strong>User id: </strong>
-            {user?.id}
-          </p>
+      <div className='container-profileNew'>
+        <div className="profile-card">
+          <div className="prof-img">
+            <img src={user?.photo} style={{borderRadius: '20px'}} alt="profile-img" />
+          </div>
+          <div className="profile-data">
+            <h2>{user?.name}</h2>
+          </div>
         </div>
       </div>
       <div className="profile-creation">
-        <div className="MyTineraries-div">
+        <div className="MyTineraries-d iv">
           
         <form id="form-new-users" onSubmit={handleSubmit} ref={formRef}>
           <div className="container-new-user">
@@ -149,7 +144,7 @@ const formView = (e) => {
         </select>
         </div>
               <div className="new-user-input">{arrayForm.map(formView)}</div>
-              <input className="btn-form" type="submit" value="Submit" />
+              <input className="btn-formSumb" type="submit" value="Create !" />
           </div>
         </form>
       </div>
