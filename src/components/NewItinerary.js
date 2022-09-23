@@ -3,13 +3,17 @@ import { useGetAllCitiesQuery } from '../features/citiesApi';
 import React, { useRef, useState } from 'react'
 import '../styles/newItinerary.css'
 import Alerts from './Alerts'
+import { refresh } from '../features/refreshSlice'
+import { useDispatch, useSelector } from "react-redux";
 
 function NewItinerary() {
 
   const [error, setError] = useState("");
 
-  let user
+  const dispatch = useDispatch()
 
+  let user
+  
   if(localStorage.length > 0) {
     user =  JSON.parse(localStorage.getItem('userLogged'))
   } 
@@ -99,8 +103,11 @@ const formView = (e) => {
       setError('Please fill all credentials')
     } else {
       await createNewItinerary(newitinerary)
-      setError('Itinerary created successfully')
-      formRef.current.reset()
+      .then((response) => {
+        setError('Itinerary created successfully')
+        formRef.current.reset()
+      })
+      dispatch(refresh())
     }
 
 

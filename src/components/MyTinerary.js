@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import PatchItinerary from './PatchItinerary'
 import { useGetItinerariesUserQuery, useDeleteItineraryUserMutation } from '../features/myTineraryAPI'
 import Alerts from './Alerts'
+import { useSelector } from "react-redux";
 
 const MyTinerary = () => {
 
@@ -11,6 +12,8 @@ const MyTinerary = () => {
     if(localStorage.length > 0) {
         user =  JSON.parse(localStorage.getItem('userLogged'))
     } 
+
+    const refreshed = useSelector((state) => state.refresh.refreshState)
     
     const { data: myitineraries, refetch } = useGetItinerariesUserQuery(user?.id)
     const [deleted, setDeleted] = useState(false)
@@ -36,6 +39,10 @@ const MyTinerary = () => {
         setError('')
     }, 2000)
     }, [error])
+
+    useEffect(() => {
+        refetch()
+        }, [refreshed])
 
 return (
     <>
