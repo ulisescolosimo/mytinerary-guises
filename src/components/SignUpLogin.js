@@ -22,7 +22,6 @@ export default function SignUp() {
       await newUser(data)
         .then((succes) => {
           setError("Sign up successfully")
-          console.log(succes);
           formRef.current.reset()
         .catch(error => {console.log(error);})
     })

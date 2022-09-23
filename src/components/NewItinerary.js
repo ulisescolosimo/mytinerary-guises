@@ -1,10 +1,12 @@
-import { useGetAllUsersQuery } from '../features/usersAPI';
 import { useCreateItineraryMutation } from '../features/itineraryAPI';
 import { useGetAllCitiesQuery } from '../features/citiesApi';
 import React, { useRef, useState } from 'react'
 import '../styles/newItinerary.css'
+import Alerts from './Alerts'
 
 function NewItinerary() {
+
+  const [error, setError] = useState("");
 
   let user
 
@@ -26,7 +28,6 @@ function NewItinerary() {
   const nameItineraryRef = useRef()
   const priceItineraryRef = useRef()
   const durationItineraryRef = useRef()
-  const likesItineraryRef = useRef()
   const tagsItineraryRef = useRef()
   const formRef = useRef()
 
@@ -54,12 +55,6 @@ function NewItinerary() {
         name: "Tags",
         type: "text",
         value: tagsItineraryRef,
-    },
-    {
-        id: "_Likes",
-        name: "Likes",
-        type: "text",
-        value: likesItineraryRef,
     }
 ]
 
@@ -70,8 +65,6 @@ const handleSelectCity = (e) => {
     id: e.target[e.target.selectedIndex].id,
   });
 }
-
-  const arrayLikes = []
   const arrayTags = []
 
 const formView = (e) => {
@@ -90,8 +83,6 @@ const formView = (e) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-
-    arrayLikes.push(likesItineraryRef.current.value)
     arrayTags.push(tagsItineraryRef.current.value)
 
     let newitinerary = {
@@ -100,13 +91,18 @@ const formView = (e) => {
         city: cityId.id,
         price: priceItineraryRef.current.value,
         duration: durationItineraryRef.current.value,
-        likes: arrayLikes,
         tags: arrayTags,
+        likes: []
     };
 
-    await createNewItinerary(newitinerary)
+    if(nameItineraryRef.current.value == "" || priceItineraryRef.current.value == "" || durationItineraryRef.current.value == "" || arrayTags.length == 0){
+      setError('Please fill all credentials')
+    } else {
+      await createNewItinerary(newitinerary)
+      setError('Itinerary created successfully')
+      formRef.current.reset()
+    }
 
-    formRef.current.reset()
 
   }
 
@@ -144,8 +140,11 @@ const formView = (e) => {
         </select>
         </div>
               <div className="new-user-input">{arrayForm.map(formView)}</div>
-              <input className="btn-formSumb" type="submit" value="Create !" />
+              <input className="btn-formSumb" type="submit" value="Create!" />
           </div>
+        <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%', marginBottom:'30px'}}>
+          <Alerts error={error} color={'black'} style={{margin:'20px'}} />
+        </div>
         </form>
       </div>
     </div>
