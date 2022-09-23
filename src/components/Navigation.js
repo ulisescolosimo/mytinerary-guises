@@ -2,9 +2,10 @@ import { React, useState } from 'react'
 import BurgerButton from './BurgerButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGetSignOutMutation} from '../features/usersAPI'
-import Alerts from './Alerts'
 import { useDispatch } from 'react-redux';
 import { entry } from '../features/loggedSlice'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navigation = (props) => {
 
@@ -16,14 +17,18 @@ const Navigation = (props) => {
   const dispatch = useDispatch()
 
   const [signOut] = useGetSignOutMutation()
-  
-  const [error, setError] = useState("");
 
   const navigate = useNavigate()
 
   const handleNavigate = () => {
     navigate('/')
   }
+
+  const showLoginOut = (user) => {
+    toast.success(`Goodbye ${user}!`, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
 
   let user
   if(localStorage.length > 0) {
@@ -38,7 +43,7 @@ const Navigation = (props) => {
       }
 
     await signOut(object)
-    setError("Sign out successfully");
+    showLoginOut(user?.name)
     localStorage.removeItem('userLogged');
     dispatch(entry())
     handleNavigate()
@@ -52,7 +57,6 @@ const Navigation = (props) => {
     <nav class="navigation-menu">
         <div className="navbar-container">
             <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '90%'}}/>
-            {error ? <Alerts error={error} /> : null}
             <ul className="list">
                 {
                   user? <>

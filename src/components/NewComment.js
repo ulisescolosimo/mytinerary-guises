@@ -1,8 +1,10 @@
-import {React, useRef, useState } from 'react'
+import {React, useRef } from 'react'
 import { useDispatch } from "react-redux";
 import { useGetNewCommentMutation} from '../features/commentsAPI'
 import { refresh } from '../features/refreshSlice'
 import '../styles/NewComment.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewComment = ({id}) => {
 
@@ -11,6 +13,18 @@ const NewComment = ({id}) => {
     const dispatch = useDispatch()
 
     let user = JSON.parse(localStorage.getItem('userLogged'));
+
+    const showError = (msj) => {
+        toast.error(msj, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        });
+    };
+  
+    const showMsg = () => {
+        toast.success(`Commentary send!`, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        });
+    };
 
     const [newCommentary] = useGetNewCommentMutation()
 
@@ -27,9 +41,14 @@ const NewComment = ({id}) => {
             user: user.id
         }
 
-        await newCommentary(commentary);
-        commentRef.current.reset()
-        dispatch(refresh())
+        if(inputRef.current.value == ""){
+            showError('Please write a comment')
+        }else{
+            await newCommentary(commentary);
+            commentRef.current.reset()
+            dispatch(refresh())
+            showMsg()
+        }   
     }
 
 

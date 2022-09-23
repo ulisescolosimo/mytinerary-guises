@@ -3,7 +3,8 @@ import { useState, useRef } from 'react'
 import Input from './Input'
 import '../styles/Edit.css'
 import { useGetAllCitiesQuery, useUpdateCityMutation } from '../features/citiesApi' 
-import Alerts from './Alerts'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditCity = () => {
 
@@ -37,7 +38,17 @@ const formRef = useRef()
     })
   }
 
-  const [error, setError] = useState("");
+  const showEditedCity = (msj) => {
+    toast.success(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
+
+  const showErrorEditedCity = (msj) => {
+    toast.error(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
 
   const [editCity] = useUpdateCityMutation()
 
@@ -45,11 +56,11 @@ const formRef = useRef()
     await editCity(editedCity)
       .unwrap()
       .then((succes) => {
-      setError("City edited successfully")
-      formRef.current.reset()
+        showEditedCity("City edited successfully")
+        formRef.current.reset()
     })
     .catch((error) => {
-      setError(error.data.message);
+      showErrorEditedCity(error.data.message);
     });
 }
 
@@ -68,7 +79,7 @@ const formRef = useRef()
     }
 
     if(cityRef.current.value == "" || countryRef.current.value == "" || populationRef.current.value == "" || foundationRef.current.value == "" || descriptionRef.current.value == "" || imageRef.current.value == ""){
-      setError('Please fill all inputs')
+      showErrorEditedCity('Please fill all inputs')
     }else{
       edited(editedCity);
     }
@@ -97,7 +108,6 @@ const formRef = useRef()
             </div>
             <button className="btn-edit" style={{cursor: 'pointer', padding: '15px'}}>Edit!</button>
           </form>
-          <Alerts error={error} />
           </div>   
     </div>
   )

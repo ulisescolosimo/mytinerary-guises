@@ -3,11 +3,10 @@ import '../styles/SignForm.css'
 import SignUpGoogle from './SignUpGoogle'
 import { useGetNewUserMutation } from '../features/usersAPI'
 import { Link } from 'react-router-dom'
-import Alerts from './Alerts'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
-
-  const [error, setError] = useState("");
 
     const nameRef = useRef()
     const emailRef = useRef()
@@ -16,20 +15,28 @@ export default function SignUp() {
     const countryRef = useRef()
     const formRef = useRef()
 
+    const showErrorLogin = (msj) => {
+      toast.error(msj, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
+
+    const showLoginMsg = (user) => {
+      toast.success(`Welcome ${user}!`, {
+          position: toast.POSITION.BOTTOM_RIGHT
+      });
+    };
+
     const [newUser] = useGetNewUserMutation()
 
     const signUp = async(data) => {
       await newUser(data)
         .then((succes) => {
-          setError("Sign up successfully")
+          showLoginMsg("Sign up successfully")
           formRef.current.reset()
-        .catch(error => {console.log(error);})
+        .catch(error => showErrorLogin(error))
     })
     }
-
-    useEffect(() => {
-      
-    }, [error])
 
     const handleForm = async(e) => {
 
@@ -46,7 +53,7 @@ export default function SignUp() {
       }
 
       if(emailRef.current.value == "" || passwordRef.current.value == "" || nameRef.current.value == "" || countryRef.current.value == "" || imageRef.current.value == ""){
-        setError('Please fill all credentials')
+        showErrorLogin('Please fill all credentials')
       } else {
         signUp(data)
     }
@@ -102,7 +109,6 @@ export default function SignUp() {
                       </svg>
                       <input type='text' placeholder="Country" ref={countryRef} name="country" id='country' />
                     </label>
-                    <Alerts error={error} />
                     <button type="submit" style={{cursor: 'pointer'}}>Sign Up</button>                                      
               </form>
               <div>

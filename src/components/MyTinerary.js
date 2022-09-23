@@ -3,8 +3,9 @@ import '../styles/MyTinerary.css'
 import { useState, useEffect } from 'react'
 import PatchItinerary from './PatchItinerary'
 import { useGetItinerariesUserQuery, useDeleteItineraryUserMutation } from '../features/myTineraryAPI'
-import Alerts from './Alerts'
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyTinerary = () => {
 
@@ -13,12 +14,23 @@ const MyTinerary = () => {
         user =  JSON.parse(localStorage.getItem('userLogged'))
     } 
 
+    const showError = (msj) => {
+        toast.error(msj, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        });
+    };
+  
+    const showMsg = () => {
+        toast.success(`Itinerary deleted!`, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        });
+    };
+
     const refreshed = useSelector((state) => state.refresh.refreshState)
     
     const { data: myitineraries, refetch } = useGetItinerariesUserQuery(user?.id)
     const [deleted, setDeleted] = useState(false)
     let myitinerariesDetail = myitineraries?.response
-    const [error, setError] = useState("");
 
     const [deleteItinerary] = useDeleteItineraryUserMutation()
 
@@ -26,19 +38,13 @@ const MyTinerary = () => {
         await deleteItinerary(id)
         .then((success) => {
             setDeleted(!deleted)
-            setError('Itinerary deleted successfully')
             refetch()
+            showMsg()
         })
         .catch((error) => {
-            console.log(error.data.message);
+            showError(error.data.message);
         });
     }
-
-    useEffect(() => {
-    setTimeout(() => {
-        setError('')
-    }, 2000)
-    }, [error])
 
     useEffect(() => {
         refetch()
@@ -83,8 +89,7 @@ return (
                         )
                     })
                     : <p> No itineraries for this user</p>
-                } 
-                <Alerts error={error} color={'black'} />
+                }
             </div>
             <div className='container-edit'>
                 <PatchItinerary/>
