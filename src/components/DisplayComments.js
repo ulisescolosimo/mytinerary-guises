@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { refresh } from '../features/refreshSlice'
 import NewComment from './NewComment';
 import Comments from './Comments';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const DisplayComments = ({id}) => {
@@ -19,6 +21,12 @@ const DisplayComments = ({id}) => {
   const [info, setInfo] = useState()
 
   const [getData] = useGetCommentsMutation();
+
+  const showDeleteComment = (msj) => {
+    toast.success(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
 
   async function allComments(){
     try{
@@ -41,6 +49,7 @@ const DisplayComments = ({id}) => {
     await deleteComment(id)
       .then((success) => {
         setDeleted(!deleted)
+        showDeleteComment("Delete successfully")
         dispatch(refresh())
       })
       .catch((error) => {
