@@ -26,7 +26,6 @@ const Comments = ({info, deletedComment, user}) => {
       };
       await editComment(editedComment)
       .then((success) => {
-          console.log(success);
           dispatch(refresh())
           setEdit(!edit)
         })

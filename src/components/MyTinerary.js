@@ -1,9 +1,9 @@
 import React from 'react'
 import '../styles/MyTinerary.css'
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from "react-redux";
 import PatchItinerary from './PatchItinerary'
 import { useGetItinerariesUserQuery, useDeleteItineraryUserMutation } from '../features/myTineraryAPI'
+import Alerts from './Alerts'
 
 const MyTinerary = () => {
 
@@ -15,21 +15,27 @@ const MyTinerary = () => {
     const { data: myitineraries, refetch } = useGetItinerariesUserQuery(user?.id)
     const [deleted, setDeleted] = useState(false)
     let myitinerariesDetail = myitineraries?.response
+    const [error, setError] = useState("");
 
-    
     const [deleteItinerary] = useDeleteItineraryUserMutation()
 
     const deletedItinerary = async(id) => {
         await deleteItinerary(id)
         .then((success) => {
             setDeleted(!deleted)
-            console.log(success);
+            setError('Itinerary deleted successfully')
             refetch()
         })
         .catch((error) => {
             console.log(error.data.message);
         });
-    } 
+    }
+
+    useEffect(() => {
+    setTimeout(() => {
+        setError('')
+    }, 2000)
+    }, [error])
 
 return (
     <>
@@ -45,7 +51,7 @@ return (
                 { myitinerariesDetail?.length > 0 ?
                     myitinerariesDetail?.map((item)=>{
                         return (<>
-                            <div className="container-myti" style={{width: '550px', height:'300px'}}>
+                            <div className="container-myti" style={{width: '550px', height:'400px', display:'flex', flexDirection:'column'}}>
                                     <div className='itinerary-div-p myItineraries-text' >
                                         <h3 className="Itinerary-p"> {item.name} </h3>
                                         <div className='text-itinerary'>
@@ -65,11 +71,13 @@ return (
                                     </div>
                                 </div>
                             </div>
+                            
                             </>
                         )
                     })
                     : <p> No itineraries for this user</p>
                 } 
+                <Alerts error={error} color={'black'} />
             </div>
             <div className='container-edit'>
                 <PatchItinerary/>

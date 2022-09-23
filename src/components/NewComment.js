@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useGetNewCommentMutation} from '../features/commentsAPI'
 import { refresh } from '../features/refreshSlice'
 import '../styles/NewComment.css'
+import Alerts from './Alerts'
 
 const NewComment = ({id}) => {
 
@@ -27,7 +28,6 @@ const NewComment = ({id}) => {
             user: user.id
         }
 
-        console.log(commentary);
         await newCommentary(commentary);
         commentRef.current.reset()
         dispatch(refresh())
@@ -35,10 +35,6 @@ const NewComment = ({id}) => {
 
 
 return (
-    /* <form className="input-comments" onSubmit={handleComment} style={{display:'flex',alignItems:'center'}} ref={commentRef}>
-        <input ref={inputRef} />
-        <button type="submit">Enviar</button>
-    </form> */
     <form onSubmit={handleComment} style={{display:'flex',alignItems:'center', flexDirection:'column'}} ref={commentRef}>
         <textarea style={{margin:'10px', padding:"10px"}} ref={inputRef} />
         <button type="submit" style={{background:'green', padding:'10px', borderRadius:'10px', color:'white' ,textDecoration:'none', cursor:'pointer'}}>Add new comment</button>

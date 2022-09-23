@@ -8,7 +8,6 @@ import Alerts from './Alerts'
 const EditCity = () => {
 
   const {data: items} = useGetAllCitiesQuery()
-  console.log(items);
   const [selected, setSelected] = useState({
     value: '',
     id: ''
