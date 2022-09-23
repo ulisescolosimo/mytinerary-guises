@@ -54,19 +54,20 @@ const DisplayComments = ({id}) => {
 
   useEffect(()=>{
     allComments()
-    console.log("actualizado");
 },[refreshed])
 
   return (
-    <div className="container-comments">
-        {open ? <div className="chat-container" >
-                <div className="chat-msg" style={{display:'flex',alignItems:'center', flexDirection:'column', gap:'20px'}}>
+    <div className="container-comments" style={{display:'flex', backgroundImage:'linear-gradient(to right top, #000000, #1f1f1f, #393939, #545454, #717171)' }}>
+        {open ? <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+          <div style={{display:'flex', color:'white' ,padding:'20px',justifyContent:'space-evenly', gap:'20px' ,alignItems:'center', flexWrap:'wrap'}}>
                     {info?.length > 0 ? (info?.map((info) => <Comments info={info} deletedComment={deletedComment} user={user} />)) : <div className="nocomments" style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', textAlign:'center'}}>No comments yet</div>}
                 </div>
                 {logged ? 
-                  <NewComment id={itineraryId} /> : <div style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', marginTop:''}}>If you want to comment, please login yourself</div>}
+                  <NewComment id={itineraryId} /> : <div style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%'}}>If you want to comment, please login yourself</div>}
         </div> : null}
-        <button className="see-more" onClick={handleClick}>{open ? "See less" : "See more!" }</button>
+        <div style={{display:'flex', justifyContent:"center",alignItems:'center', padding:"20px", width:'200px'}}>
+          <button className="see-more" onClick={handleClick}>{open ? "See less" : "See comments!" }</button>
+        </div>
     </div>
   )
 }
