@@ -3,10 +3,19 @@ import {useModifyCommentMutation} from '../features/commentsAPI'
 import { useDispatch } from "react-redux";
 import { refresh } from '../features/refreshSlice'
 import '../styles/Comments.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Comments = ({info, deletedComment, user}) => {
 
   const dispatch = useDispatch()
+
+  const showEditComment = (msj) => {
+    toast.success(msj, {
+        position: toast.POSITION.BOTTOM_RIGHT
+    });
+  };
+
 
   const [edit, setEdit] = useState(false)
 
@@ -27,6 +36,7 @@ const Comments = ({info, deletedComment, user}) => {
       await editComment(editedComment)
       .then((success) => {
           dispatch(refresh())
+          showEditComment("Your comment was edited")
           setEdit(!edit)
         })
         .catch((error) => {
