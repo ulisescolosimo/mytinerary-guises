@@ -27,9 +27,11 @@ const SignInLogin = () => {
     const signIn = async(data) => {
       await newLogin(data)
         .then((succes) => {
-          let user = (succes?.data?.response?.user)
+          let user = succes?.data?.response?.user
+          let token = succes?.data?.response?.token
           if(user != undefined){
             localStorage.setItem("userLogged", JSON.stringify(user))
+            localStorage.setItem("token", JSON.stringify(token))
             setError("Sign in successfully")
             dispatch(loggedTrue())
             formRef.current.reset()

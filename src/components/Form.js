@@ -19,7 +19,6 @@ const Form = () => {
 
     const newCity = async(object) => {
       await addNewPost(object)
-        .unwrap()
         .then((succes) => {
         setError("City created successfully")
         formRef.current.reset()

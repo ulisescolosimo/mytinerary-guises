@@ -1,17 +1,30 @@
 .container-newitineraries{
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70vh;
-    flex-direction: column;
+    min-height: 75vh;
 }
 
 .container-new-user {
-    margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    color: white;
+    
+}
+.container-profileNew{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-new-user p{
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .profile-card {
@@ -20,6 +33,16 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px 0 20px 0;
+    width: 50%;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.profile-card img{
+    margin-top: 10px;
 }
 
 .profile-creation{
@@ -27,6 +50,34 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 60%;
+}
+
+.new-user-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-selects{
+    width: 100%;
+}
+
+.new-user-input label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.MyTineraries-d{
+    width: 80%;
+}
+
+.container-new-user{
+    width: 100%;
+    
 }
 
 .MyTineraries-div{
@@ -54,10 +105,65 @@
     align-items: center;
 }
 
+#form-new-users{
+    background-color: rgb(63, 3, 3);
+    width: 100%;
+}
+
+.btn-formSumb{
+    background-color: rgb(63, 3, 3);
+    padding: 8px 25px 8px 25px;
+    margin: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-formSumb:hover{
+    background-color: black;
+    border:2px solid white;
+    color: white;
+}
+
 .btn-form{
-    width: auto !important;
+    width:30%;
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
+    border: 2px solid black;
 }
 
+.container-selects select{
+    background-color: black;
+    color: white;
+}
+
+.new-user-input{
+    width: 100%;
+}
+
+.new-user-input input{
+    width: 100%;
+}
+
+@media screen and (max-width: 767px){
+    .container-newitineraries{
+        flex-direction: column;
+    }
+    .container-profileNew{
+        width: 100%;
+    }
+    .container-new-user{
+        width: 100%;
+    }
+    .profile-creation{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .container-new-user p{
+        font-size: 1.8rem;
+    }
+}

@@ -7,7 +7,7 @@
 }
 
 .see-more{
-    padding: 10px;
+    padding: 20px;
     margin: 10px 0 30px 0;
     background-color: white(0, 0, 0);
     color: black;
@@ -16,6 +16,8 @@
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 .see-more:hover {
@@ -25,21 +27,60 @@
 }
 
 .chat-p{
-    margin-left: 50px;
-    font-size: 25px;
+    border: 2px solid white;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    max-width: 60% !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .chat-container{
-    width: 60%;
-    height: 500px;
     background-color: rgb(0, 0, 0);
     color: white;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .bg-black{
     background-color: black !important;
     color: white !important;
+}
+
+.input-comments{
+    padding: 20px;
+}
+
+.input-comments button {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.chat-msg {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    gap: 20px;
+}
+
+.container-text{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    max-width: 100%;
+    flex-wrap: wrap;
+    height: auto;
 }
