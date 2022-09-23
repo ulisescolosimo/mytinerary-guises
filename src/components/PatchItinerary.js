@@ -13,7 +13,7 @@ const EditItineraryUser = () => {
         } 
 
      
-      const {data: items} = useGetItinerariesUserQuery(user?.id)
+      const {data: items, refetch} = useGetItinerariesUserQuery(user?.id)
       const [open, setOpen] = useState(false)
       const [selected, setSelected] = useState({
             value: '',
@@ -52,6 +52,7 @@ const EditItineraryUser = () => {
                   .then((succes) => {
                   setError("Itinerary edited successfully")
                   formRef.current.reset()
+                  refetch()
             })
             .catch((error) => {
                   setError(error.data.message);
