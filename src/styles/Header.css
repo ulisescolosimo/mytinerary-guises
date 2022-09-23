@@ -24,6 +24,12 @@ nav {
     cursor: pointer;
     text-align: center;
     padding-right: 15px;
+    padding: 7px;
+}
+
+.items:hover{
+    background-color: rgb(61, 60, 60);
+    border-radius: 5px;
 }
 
 .navbar-container {
@@ -114,6 +120,10 @@ nav {
     padding: 20px;
     color: white !important;
 } 
+
+.btn-navigation{
+    margin-left: 10px;
+}
 
 @media (max-width: 600px) {
     .list{
