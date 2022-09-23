@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react'
 import {useModifyCommentMutation} from '../features/commentsAPI'
 import { useDispatch } from "react-redux";
 import { refresh } from '../features/refreshSlice'
+import '../styles/Comments.css'
 
 const Comments = ({info, deletedComment, user}) => {
 
@@ -35,10 +36,34 @@ const Comments = ({info, deletedComment, user}) => {
     }
 
   return (
-    <div className="chat-p" style={{fontSize:'20px', width:'100%'}}>
-            <div style={{display:'flex',alignItems:'center', margin:'5px'}}>
-            <img style={{width:'50px', height:'50px', borderRadius:'30px', margin:'5px'}} src={info?.user?.photo} /><span>{info?.user?.name}</span></div> <div style={{textAlign:'center'}} id={info?._id}>{edit ? <form><input placeholder={info?.comment} ref={editedRef} /></form> : (info?.comment)}
-            {(info?.user?._id == user?.id || user?.role == 'admin') ? <div style={{padding:'10px', display:'flex', gap:'8px', alignItems:'center', justifyContent:'center'}}><button onClick={()=>deletedComment(info?._id)}>Remove</button>{info?.user?._id == user?.id ? <button onClick={handleEdit}>{edit ? 'Back' : 'Edit'}</button> : null}{edit ? <button onClick={()=>editedComment(info?._id)}>Confirm edit</button> : null }</div> : null}
+    <div style={{display:'flex', justifyContent:'space-around' ,alignItems:"center", backgroundColor:'black' ,border:'2px solid white', borderRadius:'10px', width:'90%', flexWrap:'wrap'}}>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center", margin:'20px'}}>
+            <img src={info?.user?.photo} style={{width:'100px', height:'100px', borderRadius:'60px'}} /><span>{info?.user?.name}</span></div>
+            <div id={info?._id} style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center", height:'100%', margin:'20px'}}>
+              {edit ? <form ><input style={{padding:'10px'}} placeholder={info?.comment} ref={editedRef} />
+              </form> 
+              :
+              <div style={{padding:'30px'}}>{info?.comment}</div>}
+            {(info?.user?._id == user?.id || user?.role == 'admin')
+            ? 
+            <div style={{display:'flex', justifyContent:'center', width:'100%', margin:'20px'}}>
+              <button style={{background:'red', padding:'10px', borderRadius:'10px' , color:'white' ,textDecoration:'none', cursor:'pointer'}} onClick={()=>deletedComment(info?._id)}>
+                Remove
+              </button>
+            {info?.user?._id == user?.id
+            ?
+            <button style={{background:'black', padding:'10px', borderRadius:'10px',border:"1px solid white" , color:'white' ,textDecoration:'none', cursor:'pointer'}} onClick={handleEdit}>
+              {edit
+              ?
+              'Back': 'Edit'}
+              </button>
+              : null}
+            {edit ?
+            <button style={{background:'green', padding:'10px', border:"1px solid white" ,borderRadius:'10px', color:'white' ,textDecoration:'none', cursor:'pointer'}} onClick={()=>editedComment(info?._id)}>
+              Confirm edit
+            </button>
+          : null }
+          </div> : null}
         </div>
     </div>
   )
