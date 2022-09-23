@@ -39,9 +39,9 @@ return (
         <input ref={inputRef} />
         <button type="submit">Enviar</button>
     </form> */
-    <form className="input-comments" onSubmit={handleComment} style={{display:'flex',alignItems:'center'}} ref={commentRef}>
-        <input ref={inputRef} />
-        <button type="submit">Enviar</button>
+    <form onSubmit={handleComment} style={{display:'flex',alignItems:'center', flexDirection:'column'}} ref={commentRef}>
+        <textarea style={{margin:'10px', padding:"10px"}} ref={inputRef} />
+        <button type="submit" style={{background:'green', padding:'10px', borderRadius:'10px', color:'white' ,textDecoration:'none', cursor:'pointer'}}>Add new comment</button>
     </form>
 )
 }
