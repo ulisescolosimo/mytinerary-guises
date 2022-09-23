@@ -12,18 +12,19 @@ const MyTinerary = () => {
         user =  JSON.parse(localStorage.getItem('userLogged'))
     } 
     
-    const { data: myitineraries } = useGetItinerariesUserQuery(user?.id)
+    const { data: myitineraries, refetch } = useGetItinerariesUserQuery(user?.id)
     const [deleted, setDeleted] = useState(false)
     let myitinerariesDetail = myitineraries?.response
 
     
     const [deleteItinerary] = useDeleteItineraryUserMutation()
 
-     const deletedItinerary = async(id) => {
+    const deletedItinerary = async(id) => {
         await deleteItinerary(id)
         .then((success) => {
             setDeleted(!deleted)
             console.log(success);
+            refetch()
         })
         .catch((error) => {
             console.log(error.data.message);
