@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as jose from 'jose'
 import { useGetLoginMutation } from '../features/usersAPI'
 import { useNavigate } from 'react-router-dom'
-import Alerts from './Alerts'
 import { useDispatch } from 'react-redux';
 import { loggedTrue } from '../features/loggedSlice'
 
@@ -18,8 +17,6 @@ const SignInGoogle = () => {
 
   const dispatch = useDispatch()
 
-  const [error, setError] = useState("");
-
   const [newLogin] = useGetLoginMutation()
 
     async function handleCredentialResponse (response) {
@@ -32,15 +29,15 @@ const SignInGoogle = () => {
           from: 'google'
         }
 
-        if(!error){
           newLogin(data)
           .then((succes) => {
-            let user = (succes?.data?.response?.user)
+            let user = succes?.data?.response?.user
+            let token = succes?.data?.response?.token
             localStorage.setItem("userLogged", JSON.stringify(user))
+            localStorage.setItem("token", JSON.stringify(token))
             dispatch(loggedTrue())
             handleNavigate()
         })
-    }
   }
 
   useEffect(()=> {
@@ -61,9 +58,9 @@ return (
     <div ref={buttonDiv}>
     
     </div>
-    <Alerts error={error} style={{width: 'auto'}} />
 </div>
 )
 }
 
 export default SignInGoogle
+

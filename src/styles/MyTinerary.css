@@ -53,6 +53,14 @@
       padding: 20px 0 40px;
 }
 
+.btn-delete{
+      background-color: black;
+      border: 2px solid white;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+}
+
 @media screen and (max-width: 425px){
       .container-myti{
             font-size: 1.1rem;

@@ -52,7 +52,7 @@ const Navigation = (props) => {
     <nav class="navigation-menu">
         <div className="navbar-container">
             <img className="nav-bar-logo" src="/logo-header.jpg" style={{height: '90%'}}/>
-            <Alerts error={error} />
+            {error ? <Alerts error={error} /> : null}
             <ul className="list">
                 {
                   user? <>

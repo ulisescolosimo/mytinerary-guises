@@ -24,8 +24,27 @@ export const itineraryAPI = createApi({
                 body: itinerary,
             })
         }),
+        likeOrDislike: builder.mutation({
+            query: (id) => ({
+                url: '/itineraries/like/'+id,
+                method: 'PATCH',
+                headers: {Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`}
+            })
+        }),
+        getDetails: builder.mutation({
+            query: (id) => ({
+                url: '/details/'+id,
+                method: 'GET'
+            })
+        }),
+        getItis: builder.mutation({
+            query: (id) => ({
+                url: `itineraries/?city=${id}`,
+                method: 'GET'
+            })
+        }),
     })
 })
 
 export default itineraryAPI
-export const { useGetItinerariesCityQuery, useGetItinerariesUserQuery, useCreateItineraryMutation } = itineraryAPI
+export const { useGetItinerariesCityQuery ,useGetItinerariesUserQuery, useCreateItineraryMutation, useLikeOrDislikeMutation, useGetDetailsMutation, useGetItisMutation } = itineraryAPI
