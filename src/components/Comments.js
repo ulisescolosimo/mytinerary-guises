@@ -5,6 +5,7 @@ import { refresh } from '../features/refreshSlice'
 import '../styles/Comments.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import parse from 'html-react-parser'
 
 const Comments = ({info, deletedComment, user}) => {
 
@@ -45,14 +46,14 @@ const Comments = ({info, deletedComment, user}) => {
     }
 
   return (
-    <div style={{display:'flex', justifyContent:'space-around' ,alignItems:"center", backgroundColor:'black' ,border:'2px solid white', borderRadius:'10px', width:'90%', flexWrap:'wrap'}}>
+    <div style={{display:'flex', justifyContent:'space-around' ,alignItems:"center" ,border:'2px solid white', borderRadius:'10px', width:'90%', flexWrap:'wrap'}}>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center", margin:'20px'}}>
             <img src={info?.user?.photo} style={{width:'100px', height:'100px', borderRadius:'60px'}} /><span>{info?.user?.name}</span></div>
             <div id={info?._id} style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center", height:'100%', margin:'20px'}}>
               {edit ? <form ><input style={{padding:'10px'}} placeholder={info?.comment} ref={editedRef} />
               </form> 
               :
-              <div style={{padding:'30px'}}>{info?.comment}</div>}
+              <div style={{padding:'30px'}}>{parse(`${info?.comment}`)}</div>}
             {(info?.user?._id == user?.id || user?.role == 'admin')
             ? 
             <div style={{display:'flex', justifyContent:'center', width:'100%', margin:'20px'}}>
