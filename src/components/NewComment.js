@@ -1,10 +1,11 @@
-import {React, useRef } from 'react'
+import {React, useRef, useState } from 'react'
 import { useDispatch } from "react-redux";
 import { useGetNewCommentMutation} from '../features/commentsAPI'
 import { refresh } from '../features/refreshSlice'
 import '../styles/NewComment.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Editor from './Editor';
 
 const NewComment = ({id}) => {
 
@@ -36,12 +37,12 @@ const NewComment = ({id}) => {
         e.preventDefault()
 
         let commentary = {
-            comment: inputRef.current.value,
+            comment: value,
             itinerary: itineraryId,
             user: user.id
         }
 
-        if(inputRef.current.value == ""){
+        if(value == ""){
             showError('Please write a comment')
         }else{
             await newCommentary(commentary);
@@ -51,11 +52,13 @@ const NewComment = ({id}) => {
         }   
     }
 
+    const [value, setValue] = useState('')
 
 return (
     <form onSubmit={handleComment} style={{display:'flex',alignItems:'center', flexDirection:'column'}} ref={commentRef}>
-        <textarea style={{margin:'10px', padding:"10px"}} ref={inputRef} />
-        <button type="submit" style={{background:'green', padding:'10px', borderRadius:'10px', color:'white' ,textDecoration:'none', cursor:'pointer'}}>Add new comment</button>
+        {/* <textarea style={{margin:'10px', padding:"10px"}} ref={inputRef} placeholder='Add new comment' /> */}
+        <Editor setValue={setValue} value={value} />
+        <button type="submit" style={{background:'green', marginTop:'20px' ,padding:'10px', borderRadius:'10px', color:'white' ,textDecoration:'none', cursor:'pointer'}}>Add new comment</button>
     </form>
 )
 }
